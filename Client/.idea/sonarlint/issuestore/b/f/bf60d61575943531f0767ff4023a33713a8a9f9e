@@ -1,0 +1,19 @@
+
+e	java:S109$"RAssign this magic number 2 to a well-named constant, and use the constant instead.(÷éi
+g	java:S109*"RAssign this magic number 2 to a well-named constant, and use the constant instead.(›èê
+g	java:S109R"SAssign this magic number 80 to a well-named constant, and use the constant instead.(Ú†í
+h	java:S134{"NRefactor this code to not nest more than 3 if/for/while/switch/try statements.(‰ô™¸şÿÿÿÿ
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Êä İ
+;
+java:S11664"%Either log or rethrow this exception.(ï­£Ä
+;
+java:S2325h" Make "server" a "static" method.(‡“¹Ûûÿÿÿÿ
+P
+java:S1943"5Remove this use of constructor "Scanner(InputStream)"(À’·êøÿÿÿÿ
+N	java:S106%"9Replace this use of System.out or System.err by a logger.(³×Ÿ
+N	java:S1060"9Replace this use of System.out or System.err by a logger.(Ñƒ§š
+N	java:S1063"9Replace this use of System.out or System.err by a logger.(ƒ¨Å¬
+S	java:S1066"9Replace this use of System.out or System.err by a logger.(äõÒ¢ûÿÿÿÿ
+S	java:S106N"9Replace this use of System.out or System.err by a logger.(Õ·ÿûÿÿÿÿ
+N	java:S106S"9Replace this use of System.out or System.err by a logger.(’©€™
+S	java:S106["9Replace this use of System.out or System.err by a logger.(Òë°Ôûÿÿÿÿ

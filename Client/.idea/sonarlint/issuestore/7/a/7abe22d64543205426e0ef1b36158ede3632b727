@@ -1,0 +1,79 @@
+
+R
+java:S1444"0Make this "public static packetSize" field final(Ğëò¶úÿÿÿÿ8İ—ÂÑ³.
+p	java:S134"NRefactor this code to not nest more than 3 if/for/while/switch/try statements.(¶Çâúÿÿÿÿ8öİ¥Ñ³.
+g
+java:S1124"EReorder the modifiers to comply with the Java Language Specification.(ñæÿúÿÿÿÿ8—ş²Ğ³.
+s	java:S109U"RAssign this magic number 3 to a well-named constant, and use the constant instead.(ä§şµüÿÿÿÿ8öİ¥Ñ³.
+C
+java:S1166¡"%Either log or rethrow this exception.(ï­£Ä8öİ¥Ñ³.
+Z	java:S106V"9Replace this use of System.out or System.err by a logger.(†³Õ”ıÿÿÿÿ8öİ¥Ñ³.
+g
+java:S1192"JDefine a constant instead of duplicating this literal "user.home" 3 times.(ë¡Ïã8ªù€Ò³.
+^
+java:S10755"ARefactor your code to get this URI from a customizable parameter.(íÿÔÙ8‡¬Ñ³.
+t	java:S109"SAssign this magic number 80 to a well-named constant, and use the constant instead.(ñæÿúÿÿÿÿ8û¢Ñ³.
+O
+java:S1444"-Make this "public static webPort" field final(ñæÿúÿÿÿÿ8ò”ãĞ³.
+[	java:S106£"9Replace this use of System.out or System.err by a logger.(äõÒ¢ûÿÿÿÿ8öİ¥Ñ³.
+w
+java:S1541S"ZThe Cyclomatic Complexity of this method "main" is 16 which is greater than 10 authorized.(Çµí‘8Ë˜îÒ³.
+g
+java:S1124"EReorder the modifiers to comply with the Java Language Specification.(Ğëò¶úÿÿÿÿ8İ—ÂÑ³.
+x
+java:S1104"VMake packetSize a static final constant or non-public and provide accessors if needed.(Ğëò¶úÿÿÿÿ8İ—ÂÑ³.
+o
+java:S3776S"RRefactor this method to reduce its Cognitive Complexity from 37 to the 15 allowed.(Çµí‘8Ë˜îÒ³.
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(•İÈ‚ıÿÿÿÿ
+v	java:S109"UAssign this magic number 1500 to a well-named constant, and use the constant instead.(Ğëò¶úÿÿÿÿ8İ—ÂÑ³.
+u
+java:S1104"SMake webPort a static final constant or non-public and provide accessors if needed.(ñæÿúÿÿÿÿ8ò”ãĞ³.
+g
+java:S1192"JDefine a constant instead of duplicating this literal "web-cache" 3 times.(ë¡Ïã8ªù€Ò³.
+k
+java:S1192`"IDefine a constant instead of duplicating this literal "headers=" 5 times.(ß´†Ïúÿÿÿÿ8¯ÒôÒ³.
+c
+java:S1192b"FDefine a constant instead of duplicating this literal "save=" 8 times.(üÅğ‹8¯ÒôÒ³.
+s	java:S109_"RAssign this magic number 2 to a well-named constant, and use the constant instead.(ØÆ´ùÿÿÿÿ8¯ÒôÒ³.
+s	java:S109g"RAssign this magic number 3 to a well-named constant, and use the constant instead.(äÌ•ûüÿÿÿÿ8¯ÒôÒ³.
+n	java:S109h"RAssign this magic number 2 to a well-named constant, and use the constant instead.(À‘ĞĞ8¯ÒôÒ³.
+s	java:S109j"RAssign this magic number 2 to a well-named constant, and use the constant instead.(ù§ŒÛøÿÿÿÿ8¯ÒôÒ³.
+s	java:S109q"RAssign this magic number 2 to a well-named constant, and use the constant instead.(¶Â—ÿøÿÿÿÿ8¯ÒôÒ³.
+n	java:S109v"RAssign this magic number 2 to a well-named constant, and use the constant instead.(‰ï±Ú8¯ÒôÒ³.
+n	java:S109z"RAssign this magic number 2 to a well-named constant, and use the constant instead.(·æñ¾8¯ÒôÒ³.
+o	java:S134`"NRefactor this code to not nest more than 3 if/for/while/switch/try statements.(ß´†Ïúÿÿÿÿ8¯ÒôÒ³.
+j	java:S134h"NRefactor this code to not nest more than 3 if/for/while/switch/try statements.(À‘ĞĞ8¯ÒôÒ³.
+U	java:S864h"9Add parentheses to make the operator precedence explicit.(À‘ĞĞ8¯ÒôÒ³.
+Z	java:S864j"9Add parentheses to make the operator precedence explicit.(ù§ŒÛøÿÿÿÿ8¯ÒôÒ³.
+9
+java:S1116["Remove this empty statement.(×ÿ–8¯ÒôÒ³.
+\	java:S126g";"if ... else if" constructs should end with "else" clauses.(äÌ•ûüÿÿÿÿ8¯ÒôÒ³.
+X
+java:S1449`"6Define the locale to be used in this String operation.(ß´†Ïúÿÿÿÿ8¯ÒôÒ³.
+J	java:S108`")Either remove or fill this block of code.(ß´†Ïúÿÿÿÿ8¯ÒôÒ³.
+S
+java:S1449b"6Define the locale to be used in this String operation.(üÅğ‹8¯ÒôÒ³.
+E	java:S108b")Either remove or fill this block of code.(üÅğ‹8¯ÒôÒ³.
+Z	java:S106e"9Replace this use of System.out or System.err by a logger.(úèòÿÿÿÿÿ8¯ÒôÒ³.
+S
+java:S1449h"6Define the locale to be used in this String operation.(À‘ĞĞ8¯ÒôÒ³.
+S
+java:S1449h"6Define the locale to be used in this String operation.(À‘ĞĞ8¯ÒôÒ³.
+X
+java:S1449j"6Define the locale to be used in this String operation.(ù§ŒÛøÿÿÿÿ8¯ÒôÒ³.
+X
+java:S1449j"6Define the locale to be used in this String operation.(ù§ŒÛøÿÿÿÿ8¯ÒôÒ³.
+U	java:S106l"9Replace this use of System.out or System.err by a logger.(ÆÀûı8¯ÒôÒ³.
+X
+java:S1449p"6Define the locale to be used in this String operation.(¥®‹Àşÿÿÿÿ8¯ÒôÒ³.
+X
+java:S1449q"6Define the locale to be used in this String operation.(¶Â—ÿøÿÿÿÿ8¯ÒôÒ³.
+X
+java:S1449u"6Define the locale to be used in this String operation.(Éû¦Äÿÿÿÿÿ8¯ÒôÒ³.
+S
+java:S1449v"6Define the locale to be used in this String operation.(‰ï±Ú8¯ÒôÒ³.
+S
+java:S1449y"6Define the locale to be used in this String operation.(±è¦İ8¯ÒôÒ³.
+S
+java:S1449z"6Define the locale to be used in this String operation.(·æñ¾8¯ÒôÒ³.
+Z	java:S106|"9Replace this use of System.out or System.err by a logger.(™ô˜§ıÿÿÿÿ8¯ÒôÒ³.
