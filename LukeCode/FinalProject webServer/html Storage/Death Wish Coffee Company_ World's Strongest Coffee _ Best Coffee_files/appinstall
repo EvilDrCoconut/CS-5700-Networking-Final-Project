@@ -1,0 +1,1 @@
+var _f_head = document.getElementsByTagName('head')[0];var _f_script = document.createElement('script');_f_script.type = 'text/javascript';_f_script.src = 'https://appdevelopergroup.co/apps/html5flipbook/js/flipbook.js?shop=deathwishcoffee.myshopify.com';_f_head.appendChild(_f_script);

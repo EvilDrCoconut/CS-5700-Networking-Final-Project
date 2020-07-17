@@ -1,0 +1,137 @@
+$(function(){
+  $(document).ready(function(){
+    $('.mobile-nav__has-sublist').removeClass('mobile-nav--expanded');
+    $('.mobile-nav__has-sublist').first().addClass('mobile-nav--expanded');
+
+    handleMadlibSubmit();
+    checkMadlibURL();
+  });
+
+  $(window).scroll(function(){
+      stickyNav();
+  });
+
+  // ************** Sticky Nav ***************//
+    var stickyNavTop = $("#mobile-header").offset().top;
+
+    function stickyNav(){
+      var scrollTop = $(window).scrollTop();
+
+      if (window.pageYOffset > stickyNavTop) {
+          $('#mobile-header').addClass('stickyFilter');
+      } else {
+          $('#mobile-header').removeClass('stickyFilter');
+      }
+    };
+
+// ************** Madlib ***************//
+
+function handleMadlibSubmit(){
+  $("#madlib-story").hide();
+  $("#restart").hide();
+  $(".social_link").hide();
+
+  $("#submit").click(function(e) {
+
+    var answerArray = [];
+
+    var fieldsValidated = true;
+
+    $(".input").each(function(index, item){
+      var id = $(this).attr("id");
+      var value = $("input."+id+"").val();
+      if(value == "" || value == null){
+        fieldsValidated = false;
+        return;
+      }
+      $("."+id+"").empty().append(value);
+      answerArray.push(value);
+    });
+
+    if(!fieldsValidated){
+      alert("please fill in all values");
+      return;
+    }
+
+    $("#madlib-story").show();
+    $("#restart").show();
+    $(".social_link").show();
+    $(':input').val('');
+
+    $("#userinputs").hide();
+
+    answerArray.forEach(function(item, index){
+      insertParam(index, item);
+    });
+
+    createSocialLinks();
+  });
+
+    $("#restart").click(function(e) {
+      $("#userinputs").show();
+      $("#madlib-story").hide();
+      $("#restart").hide();
+      document.location.hash = "";
+    });
+  }
+
+
+  function insertParam(key, value) {
+      key = encodeURIComponent(key);
+      value = encodeURIComponent(value);
+      var url = document.location.hash.substr(1).split('&');
+      let i=0;
+
+      for(; i<url.length; i++){
+        if (url[i].startsWith(key + '=')) {
+          let pair = url[i].split('=');
+          pair[1] = value;
+          url[i] = pair.join('=');
+          break;
+        }
+      }
+
+      if(i >= url.length){
+        url[url.length] = [key,value].join('=');
+      }
+      let params = url.join('&');
+      document.location.hash = params;
+  }
+
+
+  function checkMadlibURL(){
+    if(document.location.href.indexOf("madlib") != -1 && document.location.hash.indexOf("#&") != -1){
+      $("#userinputs").hide();
+      $("#madlib-story").show();
+      $("#restart").show();
+
+      var url = document.location.hash;
+      var params = url.split("&");
+      params.shift();
+
+      $("#madlib-story span").each(function(index, item){
+        if(params[index] != undefined){
+          var param = params[index].split("=");
+          param = param[1];
+          param = param.replace(/%20/g, " ");
+          $(this).text(param);
+        }
+      });
+
+      $(".social_link").show();
+      createSocialLinks();
+    }
+  }
+
+  function createSocialLinks(){
+    var urlQuery = document.location.hash;
+    var facebook = "https://www.facebook.com/sharer/sharer.php?u=https%3A//www.deathwishcoffee.com/pages/madlib"+urlQuery+"";
+    var twitter = "https://twitter.com/intent/tweet?text=https%3A//www.deathwishcoffee.com/pages/madlib"+urlQuery+"";
+    var linkedin = "https://www.linkedin.com/shareArticle?mini=true&url=https%3A//www.deathwishcoffee.com/pages/madlib&title=&summary=&source="+urlQuery+"";
+
+    $(".facebook").attr("href", facebook);
+    $(".twitter").attr("href", twitter);
+    $(".linkedin").attr("href", linkedin);
+  }
+
+});
