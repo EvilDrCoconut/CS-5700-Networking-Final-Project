@@ -1,0 +1,113 @@
+/**
+ * Created by acheson on 3/28/16.
+ */
+
+(function() {
+    'use strict';
+
+    // Add any module dependencies here
+    angular
+
+        .module('nu')
+        .controller('ComparePageController', ComparePageController);
+
+    ComparePageController.$inject = ['$rootScope', '$scope', '$timeout', 'constants', 'dataService', 'storageService', 'queryService'];
+
+    function ComparePageController($rootScope, $scope, $timeout, constants, dataService, storageService, queryService) {
+
+        var vm = this;
+
+        // The favorites stored in localstorage.
+        vm.favorites;
+
+        // Program data for display
+        vm.programs;
+
+        //  Css class for each element
+        vm.classes;
+
+        activate();
+
+        ///////////////////
+
+        function activate() {
+
+            FF.responsive.update();
+
+            // store the query string for return if applicable
+            // console.log(queryService.getReturnURLParameters() || 'no parameters set');
+
+            // Get the active favorites from local storage
+            vm.favorites = storageService.getFavorites() || [];
+            getData();
+
+            $rootScope.$on(constants.BROADCAST_KEY_FAVORITES_CHANGE, favoritesChanged);
+        }
+
+        function favoritesChanged() {
+            vm.favorites = storageService.getFavorites();
+            getData();
+        }
+
+        function bindSlideShow() {
+
+            jQuery('.slide-container').each(function(index, obj) {
+                var container = jQuery(obj);
+                //console.log(obj);
+                var slides = container.find('.slide');
+                //console.log(slides);
+                if (slides.length > 1) {
+                    container.on('init', function(event, slick) {
+                       console.log('slider was initialized');
+                        // call sameheight on the testimonials block here.
+                    });
+                    container.slick();
+                }
+            });
+        }
+
+        function unbindSlideShow() {
+            jQuery('.slick-initialized').slick('unslick');
+            console.log("unslick");
+        }
+
+        function getData() {
+            var ids = [];
+
+            angular.forEach(vm.favorites, function(obj) {
+
+                ids.push(obj.id);
+            })
+
+            var idString = ids.join(',');
+
+            dataService.getProgramCompare(idString).then(function(data) {
+                unbindSlideShow();
+                vm.programs = data;
+                console.log(vm.programs);
+                angular.forEach(vm.programs, function(program, index){
+
+                    program.displayIndex = function() {
+                        for(var i = 0, len = vm.favorites.length; i < len; i++) {
+                            if (vm.favorites[i].id === program.id) return i;
+                        }
+                        return -1;
+                    }();
+
+                    program.classes = '';
+                    console.log(program.program);
+                    angular.forEach(program.program.field_degree_type.entities, function(entity){
+                        program.classes += ' ' + entity.name[0].value.toLowerCase();
+                    })
+                });
+                console.log('Programs:: ', vm.programs);
+                $timeout(function() {
+                    bindSlideShow();
+                    FF.sameHeightMultiple.init();
+                    FF.teaser.init();
+                })
+            })
+        }
+
+    }
+})();

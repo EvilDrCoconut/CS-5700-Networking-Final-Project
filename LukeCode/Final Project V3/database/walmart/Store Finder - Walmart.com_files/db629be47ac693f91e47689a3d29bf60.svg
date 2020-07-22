@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="40px" height="47px" viewBox="0 0 40 47" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 49 (51002) - http://www.bohemiancoding.com/sketch -->
+    <title>pin_store_selected</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <filter x="-21.9%" y="-12.8%" width="143.8%" height="135.9%" filterUnits="objectBoundingBox" id="filter-1">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+    </defs>
+    <g id="v20---store-pages-NY---8(web)-and-6(app)---handed-off-2/23" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Store_page_android" transform="translate(-1256.000000, -539.000000)">
+            <g id="Andorid_map_pin_mystore" transform="translate(1260.000000, 541.000000)">
+                <g id="Group-40" filter="url(#filter-1)" stroke-width="1" fill="#FFC220">
+                    <path d="M16.0014624,0 C7.17740609,0 0,6.95311215 0,15.4985833 C0,19.241477 1.40096883,22.8568687 3.95137556,25.6930811 L16.0014624,38.8512933 L28.0661731,25.6789142 C30.5990312,22.8568687 32,19.241477 32,15.4985833 C32,6.95311215 24.8225939,0 16.0014624,0 Z" id="Page-1"></path>
+                </g>
+                <path d="M15.9798995,7 L21.1457286,10.4170854 L24,10.4170854 L24,23 L17.1457286,23 L17.1457286,18.4371859 L14.8542714,18.4371859 L14.8542714,23 L8,23 L8,10.4170854 L11.2361809,10.4170854 L15.9798995,7 Z M9.14572864,11.5628141 L9.14572864,21.8743719 L13.7085427,21.8743719 L13.7085427,17.2914573 L18.2914573,17.2914573 L18.2914573,21.8743719 L22.8542714,21.8743719 L22.8542714,11.5628141 L20.7839196,11.5628141 L16.0201005,8.38693467 L11.6180905,11.5628141 L9.14572864,11.5628141 Z" id="24---icon" fill="#041E42"></path>
+            </g>
+        </g>
+    </g>
+</svg>
