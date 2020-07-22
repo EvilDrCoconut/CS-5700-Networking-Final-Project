@@ -12,6 +12,7 @@ import java.net.InetAddress;
 import java.net.Socket;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import netscape.javascript.JSObject;
 
 public class Client {
 
@@ -132,7 +133,7 @@ public class Client {
         // Arg 0 is the website url.
         // hello.testing.com/folder/file.html
         InetAddress host = InetAddress.getByName(getURL(args[0]));
-
+        
         addCacheFolder();
 
         try (Socket socket = new Socket(host, webPort)) {

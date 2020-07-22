@@ -1,12 +1,15 @@
 
-{	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(•ÝÈ‚ýÿÿÿÿ8×ç‹Ñ³.
-]	java:S125"<This block of commented-out lines of code should be removed.(½™ì„ÿÿÿÿÿ8öÚ Ñ³.
-T
-java:S1128"2Remove this unused import 'java.lang.ref.Cleaner'.(ÝŒ³ûÿÿÿÿ8á×Ó³.
-4	java:S113"'Add a new line at the end of this file.
-\
-java:S2039":Explicitly declare the visibility for "sampleURLWithFile".(Áðÿÿÿÿÿ8ÚˆßÑ³.
+t
+java:S3578"RRename this method name to match the regular expression: '^test[A-Z][a-zA-Z0-9]*$'(‘÷šŠûÿÿÿÿ8‚îÃ×³.
+B
+java:S2698)" Add a message to this assertion.(üÎÂþÿÿÿÿ8‚îÃ×³.
 O
-java:S2039"2Explicitly declare the visibility for "sampleURL".(ÌêØ8ÚˆßÑ³.
-a
-java:S1105/"?Move this left curly brace to the end of previous line of code.(ÒÌâ–øÿÿÿÿ8á×Ó³.
+java:S2699."-Add at least one assertion to this test case.(öûþÿÿÿÿ8‚îÃ×³.
+B
+java:S2698" Add a message to this assertion.(ðÅ«¾þÿÿÿÿ8‚îÃ×³.
+B
+java:S2698" Add a message to this assertion.(ËºÏýÿÿÿÿ8‚îÃ×³.
+x
+java:S3415"VSwap these 2 arguments so they are in the correct order: expected value, actual value.(ðÅ«¾þÿÿÿÿ8‚îÃ×³.
+x
+java:S3415"VSwap these 2 arguments so they are in the correct order: expected value, actual value.(ËºÏýÿÿÿÿ8‚îÃ×³.
