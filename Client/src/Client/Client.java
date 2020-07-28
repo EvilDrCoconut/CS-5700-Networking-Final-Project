@@ -4,6 +4,7 @@ import java.awt.Desktop;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -26,14 +27,32 @@ public class Client {
     }
   }
 
-  static String buildDefaultFilePath(String serverPath) {
-    return buildFilePath(serverPath,
-        System.getProperty("user.home") + File.separator + "web-cache");
+  static String createDirectories(String savePath, String serverPath) throws IOException {
+    if (!Files.isDirectory(Paths.get(savePath))) {
+      throw new FileNotFoundException("Make sure to pass a valid save path.");
+    } else {
+      String[] folders = serverPath.split("/");
+      String pathSoFar = savePath;
+      for (int i = 0; i < folders.length - 1; i++) {
+        pathSoFar = pathSoFar + File.separator + folders[i];
+
+        if (!Files
+            .isDirectory(Paths.get(pathSoFar))) {
+          Files.createDirectory(
+              Paths.get(pathSoFar));
+        }
+      }
+      pathSoFar = pathSoFar + File.separator + folders[folders.length - 1];
+      return pathSoFar;
+    }
+
   }
 
-  static String buildFilePath(String serverPath, String folderPath) {
-    return folderPath + File.separator + serverPath;
+  static String buildDefaultFilePath(String serverPath) throws IOException {
+    return createDirectories(
+        System.getProperty("user.home") + File.separator + "web-cache", serverPath);
   }
+
 
   static String getURL(String input) {
     String url;
@@ -48,9 +67,9 @@ public class Client {
   static String getServerFilePath(String input) {
     String filePath;
     if (input.indexOf('/') != -1) {
-      filePath = input.substring(input.indexOf('/'));
+      filePath = input.substring(input.indexOf('/') + 1);
     } else {
-      filePath = "/index.html";
+      filePath = "index.html";
     }
     return filePath;
   }
@@ -87,9 +106,11 @@ public class Client {
     } else {
 
       try {
+        // Sending whole URL over now
         String serverFilePath = getServerFilePath(args[0]);
-        String filePath = buildDefaultFilePath(serverFilePath);;
-        String parameters =  "path: " + serverFilePath;
+        String filePath = buildDefaultFilePath(args[0]);
+        System.out.println(filePath);
+        String parameters = "path: " + args[0];
         if (args.length == 1) {
           addCacheFolder();
         } else if (args.length == 2) {
@@ -117,17 +138,15 @@ public class Client {
                   args[1].contains("headers=") ? args[1].toLowerCase().replace("headers=", "")
                       : args[2].toLowerCase().replace("headers=", "");
 
-              filePath = args[1].contains("save=") ? buildFilePath(serverFilePath,
-                  args[1].toLowerCase().replace("save=", ""))
-                  : buildFilePath(serverFilePath, args[2].toLowerCase().replace("save=", ""));
+              filePath = args[1].contains("save=") ? createDirectories(
+                  args[1].toLowerCase().replace("save=", ""), args[0])
+                  : createDirectories(args[2].toLowerCase().replace("save=", ""), args[0]);
             } else {
               System.out.println("Make sure valid directory path");
             }
           }
 
         }
-
-
 
         // Arg 0 is the website url.
         // hello.testing.com/folder/file.html

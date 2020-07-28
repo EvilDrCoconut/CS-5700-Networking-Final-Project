@@ -18,6 +18,7 @@ import org.junit.jupiter.api.Test;
 class ClientTest {
   String sampleURL = "somecharacters.someothercharacters.com";
   String sampleURLWithFile = "somecharacters.someothercharacters.com/folder/file.html";
+  String sampleRealURL = "www.geeksforgeeks.org/geeksforgeeks/GFG_Courses_Practice_GeeksforGeeks.html";
 
   @Test
   void test() throws UnknownHostException {
@@ -53,10 +54,21 @@ class ClientTest {
   }
 
   @Test
+  void testWriteReal() throws IOException {
+    DataOutputStream fileOut = new DataOutputStream(
+        new FileOutputStream(new File(buildDefaultFilePath(getServerFilePath(sampleRealURL)))));
+    DataInputStream fileIn = new DataInputStream(new FileInputStream(new File("src/Client/Client.java")));
+    Client.writeFile(fileIn, fileOut);
+    assertTrue(new File(buildDefaultFilePath(getServerFilePath(sampleRealURL))).isFile());
+    Client.openFile(buildDefaultFilePath(getServerFilePath(sampleRealURL)));
+  }
+
+
+  @Test
   void testMain()
   {
     Client.main(new String[]{
-        sampleURL
+       sampleRealURL
     });
   }
 }
