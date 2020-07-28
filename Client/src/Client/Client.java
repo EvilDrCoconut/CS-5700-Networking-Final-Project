@@ -136,7 +136,7 @@ public class Client {
         // Localhost is 127.0.0.1
         // TODO ****
         InetAddress host = InetAddress.getByName("127.0.0.1");
-        
+
         addCacheFolder();
 
         try (Socket socket = new Socket(host, webPort)) {
