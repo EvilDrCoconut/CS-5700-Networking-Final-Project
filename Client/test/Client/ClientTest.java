@@ -43,6 +43,16 @@ class ClientTest {
   }
 
   @Test
+  void testWriteWithPath() throws IOException {
+    DataOutputStream fileOut = new DataOutputStream(
+        new FileOutputStream(new File(buildDefaultFilePath(getServerFilePath(sampleURLWithFile)))));
+    DataInputStream fileIn = new DataInputStream(new FileInputStream(new File("src/Client/Client.java")));
+    Client.writeFile(fileIn, fileOut);
+    assertTrue(new File(buildDefaultFilePath(getServerFilePath(sampleURLWithFile))).isFile());
+    Client.openFile(buildDefaultFilePath(getServerFilePath(sampleURLWithFile)));
+  }
+
+  @Test
   void testMain()
   {
     Client.main(new String[]{
