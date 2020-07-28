@@ -1,17 +1,14 @@
+import com.sun.net.httpserver.HttpServer;
+
 import java.io.BufferedInputStream;
-import java.io.BufferedReader;
-import java.io.ByteArrayOutputStream;
 import java.io.DataInputStream;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
-import java.io.ObjectOutputStream;
 import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.io.UnsupportedEncodingException;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.net.URLEncoder;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadPoolExecutor;
 
@@ -21,8 +18,8 @@ public class WebServer implements WebServerInterface {
   //        and a thread pool executor to help handle multiple threads for a program.
   private ThreadPoolExecutor exeggutor;
   private ServerSocket server;
-  private Socket serverSock;
-  private OutputStreamWriter sending;
+  private Socket clientSock;
+  private HttpServer httpServer;
 
   /**
    * Constructor of the WebServer Class, takes no variables and sets up on localhost, through port
@@ -41,7 +38,6 @@ public class WebServer implements WebServerInterface {
     // creates executor thread for running multiple threads
     exeggutor = (ThreadPoolExecutor) Executors.newFixedThreadPool(100);
     // socket that the server is listening through
-//    serverSock = new Socket(ip, 2000);
 
     // function to set the executor for multiple threads
     //this.retServer().setExecutor(this.retExeguttor());
@@ -53,60 +49,58 @@ public class WebServer implements WebServerInterface {
 
   @Override
   public void listenAndAccept() throws IOException {
-    System.out.println("dsfa");
 
 
     while (true) {
 
-      serverSock = server.accept();
+      clientSock = server.accept();
 
-        DataInputStream received = new DataInputStream(new BufferedInputStream(serverSock.getInputStream()));
+      if (clientSock.isBound()) {
+        DataInputStream received = new DataInputStream(new BufferedInputStream(clientSock.getInputStream()));
         String request = received.readUTF();
-        System.out.println(request);
         WebServerHandler helper = new WebServerHandler(request);
         helper.handle();
 
         EchoGetHeader path = new EchoGetHeader(helper.retPath());
         path.handle();
         packageAndSend(helper.retLang(), helper.retSize(), path.retComp(), path.retFolder(), path.retFile());
+      }
     }
   }
 
   @Override
-  public void packageAndSend(String lang, String size, String comp, String folder, String file) {
+  public void packageAndSend(String lang, String size, String comp, String folder, String file) throws IOException {
 
-    String path = comp + "/" + folder + "/" + file;
+    // creates a string to the desired file's path
+    String path = "database" + "/" + comp + "/" + folder + "/" + file;
 
-    BufferedReader buf = null;
+    // initiate a fileinputstream to help retrieve all of file
+    FileInputStream buf = null;
+    File dummyFile = new File(path);
+    long sizeCheck = dummyFile.length();
     try{
-      buf = new BufferedReader(new FileReader(path));
+      buf = new FileInputStream(dummyFile);
     } catch (FileNotFoundException e){
       System.out.println("File given is not found, check spelling and try again.");
     }
 
-    StringBuilder entireData = new StringBuilder();
-    String message = "";
+    // creates a payload byte array of standard size of 4000 bytes, unless specified by GET request
+    byte[] payload;
+    if(size.equals("")) {
+      payload = new byte[(int) sizeCheck + 1];
+    } else{
+      payload = new byte[Integer.parseInt(size)];
+    }
 
-    try{
-     // sets up a Stringbuilder to insert all text from file, whether it is on one line or multiple
-      while ((message = buf.readLine()) != null) {
-        entireData.append(message);
-      }
-    } catch(IOException e){System.out.println("ErrorCode 00"); return;}
+    buf.read(payload);
 
+    // enters a while loop to feed data into the array and then send the file to client
     try {
-      String fullMessage = entireData.toString();
-      String encoded = URLEncoder.encode(fullMessage, "UTF-8");
-
-      ByteArrayOutputStream buff = new ByteArrayOutputStream(512);
-      ObjectOutputStream buffer = new ObjectOutputStream(buff);
-      buffer.writeObject(encoded);
-      byte[] payload = buff.toByteArray();
-      OutputStream out = serverSock.getOutputStream();
-
+      OutputStream out = clientSock.getOutputStream();
       out.write(payload);
-
-    } catch(IOException e){System.out.println("Error Code 01");}
+    } catch (IOException e) {
+      System.out.println("Error Code 01");
+    }
 
   }
 
