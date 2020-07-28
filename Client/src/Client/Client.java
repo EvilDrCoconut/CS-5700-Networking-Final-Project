@@ -12,11 +12,10 @@ import java.net.InetAddress;
 import java.net.Socket;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import netscape.javascript.JSObject;
 
 public class Client {
 
-  static public int webPort = 80;
+  static public int webPort = 2000;
   static public int packetSize = 1500;
 
   static void addCacheFolder() throws IOException {
@@ -90,7 +89,7 @@ public class Client {
       try {
         String serverFilePath = getServerFilePath(args[0]);
         String filePath = buildDefaultFilePath(serverFilePath);;
-        String parameters =  "GET: " + serverFilePath;
+        String parameters =  "path: " + serverFilePath;
         if (args.length == 1) {
           addCacheFolder();
         } else if (args.length == 2) {
@@ -132,7 +131,11 @@ public class Client {
 
         // Arg 0 is the website url.
         // hello.testing.com/folder/file.html
-        InetAddress host = InetAddress.getByName(getURL(args[0]));
+//        InetAddress host = InetAddress.getByName(getURL(args[0]));
+
+        // Localhost is 127.0.0.1
+        // TODO ****
+        InetAddress host = InetAddress.getByName("127.0.0.1");
         
         addCacheFolder();
 
@@ -160,6 +163,7 @@ public class Client {
         }
 
       } catch (IOException e) {
+        System.out.println(e);
         // In future, let user know to run the server first
         System.out.println("Unable to connect to client/server.");
       }

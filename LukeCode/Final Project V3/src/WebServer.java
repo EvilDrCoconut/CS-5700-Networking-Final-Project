@@ -41,7 +41,7 @@ public class WebServer implements WebServerInterface {
     // creates executor thread for running multiple threads
     exeggutor = (ThreadPoolExecutor) Executors.newFixedThreadPool(100);
     // socket that the server is listening through
-    serverSock = new Socket(ip, 2000);
+//    serverSock = new Socket(ip, 2000);
 
     // function to set the executor for multiple threads
     //this.retServer().setExecutor(this.retExeguttor());
@@ -53,22 +53,22 @@ public class WebServer implements WebServerInterface {
 
   @Override
   public void listenAndAccept() throws IOException {
+    System.out.println("dsfa");
 
 
     while (true) {
 
-      server.accept();
+      serverSock = server.accept();
 
-      if (serverSock.isConnected()) {
         DataInputStream received = new DataInputStream(new BufferedInputStream(serverSock.getInputStream()));
         String request = received.readUTF();
+        System.out.println(request);
         WebServerHandler helper = new WebServerHandler(request);
         helper.handle();
 
         EchoGetHeader path = new EchoGetHeader(helper.retPath());
         path.handle();
         packageAndSend(helper.retLang(), helper.retSize(), path.retComp(), path.retFolder(), path.retFile());
-      }
     }
   }
 
