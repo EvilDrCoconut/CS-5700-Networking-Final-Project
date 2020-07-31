@@ -11,10 +11,10 @@ import java.net.Socket;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadPoolExecutor;
 
+
 public class WebServer implements WebServerInterface {
 
-  // variables for actual server to handle requests, priority queue to hold data and sequence
-  //numbers,
+  // variables for actual server to handle requests, priority queue to hold data and sequence numbers,
   //        and a thread pool executor to help handle multiple threads for a program.
   private ThreadPoolExecutor exeggutor;
   private ServerSocket server;
@@ -29,8 +29,7 @@ public class WebServer implements WebServerInterface {
 
   public WebServer(String ip) throws IOException {
     try {
-      // can change backlog to queue requests from incoming clients. Shouldn't need to with
-      //multithreading,
+      // can change backlog to queue requests from incoming clients. Shouldn't need to with multithreading,
       //      could be used to help prevent overflow errors.
       server = new ServerSocket(2000, 0);
     } catch (IOException e) {
@@ -49,9 +48,9 @@ public class WebServer implements WebServerInterface {
     // requires us to give an ip in the argv, suggest using -ip 0.0.0.0
     String ip = "192.0.0.0";
     int i = 0;
-    for (String each : argv) {
-      if (each.equalsIgnoreCase("-ip")) {
-        ip = argv[i + 1];
+    for(String each: argv){
+      if(each.equalsIgnoreCase("-ip")){
+        ip = argv[i+1];
       }
       i++;
     }
@@ -61,54 +60,67 @@ public class WebServer implements WebServerInterface {
     while (true) {
       try {
         httpServer.listenAndAccept();
-      } catch (IOException e) {
-
+      } catch(IOException e){
       }
     }
   }
 
+
   @Override
   public void listenAndAccept() throws IOException {
+
 
     while (true) {
 
       clientSock = server.accept();
 
       if (clientSock.isBound()) {
-        DataInputStream received = new DataInputStream(
-            new BufferedInputStream(clientSock.getInputStream()));
+        DataInputStream received = new DataInputStream(new BufferedInputStream(clientSock.getInputStream()));
         String request = received.readUTF();
         WebServerHandler helper = new WebServerHandler(request);
         helper.handle();
 
         EchoGetHeader path = new EchoGetHeader(helper.retPath());
         path.handle();
-        packageAndSend(helper.retLang(), helper.retSize(), path.retComp(), path.retFolder(),
-            path.retFile());
+        packageAndSend(helper.retLang(), helper.retSize(), path.retComp(), path.retFolder(), path.retFile());
       }
     }
   }
 
   @Override
-  public void packageAndSend(String lang, String size, String comp, String folder, String file)
-      throws IOException {
+  public void packageAndSend(String lang, String size, String comp, String folder, String file) throws IOException {
 
-    // creates a string to the desired file's path
-    String path = "database" + File.separator + comp + File.separator + folder + File.separator + file;
-    // TODO: Need to get proper names for files.
-//    String path = "C:\\Users\\space\\Google Drive\\Northeastern\\Networks\\Final "
-//        + "Project\\LukeCode\\Final Project V3\\database\\geeksforgeeks\\GFG Courses _ Practice _"
-//        + " GeeksforGeeks.html";
+    // creates a string to the desired file's path, also checks language parameter if given
+    String path = "";
+    switch(lang) {
+      case "":
+      case "e":
+        path = "database" + "/" + "english" + "/" + folder + "/" + file;
+        break;
+      case "f":
+        path = "database" + "/" + "french" + "/" + folder + "/" + file;
+        break;
+      case "s":
+        path = "database" + "/" + "spanish" + "/" + folder + "/" + file;
+    }
+
+    System.out.println(path);
 
     // initiate a fileinputstream to help retrieve all of file
     FileInputStream buf = null;
     File dummyFile = new File(path);
     long sizeCheck = dummyFile.length();
-    try {
+    int error404Check = 0;
+    String error404 = "File given is not found, check spelling and try again.";
+    try{
       buf = new FileInputStream(dummyFile);
+    } catch (FileNotFoundException e){
+      System.out.println(error404);
+      error404Check = 1;
+    }
 
-      // creates a payload byte array of standard size of 4000 bytes, unless specified by GET
-      //request
+    // creates a payload byte array of standard size of 4000 bytes, unless specified by GET request
+    if(error404Check == 0) {
       byte[] payload;
       if (size.equals("")) {
         payload = new byte[(int) sizeCheck + 1];
@@ -117,26 +129,32 @@ public class WebServer implements WebServerInterface {
       }
 
       buf.read(payload);
-
-      // enters a while loop to feed data into the array and then send the file to client
+      // sends payload back to client
       try {
         OutputStream out = clientSock.getOutputStream();
         out.write(payload);
+        clientSock.close();
       } catch (IOException e) {
         System.out.println("Error Code 01");
       }
-    } catch (FileNotFoundException e) {
-      System.out.println();
-      System.out.println("File given is not found, check spelling and try again.");
+    } else{
+      try {
+        System.out.println("Sending 404 message");
+        OutputStream out = clientSock.getOutputStream();
+        byte[] error = error404.getBytes();
+        out.write(error);
+        clientSock.close();
+      } catch (IOException e) {
+        System.out.println("Error Code 01");
+      }
     }
 
   }
 
-  public ThreadPoolExecutor retExeguttor() {
+  public ThreadPoolExecutor retExeguttor(){
     return this.exeggutor;
   }
-
-  public ServerSocket retServer() {
+  public ServerSocket retServer(){
     return this.server;
   }
 
