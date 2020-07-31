@@ -33,6 +33,7 @@ public class Client {
     } else {
       String[] folders = serverPath.split("/");
       String pathSoFar = savePath;
+      System.out.println(pathSoFar);
       for (int i = 0; i < folders.length - 1; i++) {
         pathSoFar = pathSoFar + File.separator + folders[i];
 
@@ -49,6 +50,7 @@ public class Client {
   }
 
   static String buildDefaultFilePath(String serverPath) throws IOException {
+    addCacheFolder();
     return createDirectories(
         System.getProperty("user.home") + File.separator + "web-cache", serverPath);
   }

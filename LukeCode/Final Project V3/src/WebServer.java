@@ -94,11 +94,11 @@ public class WebServer implements WebServerInterface {
       throws IOException {
 
     // creates a string to the desired file's path
-//    String path = "database" + File.separator + comp + File.separator + folder + File.separator + file;
+    String path = "database" + File.separator + comp + File.separator + folder + File.separator + file;
     // TODO: Need to get proper names for files.
-    String path = "C:\\Users\\space\\Google Drive\\Northeastern\\Networks\\Final "
-        + "Project\\LukeCode\\Final Project V3\\database\\geeksforgeeks\\GFG Courses _ Practice _"
-        + " GeeksforGeeks.html";
+//    String path = "C:\\Users\\space\\Google Drive\\Northeastern\\Networks\\Final "
+//        + "Project\\LukeCode\\Final Project V3\\database\\geeksforgeeks\\GFG Courses _ Practice _"
+//        + " GeeksforGeeks.html";
 
     // initiate a fileinputstream to help retrieve all of file
     FileInputStream buf = null;
