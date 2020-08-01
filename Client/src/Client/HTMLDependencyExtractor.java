@@ -63,7 +63,7 @@ public class HTMLDependencyExtractor {
 
   public List<String> getLinks(String baseUrl) {
     // TODO : This replace should not be done. Should not split on space at other end, learn to work with spaces.
-    return new ArrayList<>(links).stream().map(x -> baseUrl + x.substring(2).replace(" ", "")).collect(Collectors.toList());
+    return new ArrayList<>(links).stream().map(x -> baseUrl + x.substring(2)/*.replace(" ", "")*/).collect(Collectors.toList());
 
   }
 }

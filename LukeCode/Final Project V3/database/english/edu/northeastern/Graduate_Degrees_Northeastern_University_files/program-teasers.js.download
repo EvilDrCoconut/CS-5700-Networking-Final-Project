@@ -1,0 +1,89 @@
+/**
+ * Created by Rob on 6/23/16.
+ */
+
+var FF = FF || {};
+
+/**
+ * FF - programTeasers.js
+ *
+ *
+ * This adds a hover event to a program teaser. Somewhat complicated since a since teaser is actually made out of two rows that appear as one item.
+ *
+ *
+ 
+ */
+FF.programTeaser = (function ($) {
+
+    var els = {};
+
+    var pub = {};
+
+    pub.init = init;
+
+    function bindEvents() {
+
+        els.teasers.each(function() {
+            var teaser = $(this);
+
+            var href = teaser.attr('data-url');
+
+            // If it has a data-url attribute
+            if (href && href.length > 0) {
+
+                // Find both top and bottom rows
+                var rows = $('tr[data-url="' + href + '"]');
+
+                // Find the title and image
+                var title = rows.find('h4');
+                var image = rows.find('.col-image');
+
+                teaser.hover(function(e) {
+
+                    // When hovering over the favorite button don't do anything
+                    if(angular.element(e.target).hasClass('button-favorite') || angular.element(e.target).hasClass('align-info')) {
+                        return;
+                    }
+                    title.addClass('hover');
+                    image.addClass('hover');
+
+                }, function(e) {
+                    title.removeClass('hover');
+                    image.removeClass('hover');
+                });
+
+                teaser.mousemove(function(e) {
+                    if(angular.element(e.target).hasClass('button-favorite') || angular.element(e.target).hasClass('align-info')) {
+                        title.removeClass('hover');
+                        image.removeClass('hover');
+                    }
+                    else {
+                        title.addClass('hover');
+                        image.addClass('hover');
+                    }
+                })
+            }
+        });
+
+        angular.element('align-info, .align-info-container, stackable-info, .stackable-info-container, cags-info, .cags-info-container').click( function(e) {
+            e.stopPropagation();
+            e.preventDefault();
+        });
+
+    }
+
+    function init() {
+
+        els.teasers = jQuery('.program-table tr.top, .program-table tr.bottom');
+
+        FF.tooltip.bindEvents();
+
+        bindEvents();
+
+    }
+
+    return pub;
+
+})(jQuery);
+
+jQuery(document).ready(FF.programTeaser.init);

@@ -1,0 +1,81 @@
+/**
+ * Created by valerieFF on 12/9/2015.
+ */
+
+var FF = FF || {};
+
+/**
+ * FF - sameHeights
+ *
+ *
+ */
+FF.sameHeights = (function ($) {
+
+    var els = {};
+
+    var minHeight = 150;
+
+    var pub = {};
+
+    var media__medium = 768;
+
+    function resizeHandler() {
+        els.container.each(function() {
+
+            // Check container config
+            var mobile = true;
+            if ($(this).attr('data-same-height-mobile') == 'false')
+            {
+                mobile = false;
+            }
+
+            var sh = true;
+            if ($(window).width() > media__medium){
+                sh = true;
+            }
+            else {
+                sh = mobile;
+            }
+
+            var divs = $(this).find('.same-height');
+            //clear existing tile height
+            divs.css('height', '');
+            //get natural height of divs
+            var heights = [];
+            divs.each(function () {
+                var tile = $(this);
+                heights.push(tile.outerHeight(true));
+                // console.log(tile.outerHeight(true));
+            });
+            //get max height
+            var maxHeight = _.max([minHeight, _.max(heights)]);
+
+            //if ( $( '.page-template-page_leaders' ).length ) {
+            //    if ($(window).width() < 450) {
+            //        maxHeight = maxHeight * 1.2;
+            //    }
+            //}
+
+            if (sh) {
+                divs.css('height', maxHeight);
+            }
+
+        });
+
+
+    }
+
+    pub.init = init;
+
+    function init() {
+        els.container = $('.same-height-container');
+
+        resizeHandler();
+        $( window ).on('resize', _.debounce(resizeHandler, 150));
+    }
+
+    return pub;
+
+})(jQuery);
+
+jQuery(document).on('ready', FF.sameHeights.init);

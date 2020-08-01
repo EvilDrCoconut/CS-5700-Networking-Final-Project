@@ -1,0 +1,24 @@
+/**
+ * Created by acheson on 3/14/16.
+ */
+(function() {
+    'use strict';
+
+    angular
+        .module('nu')
+        .directive('programListingDirective', programListingDirective);
+
+    programListingDirective.$inject = ['constants'];
+
+    function programListingDirective(constants) {
+
+        return {
+            templateUrl: constants.PLUGIN_URL + '/src/program-listing/program-listing.html',
+            controller: 'ProgramListingController',
+            controllerAs: 'vm',
+            replace: true,
+            scope: {}
+        }
+    }
+
+})();

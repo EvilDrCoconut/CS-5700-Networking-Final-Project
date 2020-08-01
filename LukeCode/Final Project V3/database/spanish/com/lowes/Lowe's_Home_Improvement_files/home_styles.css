@@ -1,0 +1,59 @@
+@charset "UTF-8";
+/* CSS Document */
+
+
+#slider {
+
+	/* You MUST specify the width and height */
+	width:627px;
+	height:356px;
+	position:relative;	
+	overflow:hidden;
+}
+
+#mask-gallery {
+	overflow:hidden;	
+}
+
+#gallery {
+	
+	/* Clear the list style */
+	list-style:none;
+	margin:0;
+	padding:0;
+	
+	z-index:0;
+	
+	/* width = total items multiply with #mask gallery width */
+	width:1881px;
+	overflow:hidden;
+}
+
+	#gallery li {
+
+		
+		/* float left, so that the items are arrangged horizontally */
+		float:left;
+	}
+
+
+.clear {
+	clear:both;	
+}
+
+#bto {
+	position:relative;
+	float:right;
+	right:30px;
+	bottom:30px;
+	padding:0px;
+}
+
+
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+}
+

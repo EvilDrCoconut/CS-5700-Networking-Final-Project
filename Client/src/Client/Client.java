@@ -26,7 +26,7 @@ public class Client {
   private String cacheFolder = System.getProperty("user.home") + File.separator + "web-cache";
   private String optionalParameters = "";
   private String writePath;
-  private final String requestedFileString;
+  private String requestedFileString;
 
   Client(String requestedFileString) throws UnknownHostException {
     this.requestedFileString = requestedFileString;
@@ -138,8 +138,11 @@ public class Client {
         List<String> otherAssets =
             new HTMLDependencyExtractor(client.writePath).getLinks(client.baseUrl);
         System.out.println(otherAssets);
+        String sourceFile = client.writePath;
         for (String link: otherAssets) {
           // TODO Need to make valid write path as well
+          client.requestedFileString = link;
+          client.createDirectories();
           client.downloadFile(link);
         }
 
@@ -150,7 +153,7 @@ public class Client {
         // Open file in default program
         // https://stackoverflow.com/questions/550329/how-to-open-a-file-with-the-default
         //-associated-program
-        client.openFile(client.writePath);
+        client.openFile(sourceFile);
       } finally {
 
       }

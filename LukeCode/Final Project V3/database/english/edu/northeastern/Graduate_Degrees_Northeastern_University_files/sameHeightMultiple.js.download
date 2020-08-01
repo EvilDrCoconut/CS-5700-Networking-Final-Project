@@ -1,0 +1,78 @@
+/**
+ * Created by valerieFF on 5/12/2016.
+ */
+/**
+ * Created by valerieFF on 12/9/2015.
+ */
+
+var FF = FF || {};
+
+/**
+ * FF - sameHeightMultiple
+ *
+ *
+ */
+FF.sameHeightMultiple = (function ($) {
+
+    var els = {};
+
+    var pub = {};
+
+    pub.resize = resizeHandler;
+
+    pub.init = init;
+
+    function resizeHandler() {
+        setHeights();
+    }
+
+    function setHeights() {
+
+        for ( var i = 0; i < els.groups.length; i++ ) {
+
+            var maxHeight = '';
+            els.groups[i].css('height', '');
+
+            els.groups[i].each(function () {
+                var height = $(this).outerHeight();
+                if (height > maxHeight) {
+                    maxHeight = height;
+                }
+            });
+
+            //debugger;
+            els.groups[i].css('height', maxHeight);
+        }
+    }
+
+    function init() {
+
+        // Get the attributes on the page
+        var attrs = [];
+        els.groups = [];
+
+        els.divs = jQuery('[data-same-height-group]');
+
+        els.divs.each(function() {
+            var attr = jQuery(this).attr('data-same-height-group');
+            if (jQuery.inArray(attr, attrs) == -1) {
+                attrs.push(attr);
+            }
+        })
+
+        $(attrs).each(function() {
+            els.groups.push($('div[data-same-height-group="' + this + '"]'));
+        });
+
+        setHeights();
+
+        $(window).on('resize', _.debounce(resizeHandler, 50));
+
+        console.log(els.groups);
+        resizeHandler();
+    }
+
+    return pub;
+
+})(jQuery);
+
