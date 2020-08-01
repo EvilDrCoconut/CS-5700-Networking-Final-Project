@@ -1,0 +1,122 @@
+/**
+ * Created by Jason on 4/12/16.
+ */
+
+
+/**
+ * @section components
+ * @subsection accordion
+ * @description -
+ */
+
+var FF = FF || {};
+
+/**
+ * FF -search.js
+ *
+ */
+
+FF.search = (function ($) {
+
+  var els = {};
+
+  var pub = {};
+
+  pub.init = init;
+
+  pub.goSearch = goSearch;
+
+  function searching() {
+
+    var searched 	= $('#search-text-input').val(),
+    icon     	= $('.icon-nav-search');
+
+    if(searched.length > 1){
+      icon.addClass('searching');
+
+    }else{
+      icon.removeClass('searching');
+    }
+    console.log(searched);
+  }
+
+  function goSearch() {
+    var queryParams = gatherSearchParams();
+    var queryString = concatenate(queryParams);
+
+    var searched 	= $('#search-text-input').val();
+    var cleaned 	= encodeURIComponent(searched);
+
+    if(searched.length > 1){
+      window.location = baseURL + "/?s=" + cleaned + queryString;
+    }
+  }
+
+  function gatherSearchParams(){
+    var paramElements = $(".search-param");
+    return extract(paramElements);
+  };
+
+  function extract(elements){
+    var params = {};
+    elements.each(function(index, element){
+      element = $(element);
+      if (element.attr("checked") === "checked") {
+        params[element.attr("name")] = element.val();
+      }
+    });
+    return params;
+  }
+
+  function concatenate(queryParams){
+    var queryString = "";
+    $.each(queryParams, function(name, value){
+      queryString += "&" + name + "=" + value
+    });
+    return queryString;
+  }
+
+  function toggleClear() {
+    if (($("#search-text-input").val() != "") && (!$(".search-box .icon-nav-cross").hasClass("active"))) {
+      $(".search-box .icon-nav-cross").addClass("active");
+    } else if ($("#search-text-input").val() == "") {
+      $(".search-box .icon-nav-cross").removeClass("active");
+    }
+  }
+
+  function init() {
+    $("#search-text-input").focus(function(){
+      $("#advanced-search").slideDown("slow", function(){});
+    });
+
+    $("#content").click(function(){
+      $("#advanced-search").slideUp("slow", function(){});
+    });
+
+    $('.icon-nav-search').click(function(){
+      goSearch();
+    });
+
+    $(document).keypress(function(e) {
+      if(e.which == 13) {
+        goSearch();
+      }
+    });
+
+    $('#search-text-input').keyup(function(){
+      searching();
+      toggleClear();
+    });
+
+    $(".search-box .icon-nav-cross").click(function() {
+      $("#search-text-input").val("").focus();
+      $(".icon-nav-search").removeClass("searching");
+      toggleClear();
+    });
+  }
+
+  return pub;
+
+})(jQuery);
+
+jQuery(document).ready(FF.search.init);

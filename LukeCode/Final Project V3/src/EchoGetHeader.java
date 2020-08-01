@@ -1,50 +1,42 @@
+import java.io.File;
 import java.util.LinkedList;
 
 public class EchoGetHeader {
 
   private String fileRequested;
-  private LinkedList<String> fileRequestSegmented = new LinkedList<>();
-  private String[] specificFiles;
-  private String company;
-  private String folder;
+  private String folderString = "";
+  private String endcap;
+  private String[] folder = new String[5];
   private String file;
 
-  EchoGetHeader(String filesReq){
+  EchoGetHeader(String filesReq) {
     fileRequested = filesReq;
-    specificFiles = new String[2];
   }
 
-  public void handle(){
+  public void handle() {
 
-    //System.out.println(fileRequested);
+    System.out.println(fileRequested);
+    String[] parts = fileRequested.split("/");
+    String[] helper = parts[0].split("\\.");
+    endcap = helper[2];
 
-    String[] first = fileRequested.split("\\.");
-    String firstHelper = first[2];
-    for(int i = 0; i < first.length; i ++){
-      System.out.println(first[i]);
+
+    for(int i = 1; i < parts.length-1; i ++) {
+      folderString = folderString + "/" + parts[i] ;
     }
+    file = parts[parts.length-1];
 
-    fileRequestSegmented.add(first[0]); fileRequestSegmented.add(first[1]);
-    company = first[1];
-
-    String[] second = firstHelper.split("/");
-
-    fileRequestSegmented.add(second[0]); fileRequestSegmented.add(second[1]); fileRequestSegmented.add(second[2]);
-    specificFiles[0] = second[1]; specificFiles[1] = second[2];
-
-    folder = specificFiles[0];
-    file = specificFiles[1] + "." +first[3];
   }
 
-  public String retComp(){
-    return company;
+  public String retEndCap() {
+    return endcap;
   }
 
-  public String retFolder(){
-    return folder;
+  public String retFolder() {
+    return folderString;
   }
 
-  public String retFile(){
+  public String retFile() {
     return file;
   }
 

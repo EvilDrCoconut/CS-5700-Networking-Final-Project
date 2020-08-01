@@ -1,0 +1,180 @@
+"use strict";
+
+var igCart = function() {
+
+    var utm_medium, utm_campaign, utm_source, cookie_campaign, spUserID, mailing_id, ig_utms_first, ig_utms, userStatus, client_email;
+
+    var getUrlVars = function() {
+        var vars = {}; var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (m, key, value) { vars[key] = value; }); return vars;
+    }
+
+    var getCookie = function(cname) {
+        var name = cname + "="; var decodedCookie = decodeURIComponent(document.cookie); var ca = decodedCookie.split(';'); for (var i = 0; i < ca.length; i++) { var c = ca[i]; while (c.charAt(0) == ' ') { c = c.substring(1); } if (c.indexOf(name) == 0) { return c.substring(name.length, c.length); } } return "";
+    }
+    
+    var initVars = function(){
+        utm_medium = getUrlVars()["utm_medium"]; utm_campaign = getUrlVars()["utm_campaign"]; utm_source = getUrlVars()["utm_source"];
+        cookie_campaign = getCookie("com.silverpop.iMAWebCookie");
+        
+        if (!localStorage.getItem('ig_campaign')){
+            ig_campaign = { "cookie": cookie_campaign, "mailing_id": '', "spUserID": '' };
+            localStorage.setItem('ig_campaign', JSON.stringify(ig_campaign));
+        }
+        var ig_campaign = JSON.parse(localStorage.getItem("ig_campaign"));
+        
+        mailing_id = getUrlVars()["spMailingID"];
+        if (mailing_id != undefined) { ig_campaign.mailing_id = mailing_id; }
+        spUserID = getUrlVars()["spUserID"];
+        if (spUserID != undefined) { ig_campaign.spUserID = spUserID; }
+        localStorage.setItem('ig_campaign', JSON.stringify(ig_campaign));
+        
+        if (!localStorage.getItem('ig_utms_first') && (utm_medium || utm_medium || utm_source)){
+            ig_utms_first = {
+                "utm_source": (!utm_source) ? '' : utm_source,
+                "utm_medium": (!utm_medium) ? '' : utm_medium,
+                "utm_campaign": (!utm_campaign) ? '' : utm_campaign,
+            };
+            localStorage.setItem('ig_utms_first',JSON.stringify(ig_utms_first));
+        }
+    
+        if(utm_medium || utm_campaign || utm_source){
+            ig_utms = {
+                "utm_source": (!utm_source) ? '' : utm_source,
+                "utm_medium": (!utm_medium) ? '' : utm_medium,
+                "utm_campaign": (!utm_campaign) ? '' : utm_campaign,
+            };
+            localStorage.setItem('ig_utms',JSON.stringify(ig_utms));
+        }
+    }
+    
+    var checkRequestCart = function(step) {
+        console.log("ig r" + step);
+        var ig_dataLayer = JSON.parse(localStorage.getItem("ig_dataLayer"));
+        if (spUserID != "" || client_email != "") {
+            if (step == 5) {
+                if(ig_dataLayer.ig_products.length != 0){
+                    ig_dataLayer.ig_cart.step = 5;
+                    ig_dataLayer.ig_cart.orderID = ig_dataLayer.ig_cart.cart_id;
+                    console.log("ig s" + step);
+                    sendDataCart(ig_dataLayer);                
+                    localStorage.removeItem("ig_dataLayer");
+                    console.log("igCartPurchase");
+                }
+            } else {
+                setTimeout(function(){ getDataCart(step) }, 1000);	
+            }
+        }
+    }
+    
+    var getDataCart = function(step) {
+        var request = new XMLHttpRequest();
+        request.open('GET', 'https://www.walmart.com.mx/api/wmx/service/v1/cart/fullcart', true);
+        request.onload = function() {
+            var responseNopParse = request.response;
+            var response = JSON.parse(responseNopParse);
+            var ig_dataLayer = createIgDataLayer(step, response);
+            console.log("ig s" + step);
+            sendDataCart(ig_dataLayer);
+            console.log("igCartSent");
+        }
+        request.send();
+    }
+
+    var createIgDataLayer = function (step, response){
+        var ig_dataLayer = [];
+        var arrProducts = [];
+        var ig_productsIds = "";
+
+        if (response.cart.cartQuantityCount == 0) {
+            ig_productsIds = "";
+        } else {
+            for(var x in response.cart.cartItems){
+                ig_productsIds += "/" + response.cart.cartItems[x].skuId;
+                var productDetail = {
+                    "productSKU": response.cart.cartItems[x].skuId,
+                    "productImage": response.cart.cartItems[x].images.large,
+                    "productLink": response.cart.cartItems[x].productSeoURL,
+                    "productName": response.cart.cartItems[x].displayName,
+                    "productOriginalPrice": response.cart.cartItems[x].itemPriceDetails.unitPrice, 
+                    "productQty": response.cart.cartItems[x].quantity,
+                    "productSellingPrice": response.cart.cartItems[x].itemPriceDetails.amount, 
+                    "productDiscount_Amount": response.cart.cartItems[x].itemPriceDetails.discountAmount,
+                    "productTotal": response.cart.cartItems[x].itemPriceDetails.totalItemPrice,
+                    "product_Category": response.cart.cartItems[x].category,
+                };
+                arrProducts.push(productDetail);
+            }
+            ig_productsIds = ig_productsIds + "/";
+        }
+
+        if (response.cart.customer.email != "") {
+            client_email = response.cart.customer.email;
+            localStorage.setItem('client_email',client_email);
+        } else {
+            client_email = (localStorage.getItem('client_email') != null) ? localStorage.getItem('client_email') : "";
+        }
+
+        userStatus = "";
+        var ig_campaign = JSON.parse(localStorage.getItem("ig_campaign"));
+        if (response.cart.customer.isloggedInCustomer == true ){
+            userStatus = "L";
+        } else if(response.cart.customer.isloggedInCustomer == false && client_email != ""){
+            userStatus = "CL";
+        }
+        if(ig_campaign.spUserID != ""){
+            userStatus += "A";
+        }
+        
+        var ig_utms = (localStorage.getItem('ig_utms') != null) ? JSON.parse(localStorage.getItem('ig_utms')) : "";
+        var ig_utms_first = (localStorage.getItem('ig_utms_first') != null) ? JSON.parse(localStorage.getItem('ig_utms_first')) : "";
+        
+        ig_dataLayer = {
+            "ig_cart": {
+                "step": step,
+                "cart_Products": ig_productsIds,
+                "cart_id": response.cart.cartId,
+                "cart_Qty": response.cart.cartQuantityCount,
+                "cart_Total": response.cart.orderPriceDetails.total,
+                "cart_Shipping": response.cart.orderPriceDetails.shippingRawPriceWithTax,
+                "cart_Tax": response.cart.orderPriceDetails.shippingRawPriceWithTax,
+                "cart_Subtotal": response.cart.orderPriceDetails.subTotalWithTax,
+                "orderID": "",
+            },
+            "ig_user": {
+                "email_address": client_email,
+                "status": userStatus,
+                "name_first": response.cart.customer.firstName,
+                "name_last": response.cart.customer.lastName,
+                "utms": ig_utms,
+                "utms_first": ig_utms_first,
+            },
+            "ig_campaign": JSON.parse(localStorage.getItem('ig_campaign')),
+            "ig_products": arrProducts,
+        };
+        localStorage.setItem('ig_dataLayer', JSON.stringify(ig_dataLayer));
+        return ig_dataLayer;
+    }
+
+    var sendDataCart = function(dataLayer){
+        var xhr = new XMLHttpRequest();
+        var url = "https://collector-wm.igni.com/cart/full";
+        xhr.open("POST", url, true);
+        xhr.setRequestHeader("Content-Type", "application/json");
+        xhr.send(JSON.stringify(dataLayer));
+    }
+
+    return {
+        init: function() {
+            initVars();
+        },
+        checkRequestCart: function(step) {
+            checkRequestCart(step);
+        }
+    };
+}();
+
+igCart.init();
+
+function requestCartFull(step){
+    igCart.checkRequestCart(step)
+}

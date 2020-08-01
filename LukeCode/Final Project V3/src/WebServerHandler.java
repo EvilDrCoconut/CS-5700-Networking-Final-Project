@@ -15,7 +15,7 @@ public class WebServerHandler {
 
   public void handle() {
 
-    segmentedData = dataToParse.split(" ");
+    segmentedData = dataToParse.split("-");
 
     int n = 0;
     for (String each : segmentedData) {
@@ -32,7 +32,6 @@ public class WebServerHandler {
       n++;
     }
   }
-
     public String retPath(){
       return path;
     }
@@ -44,6 +43,4 @@ public class WebServerHandler {
     public String retSize(){
       return size;
     }
-
-    //.split(".|/");
 }

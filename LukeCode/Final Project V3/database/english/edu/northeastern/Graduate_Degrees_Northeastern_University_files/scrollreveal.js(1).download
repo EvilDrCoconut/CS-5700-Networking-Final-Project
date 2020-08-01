@@ -1,0 +1,76 @@
+/**
+ * Created by Rob 06/04/16
+ */
+
+var FF = FF || {};
+
+/**
+ * FF - scrollReveal.js
+ *
+ * https://scrollrevealjs.org
+ * https://github.com/jlmakes/scrollreveal.js
+ *
+ * usage:
+ *
+ * add a class of 'scroll-reveal-homepage' to elements to use default properties.
+ *
+ *
+ */
+FF.scrollReveal = (function ($) {
+
+    var els = {};
+
+    var pub = {};
+
+    pub.init = init;
+
+    function init() {
+        if ( $('body').hasClass('home') ) {
+            // Global Scroll Reveal options
+            window.sr = ScrollReveal({
+                duration: 800,
+                mobile: false,
+                reset: true,
+                viewFactor: 0.3
+            });
+
+            /**
+             * NOTE: These can be configured individually with separate selectors
+             *
+             *  for example
+             *
+             *  sr.reveal('scroll-reveal-custom'], { option: property, etc: etc });
+             */
+            sr.reveal('.scroll-reveal-section-1', 600);
+            sr.reveal('.scroll-reveal-section-2', 600);
+            sr.reveal('.scroll-reveal-section-3', 600);
+            sr.reveal('.scroll-reveal-section-4', 600);
+            sr.reveal('.scroll-reveal-section-6', 600);
+
+            sr.reveal('.scroll-reveal-left', {
+                delay: 0,
+                duration: 1600,
+                reset: true,
+                origin: 'left',
+                distance: '200px',
+                scale: 0.5,
+                viewFactor: 0.3
+            });
+
+            sr.reveal('.scroll-reveal-right', {
+                delay: 0,
+                duration: 1600,
+                reset: true,
+                origin: 'right',
+                distance: '300px',
+                scale: 1,
+                viewFactor: 0.3
+            });
+        }
+    }
+
+    return pub;
+
+})(jQuery);
+
+jQuery(document).ready(FF.scrollReveal.init);
