@@ -1,12 +1,13 @@
 import sun.security.x509.*;
 
+import java.io.*;
 import java.net.*;
 import java.util.regex.*;
 
 public class DNSResolver {
 
     String urlRegex = "^(http:\\/\\/|https:\\/\\/)?(www.)?([a-zA-Z0-9]+).[a-zA-Z0-9]*." +
-            "(com|net|edu)$";
+            "(com|net|edu|org)$";
 
     public boolean validateURL(String regex, String URL) {
         Pattern urlPattern = Pattern.compile(regex);
@@ -16,12 +17,12 @@ public class DNSResolver {
 
     public String retrieveTLDFromURL(String URL) {
         int lastDotIndex = URL.lastIndexOf('.');
-        return URL.substring(lastDotIndex, URL.length());
+        return URL.substring(lastDotIndex + 1, URL.length());
     }
 
     public String retrieveHostNameFromURL(String URL) {
         int firstDotIndex = URL.indexOf('.');
-        return URL.substring(firstDotIndex + 1, -1);
+        return URL.substring(firstDotIndex + 1, URL.length());
     }
 
     private static byte[] getIPV4Address(String IPString) {
@@ -89,8 +90,9 @@ public class DNSResolver {
     }
 
     public InetAddress dnsLookupByURL(String URL, DNSCache cache) throws UnknownHostException {
-        ResourceRecord rr = cache.getDnsCacheMap().get(URL);
+        ResourceRecord rr = (ResourceRecord) cache.getRecord(URL);
         String ipString = rr.getValue();
+        System.out.println(ipString);
         byte[] ipBytes;
         ipBytes = getIPV4Address(ipString);
         if (ipBytes != null) {
@@ -98,6 +100,41 @@ public class DNSResolver {
         }
         return null;
     }
+
+    public ResourceRecord aRecordLookupByURL(String URL, DNSCache cache) throws UnknownHostException {
+        ResourceRecord rr = (ResourceRecord) cache.getRecord(URL);
+        return rr;
+    }
+
+    public ResourceRecord nsRecordLookupByTLD(String tldQuery, DNSCache cache) throws UnknownHostException {
+        ResourceRecord rr = (ResourceRecord) cache.getRecord(tldQuery);
+        return rr;
+    }
+
+    public DNSServer dnsServerLookupByTLD(String query, ServerTreeNode serverNode) {
+        String tldQuery = this.retrieveTLDFromURL(query) + ".dnsServer";
+        if(serverNode.getServer().getDnsServerName().equals(tldQuery)) {
+
+
+        }
+       return null;
+    }
+
+    public ResourceRecord rrLookupByQuery(String query, String queryType, DNSCache cache)  throws IOException {
+        ResourceRecord rr = null;
+        if (queryType.equals("A")) {
+            rr = this.aRecordLookupByURL(query, cache);
+        } else {
+            String tldQuery = this.retrieveTLDFromURL(query) + ".dnsServer";
+
+            rr = this.nsRecordLookupByTLD(tldQuery, cache);
+        }
+        return rr;
+    }
+
+
+
+
 }
 
      /*  73.169.179.107

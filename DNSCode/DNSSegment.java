@@ -2,6 +2,7 @@ import com.sun.tools.classfile.*;
 import com.sun.tools.corba.se.idl.constExpr.*;
 import com.sun.xml.internal.bind.v2.model.core.*;
 
+import java.io.*;
 import java.nio.*;
 import java.util.*;
 import java.util.Arrays;
@@ -252,68 +253,48 @@ public class DNSSegment {
         BitSet headerBits = BitSet.valueOf(queryLength);
         int qLen = bitSetToInteger(headerBits, Q_LEN);
         String queryString = new String(Arrays.copyOfRange(questionPayload, 1, (1 + qLen)));
-        BitSet qTypeBits = BitSet.valueOf(new byte[]{questionPayload[-1]});
+        BitSet qTypeBits = BitSet.valueOf(new byte[]{questionPayload[questionPayload.length - 1]});
         int qType = bitSetToInteger(qTypeBits, QTYPE_LEN);
         qStringAndQtype.add(queryString);
         qStringAndQtype.add(getQuestionType(qType));
         return qStringAndQtype;
     }
 
-    static byte[] createResponseSegment(byte[] querySegment) {
+    static byte[] createResponseSegment(byte[] querySegment, ResourceRecord rr) throws IOException {
         byte[] qHeaderArray = Arrays.copyOfRange(querySegment, 0, 12);
         int[] qHeaderFields = readHeaderFields(readSegmentHeader(querySegment));
         // todo: need to know the server--if root server, if auth server, etc.
-        int[] rHeaderFields = new int[]{qHeaderFields[0], 1, qHeaderFields[2], 1, 1, 1, 1, 0};
+        int[] rHeaderFields = new int[]{qHeaderFields[0], 1, qHeaderFields[2], 1, 1, 1, 1, 1, 0};
+        DNSSegment responseSegment = new DNSSegment(rHeaderFields);
+        ByteBuffer rSegmentBuffer = null;
+        ByteArrayOutputStream bos = new ByteArrayOutputStream();
+        ObjectOutputStream oos = new ObjectOutputStream(bos);
+        oos.writeObject(rr);
+        byte[] responseAnswer = bos.toByteArray();
+        oos.flush();
+        oos.close();
+        bos.close();
+        responseSegment.setPayload(responseAnswer);
+        byte[] combinedResponse = new byte[responseSegment.getDnsSegmentHeader().length + responseSegment.getPayload().length];
+        rSegmentBuffer = ByteBuffer.wrap(combinedResponse);
+        rSegmentBuffer.put(responseSegment.getDnsSegmentHeader());
+        rSegmentBuffer.put(responseSegment.getPayload());
 
-        return qHeaderArray; // todo: need to finish and return new response segment
+        return rSegmentBuffer.array();
+        }
+
+    static ResourceRecord readResponsePayload(byte[] responsePayload) throws IOException {
+        ByteArrayInputStream payloadInput = new ByteArrayInputStream(responsePayload);
+        ObjectInputStream recordObject = new ObjectInputStream(payloadInput);
+        ResourceRecord resourceRecord = null;
+        try {
+            resourceRecord = (ResourceRecord) recordObject.readObject();
+            recordObject.close();
+            payloadInput.close();
+        } catch (ClassNotFoundException classNotFoundException) {
+            classNotFoundException.printStackTrace();
+        }
+        return resourceRecord;
+
     }
 }
-
-    /*
-
-    static ArrayList<String> readResponsePayload(byte[] responsePayload) {
-        // get the resource record toString?
-        ArrayList<String> qStringAndQtype = new ArrayList<String>();
-        byte[] queryLength = Arrays.copyOfRange(responsePayload, 0, 1);
-        BitSet headerBits = BitSet.valueOf (queryLength);
-        int qLen = bitSetToInteger(headerBits, Q_LEN);
-        String queryString = new String(Arrays.copyOfRange(questionPayload, 1, (1 + qLen)));
-        BitSet qTypeBits = BitSet.valueOf(new byte[] {questionPayload[-1]});
-        int qType = bitSetToInteger(qTypeBits, QTYPE_LEN);
-        qStringAndQtype.add(queryString);
-        qStringAndQtype.add(getQuestionType(qType));
-        return qStringAndQtype;
-    }
-} */
-
-/*
-            int queryId, int authFlag, int recursionDesiredFlag,
-                                     int num, String domainName) {
-
-        HDR_QID_FLD_SIZE, HDR_QRFLAG_FLD_SIZE, HDR_AUTHFLAG_FLD_SIZE, HDR_REC_DESIRED_FLD_SIZE,
-                HDR_REC_AVAIL_FLD_SIZE, HDR_NUMQS_FLD_SIZE, HDR_NUM_ANS_RRS_FLD_SIZE,
-                HDR_NUM_AUTH_RRS_FLD_SIZE, HDR_NUM_ADD_RRS_FLD_SIZE
-
-        int responseId = queryId;
-
-        // int queryId = queryIDRandomizer.ints(0, 65536)
-        //  .findFirst()
-        //  .getAsInt();
-        int queryId = 12345;
-        int[] headerFields = new int[] {responseId, 1, authFlag, recursionDesiredFlag, 0,
-                numQuestions, 0, 0, 0};
-
-        DNSSegment querySegment = new DNSSegment(headerFields);
-
-        byte[] payload = createQuestionPayload(questionType, domainName);
-        byte[] qSegment = new byte[querySegment.getDnsSegmentHeader().length + payload.length];
-        ByteBuffer qSegmentBuffer = ByteBuffer.wrap(qSegment);
-        qSegmentBuffer.put(querySegment.getDnsSegmentHeader());
-        qSegmentBuffer.put(payload);
-        return qSegmentBuffer.array();
-}
-
-}
-
- */
-

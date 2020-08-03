@@ -13,15 +13,18 @@ public class Registrar {
      entered into your authoritative DNS. */
 
     private static final int DEFAULT_TTL = 40; // in seconds
-    private ConcurrentHashMap<String, ConcurrentHashMap<String, String>> registeredDomains =
-            new ConcurrentHashMap<String, ConcurrentHashMap<String, String>>();
+    private ConcurrentHashMap<String, String> registeredDomains =
+            new ConcurrentHashMap<String, String>();
+    private ServerTreeNode serverTree;
 
-    public void registerDomain(DNSServer parentServer, String hostName,
+    public void registerDomain(ServerTreeNode parentServerNode, String hostName,
                                String ipAddress, String domainName, String dnsServerName) {
         if (!registeredDomains.keySet().contains(hostName)) {
-            createARecord(hostName, ipAddress);
-            createNSRecord(domainName, dnsServerName);
-            // need to figure out where to put the a records
+            ResourceRecord aRecord = createARecord(hostName, ipAddress);
+            ResourceRecord nsRecord = createNSRecord(dnsServerName, domainName);
+            parentServerNode.getServer().getCache().addRecord(aRecord);
+            parentServerNode.getParent().getServer().getCache().addRecord(nsRecord);
+            registeredDomains.put(hostName, dnsServerName);
         }
     }
 
@@ -31,9 +34,19 @@ public class Registrar {
         parentServer.getCache().addRecord(nsRecord);
     }
 
+    public DNSServer createAuthServer(String hostname, int portNum) {
+        DNSServer authServer = new DNSServer("auth", hostname + ".dnsServer", portNum);
+        return authServer;
+    }
+
     public DNSServer createTLDServer(String extension) {
         DNSServer tldServer = new DNSServer("TLD", extension + ".dnsServer", 12359);
         return tldServer;
+    }
+
+    public DNSServer createLocalDNSServer() {
+        DNSServer localServer = new DNSServer("Local", "Local Server", 12345);
+        return localServer;
     }
 
     public DNSServer createRootServer() {
@@ -46,8 +59,8 @@ public class Registrar {
         return aRecord;
     }
 
-    public ResourceRecord createNSRecord(String domainName, String dnsServerName) {
-        ResourceRecord nsRecord = new ResourceRecord(domainName, dnsServerName, "NS", DEFAULT_TTL);
+    public ResourceRecord createNSRecord(String dnsServerName, String domainName) {
+        ResourceRecord nsRecord = new ResourceRecord(dnsServerName, domainName, "NS", DEFAULT_TTL);
         return nsRecord;
     }
 
@@ -64,9 +77,6 @@ public class Registrar {
     }
 }
 
-
-
-
     /* type: A, then Name is a hostname and Value is the IP address for the hostname (relay1.bar
     .foo.com, 145.37.93.126, A) is a type A record
     // type: NS (Name is a domain, such as foo.com, and value is the hostname of an authoritative
@@ -75,12 +85,9 @@ public class Registrar {
     // port number for local is 12345
     // port number for authoritative is 23456
     // port number for TLDs is 78910
-
-
     public void createMXRecord() {
 
     }
 
+     */
 
-
-}

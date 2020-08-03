@@ -15,12 +15,14 @@ public class DNSServer {
     String type; // local, root, TLD, authoritative
     String domainName;
     String ipAddress = "localhost";
+    String dnsServerName;
     int portNum;
     DNSCache cache;
 
     public DNSServer(String type, String dnsServerName, int portNum) {
-        this.type = type;
+        this.type = type; // TLD root auth
         this.domainName = domainName;
+        this.dnsServerName = dnsServerName;
         this.portNum = portNum; // make it a random portNum within a range?
         this.cache = new DNSCache(); // default max size?
     }
@@ -47,6 +49,14 @@ public class DNSServer {
 
     void setDomainName(final String domainName) {
         this.domainName = domainName;
+    }
+
+    String getDnsServerName() {
+        return this.dnsServerName;
+    }
+
+    void setDnsServerName(final String dnsServerName) {
+        this.dnsServerName = dnsServerName;
     }
 
     DNSCache getCache() {

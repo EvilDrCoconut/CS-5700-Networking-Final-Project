@@ -1,4 +1,17 @@
-public class ResourceRecord {
+import java.io.*;
+
+public class ResourceRecord implements Serializable {
+
+    @Override
+    public String toString() {
+        return "ResourceRecord{" +
+                "name='" + name + '\'' +
+                ", value='" + value + '\'' +
+                ", type='" + type + '\'' +
+                ", ttl=" + ttl +
+                ", lastAccessed=" + lastAccessed +
+                '}';
+    }
 
     // name, value, type, ttl
     /* type: A, then Name is a hostname and Value is the IP address for the hostname (relay1.bar

@@ -1,8 +1,9 @@
 import java.util.*;
+import java.util.concurrent.*;
 
 public class DNSCache {
 
-    static DNSCacheMap dnsCacheMap = new DNSCacheMap(80);
+    private DNSCacheMap dnsCacheMap = new DNSCacheMap(80);
 
     DNSCacheMap getDnsCacheMap() {
         return this.dnsCacheMap;
@@ -14,7 +15,7 @@ public class DNSCache {
 
     public void addRecord(ResourceRecord rr) {
         dnsCacheMap.cachePut(rr.getName(), rr);
-        Thread purgeThread = new Thread(new Runnable() {
+      /*  Thread purgeThread = new Thread(new Runnable() {
         public void run() {
             while (true) {
                 try {
@@ -26,6 +27,13 @@ public class DNSCache {
         }});
         purgeThread.setDaemon(true);
         purgeThread.start();
+
+       */
+    }
+
+    public ResourceRecord getRecord(String hostName) {
+        ResourceRecord rr = (ResourceRecord) this.dnsCacheMap.cacheGet(hostName);
+        return rr;
     }
 
     public void addRecords(ArrayList<ResourceRecord> rrs) {
@@ -34,44 +42,35 @@ public class DNSCache {
         }
     }
 
-    static class DNSCacheMap extends LinkedHashMap<String, Object> {
+    public class DNSCacheMap extends ConcurrentHashMap<String, Object> {
         private int maxCacheSize;
 
         DNSCacheMap(int maxCacheSize) {
-            super(16, (float) 0.75, true);
+            super(16, (float) 0.75);
             this.maxCacheSize = maxCacheSize;
         }
 
         void cachePut(String name, Object ResourceRecord) {
-            synchronized (this) {
-                this.put(name, ResourceRecord);
-            }
+            this.put(name, ResourceRecord);
         }
         // getters and setters
 
-        public ResourceRecord get(String key) {
-            synchronized (this) {
-                ResourceRecord rr = (ResourceRecord) dnsCacheMap.get(key);
-
-                if (rr == null)
-                    return null;
-                else {
-                    rr.setLastAccessed(System.currentTimeMillis());
-                    return rr;
-                }
+        ResourceRecord cacheGet(String key) {
+            ResourceRecord rr = (ResourceRecord) this.get(key);
+            if (rr == null)
+                return null;
+            else {
+                rr.setLastAccessed(System.currentTimeMillis());
+                return rr;
             }
         }
 
         public void remove(String key) {
-            synchronized (this) {
-                this.remove(key);
-            }
+            this.remove(key);
         }
 
         public int size() {
-            synchronized (this) {
-                return this.size();
-            }
+            return this.size();
         }
     }
 
@@ -82,28 +81,25 @@ public class DNSCache {
         long now = System.currentTimeMillis();
         ArrayList<String> deleteKey = null;
 
-        synchronized (dnsCacheMap) {
-            Iterator<Map.Entry<String, Object>> cacheIterator = dnsCacheMap.entrySet().iterator();
-            deleteKey = new ArrayList<String>((dnsCacheMap.size() / 2) + 1);
-            String key = null;
-            ResourceRecord rr = null;
+        Iterator<Map.Entry<String, Object>> cacheIterator = this.dnsCacheMap.entrySet().iterator();
+        deleteKey = new ArrayList<String>((this.dnsCacheMap.size() / 2) + 1);
+        String key = null;
+        ResourceRecord rr = null;
 
-            while (cacheIterator.hasNext()) {
-                key = cacheIterator.next().getKey();
-                rr = (ResourceRecord) cacheIterator.next().getValue();
+        while (cacheIterator.hasNext()) {
+            key = cacheIterator.next().getKey();
+            rr = (ResourceRecord) cacheIterator.next().getValue();
 
-                if (rr != null && (now > (rr.getTtl() * 1000 + rr.getLastAccessed()))) {
-                    deleteKey.add(key);
-                }
+            if (rr != null && (now > (rr.getTtl() * 1000 + rr.getLastAccessed()))) {
+                deleteKey.add(key);
             }
         }
 
-        for (String key : deleteKey) {
-            synchronized (dnsCacheMap) {
-                dnsCacheMap.remove(key);
-            }
-
-            Thread.yield();
+        for (String delKey : deleteKey) {
+            this.dnsCacheMap.remove(delKey);
         }
+
+        Thread.yield();
     }
 }
+

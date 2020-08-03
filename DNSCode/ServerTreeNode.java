@@ -1,3 +1,5 @@
+import java.io.*;
+import java.net.*;
 import java.util.*;
 import java.util.concurrent.*;
 
@@ -46,9 +48,13 @@ public class ServerTreeNode {
 
     public void printNode() {
         if(this.parent == null) {
-            System.out.println(this.server.getDomainName());
+            System.out.println(this.server.getDnsServerName());
         } else {
-            System.out.println(this.server.getDomainName());
+            System.out.println(this.server.getDnsServerName());
+            for (String key: this.getServer().getCache().getDnsCacheMap().keySet()) {
+                ResourceRecord rr = (ResourceRecord) this.getServer().getCache().getRecord(key);
+                System.out.println(rr.toString());
+           }
         }
     }
 
@@ -70,5 +76,33 @@ public class ServerTreeNode {
                 }
             }
         }
+    }
+
+    public ServerTreeNode serverTreeSearch(String query, String queryType, DNSResolver resolver,
+                                           ServerTreeNode node) throws UnknownHostException,
+            IOException {
+        LinkedBlockingQueue<ServerTreeNode> searchQueue = new LinkedBlockingQueue<ServerTreeNode>();
+        if (node.parent == null) {
+            searchQueue.add(node);
+        }
+        while (!searchQueue.isEmpty()) {
+            ServerTreeNode searchNode = searchQueue.poll();
+            if(resolver.rrLookupByQuery(query, queryType, searchNode.getServer().getCache()) != null) {
+                return searchNode;
+            }
+            else {
+                if (searchNode.getChildren().isEmpty()) {
+                    continue;
+                }
+                else {
+                    for(ServerTreeNode childNode: searchNode.getChildren()) {
+                        if(!searchQueue.contains(childNode)) {
+                            searchQueue.add(childNode);
+                        }
+                    }
+                }
+            }
+        }
+        return null;
     }
 }
