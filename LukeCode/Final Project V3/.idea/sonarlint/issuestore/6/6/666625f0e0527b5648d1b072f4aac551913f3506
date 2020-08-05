@@ -1,0 +1,376 @@
+
+OWeb:AvoidCommentedOutCodeCheck¿"Remove this commented out code.(ßêõ¸øÿÿÿÿ
+SWeb:InternationalizationCheck’")Define this label in the resource bundle.(€ò¯°
+sWeb:MaxLineLengthCheck„"KSplit this 147 characters long line (which is greater than 120 authorized).(Šğ„ùÿÿÿÿ
+~	Web:S1829Û"hReplace this absolute URI "href" with a relative one, or move this absolute URI to a configuration file.(ûÌ¶İ
+zWeb:MaxLineLengthCheck«"KSplit this 182 characters long line (which is greater than 120 authorized).(ÉÒÈÛúÿÿÿÿ8¬©ñ”º.
+JWeb:AvoidCommentedOutCodeCheck¤"Remove this commented out code.(ÖÒ›¶
+aWeb:LongJavaScriptCheck$">The length of this JS script (9) exceeds the maximum set to 5.(´¦éù
+nWeb:MaxLineLengthCheckÓ"KSplit this 130 characters long line (which is greater than 120 authorized).(ˆÕÎã
+XWeb:InputWithoutLabelCheck£",Associate a valid label to this input field.(’±ï¼úÿÿÿÿ
+zWeb:MaxLineLengthCheckó"KSplit this 675 characters long line (which is greater than 120 authorized).(‚’†şÿÿÿÿ8¬©ñ”º.
+SWeb:InternationalizationCheckï")Define this label in the resource bundle.(ŸØ¦š
+rWeb:MaxLineLengthCheckB"KSplit this 547 characters long line (which is greater than 120 authorized).( ÔÜÃıÿÿÿÿ
+yWeb:MaxLineLengthCheck"KSplit this 267 characters long line (which is greater than 120 authorized).(è¨ëõûÿÿÿÿ8Ö¤•º.
+fWeb:WhiteSpaceAroundCheckš";A whitespace is missing after the starting tag at column 8.(Ö»ıîûÿÿÿÿ
+~	Web:S1829ª"hReplace this absolute URI "href" with a relative one, or move this absolute URI to a configuration file.(©§åµ
+nWeb:MaxLineLengthCheckø"KSplit this 142 characters long line (which is greater than 120 authorized).(¯…¸Ï
+ƒ	Web:S1829Ä"hReplace this absolute URI "href" with a relative one, or move this absolute URI to a configuration file.(È¤ª†ùÿÿÿÿ
+Š	Web:S5148˜"oAdd rel="noopener noreferrer" to this link to prevent the original page from being modified by the opened link.(É“‹ºøÿÿÿÿ
+SWeb:InputWithoutLabelCheckÍ",Associate a valid label to this input field.(ÓëéÌ
+l Web:ImgWithoutWidthOrHeightCheck˜":Add both a 'width' and a 'height' attribute to this image.(É“‹ºøÿÿÿÿ
+sWeb:MaxLineLengthCheck¬"KSplit this 170 characters long line (which is greater than 120 authorized).(ƒÔ“šıÿÿÿÿ
+nWeb:MaxLineLengthCheckˆ
+"KSplit this 127 characters long line (which is greater than 120 authorized).(ĞËÉ«
+YWeb:FrameWithoutTitleCheck¦"-Add a "title" attribute to this <iframe> tag.(İŸ¯Šşÿÿÿÿ
+wWeb:FileLengthCheck"`Current file has 1413 lines, which is greater than 1000 authorized. Split it into smaller files.
+oWeb:InputWithoutLabelCheckÖ"HAdd an "id" attribute to this input field and associate it with a label.(«×¨ã
+SWeb:InternationalizationCheckº")Define this label in the resource bundle.(…‚Ê
+MWeb:ImgWithoutAltCheck«"%Add an "alt" attribute to this image.(ÉÒÈÛúÿÿÿÿ
+l Web:ImgWithoutWidthOrHeightCheck˜":Add both a 'width' and a 'height' attribute to this image.(É“‹ºøÿÿÿÿ
+tWeb:MaxLineLengthCheck"KSplit this 155 characters long line (which is greater than 120 authorized).(¯ı‡ô8¬©ñ”º.
+mWeb:MaxLineLengthCheck"KSplit this 232 characters long line (which is greater than 120 authorized).(âÍ´Í
+uWeb:MaxLineLengthCheckó"KSplit this 128 characters long line (which is greater than 120 authorized).(ÖÃë8¬©ñ”º.
+zWeb:MaxLineLengthCheck¾"KSplit this 182 characters long line (which is greater than 120 authorized).(ëİ³ïøÿÿÿÿ8¬©ñ”º.
+XWeb:InternationalizationCheck¼")Define this label in the resource bundle.(û¥”úÿÿÿÿ
+SWeb:InternationalizationCheckĞ")Define this label in the resource bundle.(¾îş€
+SWeb:InternationalizationCheckç")Define this label in the resource bundle.(ÒĞá
+nWeb:MaxLineLengthCheckí"KSplit this 121 characters long line (which is greater than 120 authorized).(Ö¸„‚
+mWeb:MaxLineLengthCheck="KSplit this 279 characters long line (which is greater than 120 authorized).(Îñµä
+H	Web:S1827ú"-Remove this deprecated "scrolling" attribute.(ñÃ¥Şøÿÿÿÿ
+DWeb:BoldAndItalicTagsCheck¢"Replace this <i> tag by <em>.(ßâá›
+IWeb:TableWithoutCaptionCheckì" Add a description to this table.(½Äàš
+P	Web:S1827ú"5Remove this deprecated "allowtransparency" attribute.(ñÃ¥Şøÿÿÿÿ
+;	Web:S5256ì"%Add "<th>" headers to this "<table>".(½Äàš
+jWeb:IllegalTabCheckĞ"EReplace all tab characters in this file by sequences of white-spaces.(µáÎüÿÿÿÿ
+sWeb:MaxLineLengthCheck¿"KSplit this 178 characters long line (which is greater than 120 authorized).(ßêõ¸øÿÿÿÿ
+~	Web:S1829Æ"hReplace this absolute URI "href" with a relative one, or move this absolute URI to a configuration file.(§Á‰Í
+l Web:ImgWithoutWidthOrHeightCheck˜":Add both a 'width' and a 'height' attribute to this image.(É“‹ºøÿÿÿÿ
+XWeb:InternationalizationCheckÒ")Define this label in the resource bundle.(ë±ÚÄıÿÿÿÿ
+~	Web:S1829à"hReplace this absolute URI "href" with a relative one, or move this absolute URI to a configuration file.(½áµ
+XWeb:InternationalizationCheck¯")Define this label in the resource bundle.(¤©£şÿÿÿÿ
+sWeb:MaxLineLengthCheckÂ"KSplit this 127 characters long line (which is greater than 120 authorized).(êİÍÎÿÿÿÿÿ
+oWeb:MaxLineLengthCheckÕ"LSplit this 4346 characters long line (which is greater than 120 authorized).(Å‹œ
+H	Web:S1827ó"-Remove this deprecated "scrolling" attribute.(‚’†şÿÿÿÿ
+nWeb:MaxLineLengthCheckÖ"KSplit this 520 characters long line (which is greater than 120 authorized).(üêö™
+XWeb:InternationalizationCheckÂ")Define this label in the resource bundle.(êİÍÎÿÿÿÿÿ
+mWeb:MaxLineLengthCheck—"KSplit this 124 characters long line (which is greater than 120 authorized).(ÛÁºS
+{Web:MaxLineLengthCheckÔ"LSplit this 7756 characters long line (which is greater than 120 authorized).(ÉÑïûÿÿÿÿ8¬©ñ”º.
+fWeb:LongJavaScriptCheckI">The length of this JS script (7) exceeds the maximum set to 5.(ÏŸ™øúÿÿÿÿ
+l Web:ImgWithoutWidthOrHeightCheck˜":Add both a 'width' and a 'height' attribute to this image.(É“‹ºøÿÿÿÿ
+l Web:ImgWithoutWidthOrHeightCheck˜":Add both a 'width' and a 'height' attribute to this image.(É“‹ºøÿÿÿÿ
+}	Web:S1829¢"hReplace this absolute URI "href" with a relative one, or move this absolute URI to a configuration file.(‰ìª4
+E	Web:S1827ì"/Remove this deprecated "cellpadding" attribute.(½Äàš
+DWeb:BoldAndItalicTagsCheckú
+"Replace this <i> tag by <em>.(ÕÔå
+E	Web:S1827ì"/Remove this deprecated "cellpadding" attribute.(½Äàš
+SWeb:InternationalizationCheck¹")Define this label in the resource bundle.(¥ï•Ü
+rWeb:MaxLineLengthCheck["KSplit this 122 characters long line (which is greater than 120 authorized).(¤«¨Ìùÿÿÿÿ
+g Web:ImgWithoutWidthOrHeightCheckÀ":Add both a 'width' and a 'height' attribute to this image.(–ª½§
+aWeb:WhiteSpaceAroundCheck”";A whitespace is missing after the starting tag at column 8.(€ä©Š
+TWeb:UnsupportedTagsInHtml5Checkÿ
+"(Remove this deprecated "center" element.(ê°Í
+x,Web:MouseEventWithoutKeyboardEquivalentCheckİ"?Add a 'onKeyPress|onKeyDown|onKeyUp' attribute to this <a> tag.(È¥›±
+mWeb:MaxLineLengthCheck"KSplit this 176 characters long line (which is greater than 120 authorized).(¦ÂÔ
+Š	Web:S5148˜"oAdd rel="noopener noreferrer" to this link to prevent the original page from being modified by the opened link.(É“‹ºøÿÿÿÿ
+~	Web:S1829Ü"hReplace this absolute URI "href" with a relative one, or move this absolute URI to a configuration file.(€ÁÑú
+mWeb:MaxLineLengthCheckí"KSplit this 517 characters long line (which is greater than 120 authorized).(¼„Ûp
+zWeb:MaxLineLengthCheckÛ"KSplit this 671 characters long line (which is greater than 120 authorized).(ÂœÚµüÿÿÿÿ8¬©ñ”º.
+tWeb:MaxLineLengthCheck"KSplit this 180 characters long line (which is greater than 120 authorized).(„¨ÜÇ8Ö¤•º.
+nWeb:MaxLineLengthCheckÍ"KSplit this 133 characters long line (which is greater than 120 authorized).(ÓëéÌ
+IWeb:TableWithoutCaptionCheckì" Add a description to this table.(½Äàš
+ƒ	Web:S1829ß"hReplace this absolute URI "href" with a relative one, or move this absolute URI to a configuration file.(øÿ’ıúÿÿÿÿ
+J	Web:S1827ú"/Remove this deprecated "cellspacing" attribute.(ñÃ¥Şøÿÿÿÿ
+oWeb:MaxLineLengthCheckİ"LSplit this 1281 characters long line (which is greater than 120 authorized).(È¥›±
+SWeb:InternationalizationCheckì")Define this label in the resource bundle.(½Äàš
+HWeb:BoldAndItalicTagsCheck¹"!Replace this <b> tag by <strong>.(¥ï•Ü
+nWeb:MaxLineLengthCheckÜ"KSplit this 135 characters long line (which is greater than 120 authorized).(€ÁÑú
+ƒ	Web:S1829Ş"hReplace this absolute URI "href" with a relative one, or move this absolute URI to a configuration file.(®¡Öûÿÿÿÿ
+l Web:ImgWithoutWidthOrHeightCheck˜":Add both a 'width' and a 'height' attribute to this image.(É“‹ºøÿÿÿÿ
+}	Web:S1829È"hReplace this absolute URI "href" with a relative one, or move this absolute URI to a configuration file.(ô—¿@
+ƒ	Web:S1829˜"hReplace this absolute URI "href" with a relative one, or move this absolute URI to a configuration file.(É“‹ºøÿÿÿÿ
+nWeb:MaxLineLengthCheck“"KSplit this 142 characters long line (which is greater than 120 authorized).(©Èüà
+~	Web:S1829³"hReplace this absolute URI "href" with a relative one, or move this absolute URI to a configuration file.(ŞÏ³ú
+ƒ	Web:S1829˜"hReplace this absolute URI "href" with a relative one, or move this absolute URI to a configuration file.(É“‹ºøÿÿÿÿ
+XWeb:InternationalizationCheck˜")Define this label in the resource bundle.(É“‹ºøÿÿÿÿ
+ƒ	Web:S1829Ò"hReplace this absolute URI "href" with a relative one, or move this absolute URI to a configuration file.(ë±ÚÄıÿÿÿÿ
+nWeb:MaxLineLengthCheck·
+"KSplit this 270 characters long line (which is greater than 120 authorized).(‚©æè
+SWeb:InternationalizationCheckë")Define this label in the resource bundle.(¾îş€
+ƒ	Web:S1829²"hReplace this absolute URI "href" with a relative one, or move this absolute URI to a configuration file.(Ö¼±òùÿÿÿÿ
+l Web:ImgWithoutWidthOrHeightCheck«":Add both a 'width' and a 'height' attribute to this image.(ÉÒÈÛúÿÿÿÿ
+nWeb:MaxLineLengthCheckŠ"KSplit this 147 characters long line (which is greater than 120 authorized).(¾»úá
+J	Web:S1827ú"/Remove this deprecated "frameborder" attribute.(ñÃ¥Şøÿÿÿÿ
+tWeb:MaxLineLengthCheck"KSplit this 168 characters long line (which is greater than 120 authorized).(¿úœ»8¬©ñ”º.
+MWeb:ImgWithoutAltCheck¾"%Add an "alt" attribute to this image.(ëİ³ïøÿÿÿÿ
+nWeb:MaxLineLengthCheckÑ"KSplit this 131 characters long line (which is greater than 120 authorized).(¸ƒÑÅ
+gWeb:LongJavaScriptCheckœ">The length of this JS script (6) exceeds the maximum set to 5.(İĞ¥úÿÿÿÿ
+XWeb:InternationalizationCheckÄ")Define this label in the resource bundle.(È¤ª†ùÿÿÿÿ
+tWeb:InputWithoutLabelCheckŒ"HAdd an "id" attribute to this input field and associate it with a label.(‹ãî‚şÿÿÿÿ
+sWeb:MaxLineLengthCheckÄ"KSplit this 208 characters long line (which is greater than 120 authorized).(È¤ª†ùÿÿÿÿ
+nWeb:MaxLineLengthCheckñ"KSplit this 163 characters long line (which is greater than 120 authorized).(áİ»ô
+JWeb:AvoidCommentedOutCodeCheckñ"Remove this commented out code.(áİ»ô
+YWeb:FrameWithoutTitleCheckÛ"-Add a "title" attribute to this <iframe> tag.(ÂœÚµüÿÿÿÿ
+nWeb:MaxLineLengthCheck„"KSplit this 171 characters long line (which is greater than 120 authorized).(È”˜¸
+SWeb:InternationalizationCheckÙ")Define this label in the resource bundle.(ÀÅ“»
+zWeb:MaxLineLengthCheck®"KSplit this 139 characters long line (which is greater than 120 authorized).(íãõ£ıÿÿÿÿ8¬©ñ”º.
+SWeb:InternationalizationCheckÜ")Define this label in the resource bundle.(ÀÅ“»
+ƒ	Web:S1829˜"hReplace this absolute URI "href" with a relative one, or move this absolute URI to a configuration file.(É“‹ºøÿÿÿÿ
+gWeb:LongJavaScriptCheckU"?The length of this JS script (91) exceeds the maximum set to 5.(İĞ¥úÿÿÿÿ
+l Web:ImgWithoutWidthOrHeightCheck˜":Add both a 'width' and a 'height' attribute to this image.(É“‹ºøÿÿÿÿ
+Š	Web:S5148˜"oAdd rel="noopener noreferrer" to this link to prevent the original page from being modified by the opened link.(É“‹ºøÿÿÿÿ
+ƒ	Web:S1829Ç"hReplace this absolute URI "href" with a relative one, or move this absolute URI to a configuration file.(£ªçúøÿÿÿÿ
+XWeb:InputWithoutLabelCheckğ",Associate a valid label to this input field.(ÌÙ½­ûÿÿÿÿ
+nWeb:MaxLineLengthCheckõ"KSplit this 158 characters long line (which is greater than 120 authorized).(ïŸˆ×
+nWeb:MaxLineLengthCheck’"KSplit this 177 characters long line (which is greater than 120 authorized).(€ò¯°
+>Web:InlineStyleCheckÔ"Use CSS classes instead.(ÉÑïûÿÿÿÿ
+~	Web:S1829Å"hReplace this absolute URI "href" with a relative one, or move this absolute URI to a configuration file.(õÀË¼
+{Web:MaxLineLengthCheck˜"LSplit this 7817 characters long line (which is greater than 120 authorized).(É“‹ºøÿÿÿÿ8¬©ñ”º.
+SWeb:InputWithoutLabelCheckì",Associate a valid label to this input field.(½Äàš
+HWeb:ImgWithoutAltCheckú"%Add an "alt" attribute to this image.(çûÄ´
+nWeb:MaxLineLengthCheck´"KSplit this 155 characters long line (which is greater than 120 authorized).(¯²¿Ÿ
+nWeb:MaxLineLengthCheckï"KSplit this 139 characters long line (which is greater than 120 authorized).(¶»£Ö
+yWeb:MaxLineLengthCheck"KSplit this 180 characters long line (which is greater than 120 authorized).(øÉùüÿÿÿÿ8¬©ñ”º.
+sWeb:MaxLineLengthCheckç"KSplit this 144 characters long line (which is greater than 120 authorized).(€§‹Äûÿÿÿÿ
+zWeb:MaxLineLengthCheck¦"KSplit this 789 characters long line (which is greater than 120 authorized).(İŸ¯Šşÿÿÿÿ8¬©ñ”º.
+sWeb:MaxLineLengthCheckñ"KSplit this 162 characters long line (which is greater than 120 authorized).(öÄêàûÿÿÿÿ
+tWeb:InputWithoutLabelCheckğ"HAdd an "id" attribute to this input field and associate it with a label.(ÌÙ½­ûÿÿÿÿ
+IWeb:BoldAndItalicTagsCheck¿"Replace this <i> tag by <em>.(ü…Æàøÿÿÿÿ
+nWeb:MaxLineLengthCheckİ"KSplit this 138 characters long line (which is greater than 120 authorized).(½Ì½û
+ƒ	Web:S1829±"hReplace this absolute URI "href" with a relative one, or move this absolute URI to a configuration file.(ìöşüÿÿÿÿ
+ƒ	Web:S1829»"hReplace this absolute URI "href" with a relative one, or move this absolute URI to a configuration file.(ØøŠ‰úÿÿÿÿ
+nWeb:MaxLineLengthCheck¤"KSplit this 137 characters long line (which is greater than 120 authorized).(ÖÒ›¶
+uWeb:MaxLineLengthCheckÀ"KSplit this 142 characters long line (which is greater than 120 authorized).(–ª½§8¬©ñ”º.
+cWeb:WhiteSpaceAroundCheckİ"=A whitespace is missing after the starting tag at column 931.(È¥›±
+fWeb:WhiteSpaceAroundCheck/"<A whitespace is missing after the starting tag at column 24.(ã·¬Ïÿÿÿÿÿ
+rWeb:MaxLineLengthCheck8"KSplit this 123 characters long line (which is greater than 120 authorized).(Ãö’ñıÿÿÿÿ
+~	Web:S1829è"hReplace this absolute URI "href" with a relative one, or move this absolute URI to a configuration file.(©§åµ
+iWeb:LongJavaScriptCheck³"@The length of this JS script (323) exceeds the maximum set to 5.(İĞ¥úÿÿÿÿ
+9Web:InlineStyleCheckÖ"Use CSS classes instead.(üêö™
+\Web:LinkToNothingCheckş"9Give this link a valid reference or remove the reference.(¤¯ë›
+XWeb:InternationalizationCheck˜")Define this label in the resource bundle.(É“‹ºøÿÿÿÿ
+sWeb:MaxLineLengthCheckŞ"KSplit this 126 characters long line (which is greater than 120 authorized).(®¡Öûÿÿÿÿ
+J	Web:S1827ú"/Remove this deprecated "frameborder" attribute.(ñÃ¥Şøÿÿÿÿ
+XWeb:InternationalizationCheck˜")Define this label in the resource bundle.(É“‹ºøÿÿÿÿ
+YWeb:UnsupportedTagsInHtml5Checkó"(Remove this deprecated "center" element.(‚’†şÿÿÿÿ
+HWeb:BoldAndItalicTagsCheck®"!Replace this <b> tag by <strong>.( ï²”
+XWeb:InternationalizationCheckÑ")Define this label in the resource bundle.(‚ğ°øşÿÿÿÿ
+ƒ	Web:S1829µ"hReplace this absolute URI "href" with a relative one, or move this absolute URI to a configuration file.(°›¹°ûÿÿÿÿ
+SWeb:InternationalizationCheckÄ")Define this label in the resource bundle.(ßÒ ˆ
+~	Web:S1829”"hReplace this absolute URI "href" with a relative one, or move this absolute URI to a configuration file.(âæ‹ò
+l Web:ImgWithoutWidthOrHeightCheck¾":Add both a 'width' and a 'height' attribute to this image.(ëİ³ïøÿÿÿÿ
+HWeb:ImgWithoutAltCheckÀ"%Add an "alt" attribute to this image.(–ª½§
+ƒ	Web:S1829¯"hReplace this absolute URI "href" with a relative one, or move this absolute URI to a configuration file.(“¦©õÿÿÿÿÿ
+cWeb:WhiteSpaceAroundCheckİ"=A whitespace is missing after the starting tag at column 283.(È¥›±
+nWeb:MaxLineLengthCheckà"KSplit this 177 characters long line (which is greater than 120 authorized).(½áµ
+sWeb:MaxLineLengthCheck¢
+"KSplit this 146 characters long line (which is greater than 120 authorized).(™ƒû…úÿÿÿÿ
+YWeb:UnsupportedTagsInHtml5Check¦"(Remove this deprecated "center" element.(İŸ¯Šşÿÿÿÿ
+J	Web:S1827¦"/Remove this deprecated "frameborder" attribute.(İŸ¯Šşÿÿÿÿ
+Š	Web:S5148˜"oAdd rel="noopener noreferrer" to this link to prevent the original page from being modified by the opened link.(É“‹ºøÿÿÿÿ
+IWeb:TableWithoutCaptionCheckì" Add a description to this table.(½Äàš
+SWeb:InternationalizationCheckÅ")Define this label in the resource bundle.(õÀË¼
+ƒ	Web:S1829˜"hReplace this absolute URI "href" with a relative one, or move this absolute URI to a configuration file.(É“‹ºøÿÿÿÿ
+~	Web:S1829Ğ"hReplace this absolute URI "href" with a relative one, or move this absolute URI to a configuration file.(¯»¸ù
+nWeb:MaxLineLengthCheck£"KSplit this 341 characters long line (which is greater than 120 authorized).(³î–‘
+l Web:ImgWithoutWidthOrHeightCheck˜":Add both a 'width' and a 'height' attribute to this image.(É“‹ºøÿÿÿÿ
+E	Web:S1827ì"/Remove this deprecated "cellspacing" attribute.(½Äàš
+E	Web:S1827ì"/Remove this deprecated "cellpadding" attribute.(½Äàš
+l Web:ImgWithoutWidthOrHeightCheck˜":Add both a 'width' and a 'height' attribute to this image.(É“‹ºøÿÿÿÿ
+ƒ	Web:S1829å"hReplace this absolute URI "href" with a relative one, or move this absolute URI to a configuration file.(‚Í¿ìşÿÿÿÿ
+SWeb:InternationalizationCheckÿ
+")Define this label in the resource bundle.(ê°Í
+Š	Web:S5148˜"oAdd rel="noopener noreferrer" to this link to prevent the original page from being modified by the opened link.(É“‹ºøÿÿÿÿ
+sWeb:MaxLineLengthCheck¿"KSplit this 137 characters long line (which is greater than 120 authorized).(ü…Æàøÿÿÿÿ
+J	Web:S1827Û"/Remove this deprecated "frameborder" attribute.(ÂœÚµüÿÿÿÿ
+SWeb:InternationalizationCheckè")Define this label in the resource bundle.(©§åµ
+J	Web:S1827ú"/Remove this deprecated "cellpadding" attribute.(ñÃ¥Şøÿÿÿÿ
+XWeb:InternationalizationCheck°")Define this label in the resource bundle.(¶’‘×üÿÿÿÿ
+SWeb:InternationalizationCheck“")Define this label in the resource bundle.(©Èüà
+sWeb:MaxLineLengthCheckú"KSplit this 145 characters long line (which is greater than 120 authorized).(ÀğÔ¬ÿÿÿÿÿ
+ƒ	Web:S1829½"hReplace this absolute URI "href" with a relative one, or move this absolute URI to a configuration file.(¬¬üúÿÿÿÿ
+mWeb:MaxLineLengthCheck¢"KSplit this 123 characters long line (which is greater than 120 authorized).(‰ìª4
+MWeb:ImgWithoutAltCheck®"%Add an "alt" attribute to this image.(íãõ£ıÿÿÿÿ
+DWeb:BoldAndItalicTagsCheckç"Replace this <i> tag by <em>.(ÒĞá
+DWeb:BoldAndItalicTagsCheckĞ"Replace this <i> tag by <em>.(¾îş€
+l Web:ImgWithoutWidthOrHeightCheck˜":Add both a 'width' and a 'height' attribute to this image.(É“‹ºøÿÿÿÿ
+nWeb:MaxLineLengthCheckö"KSplit this 313 characters long line (which is greater than 120 authorized).(áæÒ
+H	Web:S1827Û"-Remove this deprecated "scrolling" attribute.(ÂœÚµüÿÿÿÿ
+J	Web:S1827ú"/Remove this deprecated "frameborder" attribute.(ñÃ¥Şøÿÿÿÿ
+Š	Web:S5148˜"oAdd rel="noopener noreferrer" to this link to prevent the original page from being modified by the opened link.(É“‹ºøÿÿÿÿ
+SWeb:InternationalizationCheckì")Define this label in the resource bundle.(½Äàš
+IWeb:BoldAndItalicTagsCheckâ"Replace this <i> tag by <em>.(ÒÎÏÎşÿÿÿÿ
+~	Web:S1829İ"hReplace this absolute URI "href" with a relative one, or move this absolute URI to a configuration file.(½Ì½û
+J	Web:S1827ú"/Remove this deprecated "frameborder" attribute.(ñÃ¥Şøÿÿÿÿ
+H	Web:S1827ú"-Remove this deprecated "scrolling" attribute.(ñÃ¥Şøÿÿÿÿ
+HWeb:BoldAndItalicTagsCheckÄ"!Replace this <b> tag by <strong>.(ßÒ ˆ
+H	Web:S1827ú"-Remove this deprecated "scrolling" attribute.(ñÃ¥Şøÿÿÿÿ
+>Web:InlineStyleCheckÔ"Use CSS classes instead.(ÉÑïûÿÿÿÿ
+XWeb:InputWithoutLabelCheckè",Associate a valid label to this input field.(úóÿ§ıÿÿÿÿ
+nWeb:MaxLineLengthCheckş"KSplit this 298 characters long line (which is greater than 120 authorized).(³“¦¢
+g Web:ImgWithoutWidthOrHeightCheckæ":Add both a 'width' and a 'height' attribute to this image.(¨ºÄŸ
+XWeb:InputWithoutLabelCheck¦",Associate a valid label to this input field.(İŸ¯Šşÿÿÿÿ
+SWeb:InternationalizationCheckì")Define this label in the resource bundle.(½Äàš
+Š	Web:S5148’"oAdd rel="noopener noreferrer" to this link to prevent the original page from being modified by the opened link.(èâ™ıÿÿÿÿ
+Š	Web:S5148˜"oAdd rel="noopener noreferrer" to this link to prevent the original page from being modified by the opened link.(É“‹ºøÿÿÿÿ
+hWeb:LongJavaScriptCheckı"?The length of this JS script (16) exceeds the maximum set to 5.(İĞ¥úÿÿÿÿ
+l Web:ImgWithoutWidthOrHeightCheck¡":Add both a 'width' and a 'height' attribute to this image.(ëàÛÿøÿÿÿÿ
+sWeb:MaxLineLengthCheckå"KSplit this 129 characters long line (which is greater than 120 authorized).(‚Í¿ìşÿÿÿÿ
+rWeb:MaxLineLengthCheck"KSplit this 194 characters long line (which is greater than 120 authorized).(¾ı°šşÿÿÿÿ
+;	Web:S5256ì"%Add "<th>" headers to this "<table>".(½Äàš
+rWeb:MaxLineLengthCheckA"KSplit this 547 characters long line (which is greater than 120 authorized).(’é”¨øÿÿÿÿ
+sWeb:MaxLineLengthCheckõ"KSplit this 122 characters long line (which is greater than 120 authorized).(Â¢…óşÿÿÿÿ
+nWeb:MaxLineLengthCheckÑ"KSplit this 339 characters long line (which is greater than 120 authorized).(ŞÏ°…
+l Web:ImgWithoutWidthOrHeightCheck˜":Add both a 'width' and a 'height' attribute to this image.(É“‹ºøÿÿÿÿ
+ƒ	Web:S1829 "hReplace this absolute URI "href" with a relative one, or move this absolute URI to a configuration file.(ëğÄ²şÿÿÿÿ
+l Web:ImgWithoutWidthOrHeightCheck˜":Add both a 'width' and a 'height' attribute to this image.(É“‹ºøÿÿÿÿ
+sWeb:MaxLineLengthCheckµ"KSplit this 125 characters long line (which is greater than 120 authorized).(°›¹°ûÿÿÿÿ
+tWeb:MaxLineLengthCheckğ"LSplit this 1628 characters long line (which is greater than 120 authorized).(ÌÙ½­ûÿÿÿÿ
+sWeb:MaxLineLengthCheckÒ"KSplit this 122 characters long line (which is greater than 120 authorized).(ë±ÚÄıÿÿÿÿ
+l Web:ImgWithoutWidthOrHeightCheck˜":Add both a 'width' and a 'height' attribute to this image.(É“‹ºøÿÿÿÿ
+nWeb:MaxLineLengthCheck†"KSplit this 187 characters long line (which is greater than 120 authorized).(‚Ãß„
+sWeb:MaxLineLengthCheck’"KSplit this 245 characters long line (which is greater than 120 authorized).(èâ™ıÿÿÿÿ
+uWeb:MaxLineLengthCheck"KSplit this 182 characters long line (which is greater than 120 authorized).(Âìã”8¬©ñ”º.
+YWeb:FrameWithoutTitleCheckú"-Add a "title" attribute to this <iframe> tag.(ñÃ¥Şøÿÿÿÿ
+tWeb:MaxLineLengthCheckP"KSplit this 140 characters long line (which is greater than 120 authorized).(èÉ£8¬©ñ”º.
+‚	Web:S1829¿"gReplace this absolute URI "src" with a relative one, or move this absolute URI to a configuration file.(ê–¹«ıÿÿÿÿ
+NWeb:AvoidCommentedOutCodeCheck/"Remove this commented out code.(ã·¬Ïÿÿÿÿÿ
+l Web:ImgWithoutWidthOrHeightCheck˜":Add both a 'width' and a 'height' attribute to this image.(É“‹ºøÿÿÿÿ
+SWeb:InternationalizationCheckÎ")Define this label in the resource bundle.(­¬œ
+}	Web:S1829ú"gReplace this absolute URI "src" with a relative one, or move this absolute URI to a configuration file.(çûÄ´
+ƒ	Web:S1829’"hReplace this absolute URI "href" with a relative one, or move this absolute URI to a configuration file.(èâ™ıÿÿÿÿ
+…	Web:S5148İ"oAdd rel="noopener noreferrer" to this link to prevent the original page from being modified by the opened link.(È¥›±
+YWeb:FrameWithoutTitleCheckó"-Add a "title" attribute to this <iframe> tag.(‚’†şÿÿÿÿ
+tWeb:MaxLineLengthCheck"KSplit this 188 characters long line (which is greater than 120 authorized).(Çº•İ8Ö¤•º.
+sWeb:MaxLineLengthCheck¡"KSplit this 155 characters long line (which is greater than 120 authorized).(Èß’úÿÿÿÿ
+l Web:ImgWithoutWidthOrHeightCheck˜":Add both a 'width' and a 'height' attribute to this image.(É“‹ºøÿÿÿÿ
+…	Web:S5148İ"oAdd rel="noopener noreferrer" to this link to prevent the original page from being modified by the opened link.(È¥›±
+SWeb:InputWithoutLabelCheck†",Associate a valid label to this input field.(‚Ãß„
+ƒ	Web:S1829Ñ"hReplace this absolute URI "href" with a relative one, or move this absolute URI to a configuration file.(‚ğ°øşÿÿÿÿ
+XWeb:InputWithoutLabelCheckì",Associate a valid label to this input field.(û’ğ§úÿÿÿÿ
+sWeb:MaxLineLengthCheck¯"KSplit this 125 characters long line (which is greater than 120 authorized).(¤©£şÿÿÿÿ
+sWeb:MaxLineLengthCheckë"KSplit this 138 characters long line (which is greater than 120 authorized).(ï®ÇÒüÿÿÿÿ
+x,Web:MouseEventWithoutKeyboardEquivalentCheckİ"?Add a 'onKeyPress|onKeyDown|onKeyUp' attribute to this <a> tag.(È¥›±
+NWeb:TableWithoutCaptionCheckú" Add a description to this table.(ñÃ¥Şøÿÿÿÿ
+XWeb:InternationalizationCheck˜")Define this label in the resource bundle.(É“‹ºøÿÿÿÿ
+sWeb:MaxLineLengthCheckÀ
+"KSplit this 268 characters long line (which is greater than 120 authorized).(³©ˆÆÿÿÿÿÿ
+zWeb:MaxLineLengthCheck¡"KSplit this 139 characters long line (which is greater than 120 authorized).(ëàÛÿøÿÿÿÿ8¬©ñ”º.
+SWeb:InternationalizationCheckì")Define this label in the resource bundle.(½Äàš
+HWeb:BoldAndItalicTagsCheckÎ"!Replace this <b> tag by <strong>.(­¬œ
+}	Web:S1829"hReplace this absolute URI "href" with a relative one, or move this absolute URI to a configuration file.(¦ÂÔ
+@Web:WhiteSpaceAroundCheckİ"Add a space at column 297.(È¥›±
+mWeb:MaxLineLengthCheck@"KSplit this 271 characters long line (which is greater than 120 authorized).(Ì•·Ø
+ƒ	Web:S1829˜"hReplace this absolute URI "href" with a relative one, or move this absolute URI to a configuration file.(É“‹ºøÿÿÿÿ
+DWeb:BoldAndItalicTagsCheckë"Replace this <i> tag by <em>.(¾îş€
+sWeb:MaxLineLengthCheck®
+"KSplit this 266 characters long line (which is greater than 120 authorized).(¹µÛ“ûÿÿÿÿ
+OWeb:AvoidCommentedOutCodeCheckã"Remove this commented out code.(ËÄç şÿÿÿÿ
+l Web:ImgWithoutWidthOrHeightCheck˜":Add both a 'width' and a 'height' attribute to this image.(É“‹ºøÿÿÿÿ
+SWeb:InputWithoutLabelCheckí",Associate a valid label to this input field.(Ö¸„‚
+mWeb:MaxLineLengthCheck7"KSplit this 167 characters long line (which is greater than 120 authorized).(¬Ø×¯
+>Web:InlineStyleCheckÿ"Use CSS classes instead.(ğ®­üÿÿÿÿ
+nWeb:MaxLineLengthCheckĞ"KSplit this 121 characters long line (which is greater than 120 authorized).(¯»¸ù
+mWeb:MaxLineLengthCheck­"KSplit this 142 characters long line (which is greater than 120 authorized).(¬›‹
+ƒ	Web:S1829˜"hReplace this absolute URI "href" with a relative one, or move this absolute URI to a configuration file.(É“‹ºøÿÿÿÿ
+ƒ	Web:S1829Ï"hReplace this absolute URI "href" with a relative one, or move this absolute URI to a configuration file.(³Ïüœıÿÿÿÿ
+l Web:ImgWithoutWidthOrHeightCheck˜":Add both a 'width' and a 'height' attribute to this image.(É“‹ºøÿÿÿÿ
+~	Web:S1829İ"hReplace this absolute URI "href" with a relative one, or move this absolute URI to a configuration file.(È¥›±
+ƒ	Web:S1829˜"hReplace this absolute URI "href" with a relative one, or move this absolute URI to a configuration file.(É“‹ºøÿÿÿÿ
+Š	Web:S5148˜"oAdd rel="noopener noreferrer" to this link to prevent the original page from being modified by the opened link.(É“‹ºøÿÿÿÿ
+sWeb:MaxLineLengthCheckì"KSplit this 135 characters long line (which is greater than 120 authorized).(û’ğ§úÿÿÿÿ
+Š	Web:S5148˜"oAdd rel="noopener noreferrer" to this link to prevent the original page from being modified by the opened link.(É“‹ºøÿÿÿÿ
+sWeb:MaxLineLengthCheckş
+"KSplit this 136 characters long line (which is greater than 120 authorized).(ø™šùùÿÿÿÿ
+YWeb:UnsupportedTagsInHtml5CheckÛ"(Remove this deprecated "center" element.(ÂœÚµüÿÿÿÿ
+nWeb:MaxLineLengthCheckú"KSplit this 174 characters long line (which is greater than 120 authorized).(çûÄ´
+x,Web:MouseEventWithoutKeyboardEquivalentCheckì"?Add a 'onKeyPress|onKeyDown|onKeyUp' attribute to this <a> tag.(½Äàš
+@	Web:S5256ú"%Add "<th>" headers to this "<table>".(ñÃ¥Şøÿÿÿÿ
+tWeb:MaxLineLengthCheckÒ"LSplit this 3019 characters long line (which is greater than 120 authorized).(ºàì–ıÿÿÿÿ
+sWeb:MaxLineLengthCheck"KSplit this 175 characters long line (which is greater than 120 authorized).(•»…08Ö¤•º.
+EWeb:NonConsecutiveHeadingCheck¥"Do not skip level H1.(Ûí¨æüÿÿÿÿ
+ƒ	Web:S1829˜"hReplace this absolute URI "href" with a relative one, or move this absolute URI to a configuration file.(É“‹ºøÿÿÿÿ
+YWeb:FrameWithoutTitleCheck¦"-Add a "title" attribute to this <iframe> tag.(İŸ¯Šşÿÿÿÿ
+YWeb:FrameWithoutTitleCheckú"-Add a "title" attribute to this <iframe> tag.(ñÃ¥Şøÿÿÿÿ
+\Web:LinkToNothingCheckì"9Give this link a valid reference or remove the reference.(½Äàš
+SWeb:InternationalizationCheck®")Define this label in the resource bundle.( ï²”
+IWeb:BoldAndItalicTagsCheck§"Replace this <i> tag by <em>.(şûßØşÿÿÿÿ
+uWeb:MaxLineLengthCheck"LSplit this 1250 characters long line (which is greater than 120 authorized).(À­Ê8Ö¤•º.
+DWeb:BoldAndItalicTagsCheckÌ"Replace this <i> tag by <em>.(ßâá›
+;	Web:S5256ì"%Add "<th>" headers to this "<table>".(½Äàš
+sWeb:MaxLineLengthCheckè"KSplit this 124 characters long line (which is greater than 120 authorized).(úóÿ§ıÿÿÿÿ
+sWeb:MaxLineLengthCheckö"KSplit this 148 characters long line (which is greater than 120 authorized).(Òìîìıÿÿÿÿ
+mWeb:MaxLineLengthChecká"KSplit this 131 characters long line (which is greater than 120 authorized).(¡œÃ"
+>Web:InlineStyleCheckÔ"Use CSS classes instead.(ÉÑïûÿÿÿÿ
+l Web:ImgWithoutWidthOrHeightCheck˜":Add both a 'width' and a 'height' attribute to this image.(É“‹ºøÿÿÿÿ
+sWeb:MaxLineLengthCheckı
+"KSplit this 202 characters long line (which is greater than 120 authorized).(Ÿ­©’üÿÿÿÿ
+OWeb:AvoidCommentedOutCodeCheckÍ"Remove this commented out code.(‹òá¤ıÿÿÿÿ
+E	Web:S1827ì"/Remove this deprecated "cellspacing" attribute.(½Äàš
+~	Web:S1829¸"hReplace this absolute URI "href" with a relative one, or move this absolute URI to a configuration file.(Å¸á¹
+sWeb:MaxLineLengthCheckŒ"KSplit this 133 characters long line (which is greater than 120 authorized).(‹ãî‚şÿÿÿÿ
+ƒ	Web:S1829˜"hReplace this absolute URI "href" with a relative one, or move this absolute URI to a configuration file.(É“‹ºøÿÿÿÿ
+yWeb:MaxLineLengthCheck!"KSplit this 128 characters long line (which is greater than 120 authorized).(ïÍßÃøÿÿÿÿ8Ö¤•º.
+ƒ	Web:S1829°"hReplace this absolute URI "href" with a relative one, or move this absolute URI to a configuration file.(¶’‘×üÿÿÿÿ
+OWeb:AvoidCommentedOutCodeCheck¬"Remove this commented out code.(ƒÔ“šıÿÿÿÿ
+sWeb:MaxLineLengthCheckï"KSplit this 190 characters long line (which is greater than 120 authorized).(ĞÕÑ‚ûÿÿÿÿ
+H	Web:S1827¦"-Remove this deprecated "scrolling" attribute.(İŸ¯Šşÿÿÿÿ
+TWeb:FrameWithoutTitleCheck"-Add a "title" attribute to this <iframe> tag.(Âìã”
+nWeb:MaxLineLengthCheckì"KSplit this 256 characters long line (which is greater than 120 authorized).(½şàÑ
+l Web:ImgWithoutWidthOrHeightCheck®":Add both a 'width' and a 'height' attribute to this image.(íãõ£ıÿÿÿÿ
+~	Web:S1829º"hReplace this absolute URI "href" with a relative one, or move this absolute URI to a configuration file.(…‚Ê
+J	Web:S1827ó"/Remove this deprecated "frameborder" attribute.(‚’†şÿÿÿÿ
+aWeb:WhiteSpaceAroundCheckÑ";A whitespace is missing after the starting tag at column 8.(äìîÈ
+sWeb:MaxLineLengthCheckÁ"KSplit this 136 characters long line (which is greater than 120 authorized).(ÅËıÏúÿÿÿÿ
+@Web:WhiteSpaceAroundCheckİ"Add a space at column 944.(È¥›±
+oWeb:MaxLineLengthCheckì"LSplit this 3899 characters long line (which is greater than 120 authorized).(½Äàš
+XWeb:InternationalizationCheck„")Define this label in the resource bundle.(Šğ„ùÿÿÿÿ
+l Web:ImgWithoutWidthOrHeightCheck˜":Add both a 'width' and a 'height' attribute to this image.(É“‹ºøÿÿÿÿ
+nWeb:MaxLineLengthCheckÿ
+"KSplit this 199 characters long line (which is greater than 120 authorized).(ê°Í
+SWeb:InputWithoutLabelCheckÑ",Associate a valid label to this input field.(¸ƒÑÅ
+DWeb:BoldAndItalicTagsCheckï"Replace this <i> tag by <em>.(ŸØ¦š
+sWeb:MaxLineLengthCheckù
+"KSplit this 167 characters long line (which is greater than 120 authorized).(¡Ñ¯¦şÿÿÿÿ
+OWeb:AvoidCommentedOutCodeCheckÁ"Remove this commented out code.(ÅËıÏúÿÿÿÿ
+~	Web:S1829æ"hReplace this absolute URI "href" with a relative one, or move this absolute URI to a configuration file.(¨ºÄŸ
+yWeb:MaxLineLengthCheck "KSplit this 132 characters long line (which is greater than 120 authorized).( Õ‰üÿÿÿÿ8Ö¤•º.
+sWeb:MaxLineLengthCheck¥"KSplit this 307 characters long line (which is greater than 120 authorized).(§ŒñÈüÿÿÿÿ
+nWeb:MaxLineLengthCheck”"KSplit this 243 characters long line (which is greater than 120 authorized).(âæ‹ò
+XWeb:InternationalizationCheckû")Define this label in the resource bundle.(‹èÉ‚ÿÿÿÿÿ
+l Web:ImgWithoutWidthOrHeightCheck˜":Add both a 'width' and a 'height' attribute to this image.(É“‹ºøÿÿÿÿ
+XWeb:InputWithoutLabelCheckó",Associate a valid label to this input field.(‚’†şÿÿÿÿ
+hWeb:LongJavaScriptCheck"?The length of this JS script (10) exceeds the maximum set to 5.(İĞ¥úÿÿÿÿ
+sWeb:MaxLineLengthCheckƒ"KSplit this 123 characters long line (which is greater than 120 authorized).(Ş‰Åÿÿÿÿÿ
+~	Web:S1829¾"hReplace this absolute URI "href" with a relative one, or move this absolute URI to a configuration file.(É’„„
+XWeb:InternationalizationCheckî")Define this label in the resource bundle.(ğ”¯ùÿÿÿÿ
+XWeb:InputWithoutLabelCheckÛ",Associate a valid label to this input field.(ÂœÚµüÿÿÿÿ
+IWeb:AvoidCommentedOutCodeCheck­"Remove this commented out code.(¬›‹
+yWeb:MaxLineLengthCheck"KSplit this 171 characters long line (which is greater than 120 authorized).(œ¨„úÿÿÿÿ8Ö¤•º.
+SWeb:InternationalizationCheckŞ")Define this label in the resource bundle.(÷ Äì
+Š	Web:S5148˜"oAdd rel="noopener noreferrer" to this link to prevent the original page from being modified by the opened link.(É“‹ºøÿÿÿÿ
+~	Web:S1829”"hReplace this absolute URI "href" with a relative one, or move this absolute URI to a configuration file.(âæ‹ò
+sWeb:MaxLineLengthCheck½"KSplit this 126 characters long line (which is greater than 120 authorized).(¬¬üúÿÿÿÿ
+tWeb:MaxLineLengthCheck"KSplit this 182 characters long line (which is greater than 120 authorized).(©­úâ8¬©ñ”º.
+aWeb:WhiteSpaceAroundCheck›";A whitespace is missing after the starting tag at column 8.(€ä©Š
+…	Web:S5148”"oAdd rel="noopener noreferrer" to this link to prevent the original page from being modified by the opened link.(âæ‹ò
+uWeb:MaxLineLengthCheckæ"KSplit this 444 characters long line (which is greater than 120 authorized).(¨ºÄŸ8¬©ñ”º.
+nWeb:MaxLineLengthCheck¤"KSplit this 333 characters long line (which is greater than 120 authorized).(Ûƒ£’
+…	Web:S5148”"oAdd rel="noopener noreferrer" to this link to prevent the original page from being modified by the opened link.(âæ‹ò
+{Web:MaxLineLengthCheckú"LSplit this 5701 characters long line (which is greater than 120 authorized).(ñÃ¥Şøÿÿÿÿ8¬©ñ”º.
+SWeb:InternationalizationCheckª")Define this label in the resource bundle.(©§åµ
+ƒ	Web:S1829¼"hReplace this absolute URI "href" with a relative one, or move this absolute URI to a configuration file.(û¥”úÿÿÿÿ
+sWeb:MaxLineLengthCheckß"KSplit this 136 characters long line (which is greater than 120 authorized).(øÿ’ıúÿÿÿÿ
+E	Web:S1827ì"/Remove this deprecated "cellspacing" attribute.(½Äàš
+ƒ	Web:S1829˜"hReplace this absolute URI "href" with a relative one, or move this absolute URI to a configuration file.(É“‹ºøÿÿÿÿ
+hWeb:LongJavaScriptCheck³"?The length of this JS script (11) exceeds the maximum set to 5.(İĞ¥úÿÿÿÿ
+~	Web:S1829İ"hReplace this absolute URI "href" with a relative one, or move this absolute URI to a configuration file.(È¥›±
+rWeb:MaxLineLengthCheck<"KSplit this 419 characters long line (which is greater than 120 authorized).( Ë•ôúÿÿÿÿ
+bWeb:WhiteSpaceAroundCheckË"<A whitespace is missing after the starting tag at column 19.(éû“¹
+sWeb:MaxLineLengthCheck"KSplit this 183 characters long line (which is greater than 120 authorized).(±ùi8¬©ñ”º.
+}	Web:S1829®"hReplace this absolute URI "href" with a relative one, or move this absolute URI to a configuration file.(ÔÌÄ1
+~	Web:S1829ÿ
+"hReplace this absolute URI "href" with a relative one, or move this absolute URI to a configuration file.(ê°Í
+>Web:InlineStyleCheckú"Use CSS classes instead.(ñÃ¥Şøÿÿÿÿ
+MWeb:ImgWithoutAltCheck¿"%Add an "alt" attribute to this image.(ê–¹«ıÿÿÿÿ
+nWeb:MaxLineLengthCheckè"KSplit this 174 characters long line (which is greater than 120 authorized).(óÅ«³
