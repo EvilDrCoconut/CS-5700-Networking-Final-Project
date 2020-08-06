@@ -1,0 +1,27 @@
+All sites are accesible through these URL's, if another langauge is
+	wanted for use, in the command line, enter "langauge:" followed
+	by "e" for english, "f" for french, or "s" for spanish.
+
+Com Sites:
+www.lowes.com/lowes/Lowes_Home_Improvement.html
+www.walmart.com/walmart/Walmart.html
+
+Edu Sites:
+www.northeastern.edu/northeatern/Career_Advancement_Northeastern_University.html
+www.northeastern.edu/northeatern/Graduate_Degrees_Northeastern_University.html
+www.northeastern.edu/northeatern/Northeastern_University_Home.html
+
+Org Sites:
+www.geeksforgeeks.org/geeksforgeeks/GeeksforGeeks_Home.html
+www.geeksforgeeks.org/geeksforgeeks/GFG_Courses_Practice_GeeksforGeeks.html
+www.geeksforgeeks.org/geeksforgeeks/How_to_write_an_Interview_Experience_GeeksforGeeks.html
+
+www.pbs.org/pbs/NHPBS_TV_Schedule.html
+www.pbs.org/pbs/PBS_Public_Broadcasting_Service.html
+
+www.wikipedia.orb/wikipedia/Client_browser_Wikipedia.html
+www.wikipedia.orb/wikipedia/Name_server_Wikipedia.html
+www.wikipedia.orb/wikipedia/Network_Wikipedia.html
+www.wikipedia.orb/wikipedia/UTF-8_Wikipedia.html
+www.wikipedia.orb/wikipedia/Web_server_Wikipedia.html
+www.wikipedia.orb/wikipedia/Wikipedia.html

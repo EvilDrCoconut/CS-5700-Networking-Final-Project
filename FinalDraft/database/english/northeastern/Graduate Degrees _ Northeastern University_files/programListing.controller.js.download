@@ -1,0 +1,736 @@
+/**
+ * Created by acheson on 3/14/16.
+ */
+window.one1p = 'hi';
+(function() {
+    'use strict';
+
+    angular
+        .module('nu')
+        .controller('ProgramListingController', ProgramListingController)
+        .filter('adjustForUnusableChars', function() {
+          var txt = "";
+          return function(x) {
+            txt = x.replace("'","").replace(" ", "-");
+            return txt;
+          }
+        });
+
+    ProgramListingController.$inject = ['$interval', '$location', '$q', '$rootScope', '$sce','$scope','$timeout', '$window', 'constants', 'dataService', 'queryService'];
+
+    function ProgramListingController($interval, $location, $q, $rootScope, $sce, $scope, $timeout, $window, constants, dataService, queryService) {
+
+        var vm = this;
+
+        vm.programs = [];
+        vm.placeholder = new Array(5);
+
+        vm.activeTab = -1; // TODO Set this if we want a default open tab
+        vm.setActiveTab = setActiveTab;
+
+        vm.filteredPrograms = [];
+        vm.filteredProgramsPaged = [];
+        vm.filteredProgramsLength = -1;
+        vm.activeFacetGroups = [];
+        vm.activeFacetTerms = [];
+        vm.facets = null;
+        vm.availableTids = [];
+
+        vm.constants = constants;
+
+        vm.trustAsHtml = $sce.trustAsHtml;
+
+        vm.isAlignProgram = isAlignProgram;
+        vm.isStackableCert = isStackableCert;
+
+        vm.isTermEnabled = isTermEnabled;
+        vm.hasTermsSelected = hasTermsSelected;
+        vm.firstTermSelected = firstTermSelected;
+        vm.additionalTermCount = additionalTermCount;
+        vm.facetTermClicked = facetTermClicked;
+        vm.clearFacets = clearFacets;
+        vm.loadMoreFilteredProgramsPaged = loadMoreFilteredProgramsPaged;
+
+        vm.closeAccordion = closeAccordion;
+        vm.openTakeover = openTakeover;
+        vm.navTakeover = false;
+		vm.keyPress = false;
+        vm.noHash = '/';
+
+        vm.promoFrame = null;
+        vm.initFrame = initFrame;
+        vm.randomFloat = randomFloat;
+
+        vm.promos = {};
+        vm.activePromo = null;
+
+        var counter;
+
+        activate();
+
+        ///////////////////
+
+        function activate() {
+            console.log('programListing.activate');
+
+            // Update the element queries
+            FF.responsive.update();
+
+            $q.all([
+                dataService.getFacets(),
+                dataService.getPrograms(0)
+            ]).then(function(datas) {
+
+                console.log('Got Data');
+                vm.facets = datas[0];
+                console.log('Facets:: ', vm.facets);
+                console.log('Init Facets Start');
+                initFacets();
+                console.log('Init Promos Start');
+                initPromos();
+
+                vm.programs = datas[1].data;
+                console.log('Programs:: ', vm.programs);
+
+                var requests = [];
+
+                var pages = datas[1].pages;
+
+                for (var pageNumber = 1; pageNumber <= pages.page_end; pageNumber++ ) {
+                    requests.push(dataService.getPrograms(pageNumber));
+                }
+
+                $q.all(requests).then(function(datas) {
+                    var additionalPrograms = [];
+                    for (var i = 0; i < datas.length; i++) {
+                        additionalPrograms = additionalPrograms.concat(datas[i].data);
+                    }
+                    vm.programs = vm.programs.concat(additionalPrograms);
+                    console.log('PAGING:: ', vm.programs);
+                    filterPrograms();
+                });
+
+                console.log('program sample:: ', vm.programs[0]);
+                console.log('apply Facets start');
+
+                applyFacets();
+
+                console.log('apply Facets finish');
+                // Activate Sticky!
+                FF.sticky.init();
+
+                console.log('Stick init finish');
+
+                // Apply facets when url changes
+                $rootScope.$on('$locationChangeSuccess', function(newState, oldState) {
+                    console.log('location change');
+
+                    applyFacets();
+                    console.log('location change apply facets done');
+
+                });
+
+
+            }, function(failure) {
+                console.log('facets and programs receive failure ' + failure);
+            });
+
+            $scope.$watch(function() {
+                return vm.filteredPrograms;
+            }, function() {
+                $rootScope.$broadcast(constants.BROADCAST_KEY_PROGRAM_LIST_CHANGE);
+
+                console.log('watch vm.filteredPrograms');
+
+                $scope.$emit('list:filtered');
+
+                console.log('Digest cycle complete');
+
+            });
+
+            // monitor the tab state and refresh the sticky polyfill for the new height of the navigation
+            $scope.$watch(function() {
+                return vm.activeTab;
+            }, function() {
+                $timeout(function() {
+                    FF.sticky.rebuild();
+                });
+            });
+
+            $scope.$on('list:filtered', function() {
+                console.log('listening:: ');
+                //loadMoreFilteredProgramsPaged();
+            });
+
+            // close tab clicking anywhere on the page
+            angular.element('body').click(function(e) {
+
+                vm.activeTab = -1;
+                $scope.$apply();
+            });
+            angular.element('.facets-large-container .section-content').click(function(event) {
+                event.stopPropagation();
+            });
+
+            // stop the counter if running on destroy
+            $scope.$on('$destroy', function() {
+                stopCount();
+            })
+        }
+
+        function setActiveTab(index) {
+
+            // if the active tab was clicked, just close it
+            if(index == vm.activeTab) {
+                vm.activeTab = -1;
+            }
+            // if there is no tab active just open it
+            else if (vm.activeTab == -1) {
+                vm.activeTab = index;
+            }
+            // there was a tab open. close and reopen on a delay
+            else {
+                vm.activeTab = -1;
+                $timeout(function() {
+                    vm.activeTab = index
+                }, 600)
+            }
+
+            console.log('ACTIVE TAB:: ', index, vm.activeTab);
+        }
+
+        function initFacets() {
+            // if undefined, set them all to false by default
+
+            console.log('Facets:: ', vm.facets);
+
+            angular.forEach(vm.facets, function(facet, group) {
+                angular.forEach(facet.facet_terms, function(term) {
+                    if(typeof term.selected === 'undefined') {
+                        term.selected = false;
+                    }
+                    if(typeof term.enabled === 'undefined') {
+                        term.enabled = true;
+                    }
+                })
+            });
+        }
+
+        function applyFacets() {
+
+            if(!vm.facets) return;
+
+            // read filters from URL
+            var hashFilters = getFacetStatesFromHash();
+
+            // if the filters have been set, check their values and set the term as selected
+            vm.activeFacetGroups = [];
+            vm.activeFacetTerms = [];
+            var activeFacets = [];
+            var activeGroupIndex;
+
+            console.log('apply facets start');
+            // Make sure the hash (if set) has the same length as the facets
+            if(hashFilters && Object.keys(hashFilters).length == Object.keys(vm.facets).length) {
+
+                // Check each filter group separately
+                angular.forEach(vm.facets, function(facet, group) {
+
+                    var activeGroup = [];
+
+                    // Check each term id
+                    angular.forEach(facet.facet_terms, function(term) {
+
+                        // if found set selected true, else false
+                        if(hashFilters[group].indexOf(term.field_slug[0].value) != -1) {
+                            term.selected = true;
+                            console.log('THIS IS THE TERM LOOK AT ME!!!!');
+                            console.log(term);
+                            // add matches to active list of tids
+                            activeGroup.push(term.id);
+                            activeFacets.push(term.id);
+                            activeGroupIndex = group;
+                            vm.activeFacetTerms.push(term);
+                        }
+                        else {
+                            term.selected = false;
+                        }
+                    });
+
+                    // if there are elements in the group add it
+                    if(activeGroup.length > 0) {
+                        vm.activeFacetGroups.push(activeGroup);
+                    }
+                });
+            }
+            else {
+                // enable all buttons
+                angular.forEach(vm.facets, function(facet, group) {
+                    angular.forEach(facet.facet_terms, function(term) {
+                        term.selected = false;
+                    });
+                });
+            }
+
+            console.log('apply facets finish');
+            filterPrograms();
+
+            if(vm.activeFacetGroups.length == 1) {
+                updateAvailableFacets(true, activeGroupIndex);
+            }
+            else {
+                updateAvailableFacets();
+            }
+            setPromoTile();
+        }
+
+        function initPromos() {
+
+            // Grab the sidebar promos from the facets
+            angular.forEach(vm.facets, function(facet, group) {
+               angular.forEach(facet.facet_terms, function(term) {
+                   if(term.field_sidebar && term.field_sidebar.entities.length > 0) {
+                       var sidebar = term.field_sidebar.entities[0];
+                       sidebar.weight = parseInt(term.field_sidebar_weight[0].value) | 0;
+                       vm.promos[term.id] = sidebar;
+                   }
+               });
+            });
+        }
+
+        function filterPrograms() {
+
+            console.log('filter programs start');
+            // FILTER THE PROGRAMS LIST
+            var filteredPrograms = [];
+
+            angular.forEach(vm.programs, function(program) {
+
+                var tests = [];
+                // filters have been set, apply to the programs list
+                angular.forEach(vm.activeFacetGroups, function(group, index) {
+
+                    var found = false;
+                    angular.forEach(group, function (tid) {
+                        // TODO: Figure out why some posts have a null program
+                        if (program.program == null || typeof program.program.tids == 'undefined') {
+                            console.log('FILTER ID:: ', program.ID);
+                            console.log('FILTER:: ', program);
+                        } else {
+                            if (program.program.tids.indexOf(tid.toString()) != -1) {
+                                found = true;
+                            }
+                        }
+                    });
+                    tests.push(found);
+                });
+
+                // of no false are found - add the program
+                if(tests.indexOf(false) == -1) {
+                    filteredPrograms.push(program);
+                }
+
+            });
+
+            updateCount(vm.filteredProgramsLength, filteredPrograms.length);
+
+            // TESTING - Turning off the fade in fade out on filter.
+            vm.filteredPrograms = filteredPrograms;
+            console.log('FILTERED PROGRAMS:: ', vm.filteredPrograms);
+            vm.filteredProgramsPaged = [];
+            $timeout(function() {
+                $scope.$emit('list:filtered');
+            }, 0);
+
+            console.log('filter programs finish');
+
+        }
+
+        function loadMoreFilteredProgramsPaged() {
+
+            console.log('Paging');
+            // Set we are putting data into
+            var last = vm.filteredProgramsPaged.length;
+
+            for (var i = 0; i <= 5; i++) {
+                if (last + i < vm.filteredPrograms.length) {
+                    console.log('Paging:: ', last + i);
+                    vm.filteredProgramsPaged.push(vm.filteredPrograms[last + i]);
+                }
+            }
+
+            $timeout(function() {
+
+                // Add the link to the program and decorate the program links with a return parameter
+                angular.element('*').filter('[data-url]').off().click(function(e) {
+                    var el = e.currentTarget;
+                    // If this is the 'favorite-button' in the row, ignore the action and let the button handle it
+                    if(angular.element(e.target).hasClass('button-favorite')) {
+                        return;
+                    }
+                    var url = angular.element(el).attr('data-url');
+					console.log(vm.keyPress);
+					if(vm.keyPress){
+						window.open(url + queryService.getReturnURLQueryString(), '_blank');
+					}else{
+						window.location = url + queryService.getReturnURLQueryString();
+					}
+					console.log('Add fancy link');
+
+                });
+
+                FF.programTeaser.init();
+
+                console.log('Program teaser init done');
+                // Update the element queries
+                FF.responsive.update();
+
+                console.log('Responsive update done');
+
+                $rootScope.$broadcast(constants.BROADCAST_KEY_PROGRAM_LIST_CHANGE);
+
+                console.log('Broadcast change');
+
+            }, 0);
+
+        }
+
+        function isAlignProgram(program) {
+            // TODO - Enable this if we want to display it.
+            if( program.program.field_align_transform.value === true){
+              return true;
+            }else{
+              return false;
+            }
+        }
+
+        function isStackableCert(program) {
+
+            // TODO - Enable this if we want to display it.
+            if(typeof program.program.field_stackable_certificate !== 'undefined' && program.program.field_stackable_certificate.length > 0){
+              if(program.program.field_stackable_certificate[0].value == "1"){
+                return true;
+              }
+            }else{
+              return false;
+            }
+        }
+
+        function updateCount(currentVal, newVal) {
+
+            // Don't start the counter twice
+            if(angular.isDefined(counter)) {
+                stopCount();
+            }
+            // Abort if we're already there
+            if(vm.filteredProgramsLength == newVal) {
+                stopCount();
+                return;
+            }
+
+            // update the count dynamically over 300ms in 10 steps
+            // var duration = 300;
+            var delta = newVal - currentVal;
+            var delay = 33;
+            var count = 10;
+
+            counter = $interval(function() {
+                vm.filteredProgramsLength += delta / count;
+
+                if(vm.filteredProgramsLength == newVal) {
+                    stopCount();
+                }
+
+                if(delta > 0) {
+                    if(vm.filteredProgramsLength > newVal) {
+                        vm.filteredProgramsLength = newVal;
+                        stopCount();
+                    }
+                }
+                else if(delta < 0) {
+                    if(vm.filteredProgramsLength < newVal) {
+                        vm.filteredProgramsLength = newVal;
+                        stopCount();
+                    }
+                }
+                else {
+                    stopCount();
+                }
+            }, delay);
+        }
+
+        function stopCount() {
+            if(angular.isDefined(counter)) {
+                $interval.cancel(counter);
+                counter = undefined;
+            }
+        }
+
+        function updateAvailableFacets(singleGroupActive, index) {
+
+            // create an array of all available tids
+            vm.availableTids = []; // clear this each time
+            angular.forEach(vm.filteredPrograms, function(program) {
+                angular.forEach(program.tids, function(tid) {
+                    if(vm.availableTids.indexOf(tid) == -1) {
+                        vm.availableTids.push(tid);
+                    }
+                });
+            });
+
+            // if only one group is active, filters within the same group should be available.
+            if(singleGroupActive) {
+                angular.forEach(vm.facets[index].facet_terms, function(term) {
+                    if(vm.availableTids.indexOf(term.id) == -1) {
+                        vm.availableTids.push(term.id);
+                    }
+                });
+            }
+        }
+
+        function clearFacets() {
+
+            if(!vm.facets) return;
+            angular.forEach(vm.facets, function(facet) {
+                angular.forEach(facet.facet_terms, function(term) {
+                    term.selected = false;
+                });
+            });
+            updateAvailableFacets();
+            setPromoTile();
+            vm.activeTab = -1;
+
+            // set the path of the window
+            console.log('448');
+            $location.path(vm.noHash);
+
+            console.log('451');
+            // only keep one back state
+            $location.replace(vm.noHash);
+
+        }
+
+        function facetTermClicked(term) {
+
+            if(isTermEnabled(term) == false) {
+                return;
+            }
+            term.selected = !term.selected;
+            setHashFromFacets();
+        }
+
+        function isTermEnabled(term) {
+            // all terms are enabled
+            return true;
+        }
+
+        function hasTermsSelected(facets) {
+
+            if(!vm.facets) return false;
+
+            var hasTerms = false;
+            angular.forEach(facets, function(key) {
+                angular.forEach(vm.facets[key].facet_terms, function(term) {
+                   if(term.selected == true && term.enabled == true) {
+                       hasTerms = true;
+                   }
+                });
+            });
+
+            return hasTerms;
+        }
+
+        function firstTermSelected(facets) {
+
+            if(!vm.facets) return '';
+
+            var title = '';
+            angular.forEach(facets, function(key) {
+                angular.forEach(vm.facets[key].facet_terms, function(term) {
+                    if(term.selected == true  && term.enabled == true && title == '') {
+                        title = term.name[0].value;
+                    }
+                });
+            });
+
+            return title;
+        }
+
+        function additionalTermCount(facets) {
+
+            if(!vm.facets) return 0;
+
+            var count = 0;
+            angular.forEach(facets, function(key) {
+                angular.forEach(vm.facets[key].facet_terms, function(term) {
+                    if(term.selected == true && term.enabled == true) {
+                        count++;
+                    }
+                });
+            });
+
+            return count;
+        }
+
+        function getFacetStatesFromHash() {
+
+            var hash = window.location.hash;
+
+            // create an array from the hash to convert and store
+            var valuesArray = hash.substring(2).split('/');
+            var values = null;
+
+            // if the hash does not match or has not been set ignore it and clear it
+            if(valuesArray.length > 1 && valuesArray.length != Object.keys(vm.facets).length) {
+
+                // set the path of the window
+                $location.path(vm.noHash);
+
+                // only keep one back state
+                console.log('534');
+                $location.replace(vm.noHash);
+
+                values = null;
+            }
+            else if(valuesArray.length > 1) {
+
+                var index = 0;
+                values = {};
+                angular.forEach(vm.facets, function(facet, key) {
+                    if(valuesArray)
+                        values[key] = valuesArray[index].split(',');
+                    index++;
+                });
+            }
+            return values;
+        }
+
+        function setHashFromFacets() {
+
+            // Builds the hash string based on filter object
+            var hash = "";
+            var addedFilterGroup = false;
+
+            angular.forEach(vm.facets, function(facet) {
+
+                var foundSelectedTerm = false;
+                angular.forEach(facet.facet_terms, function(term) {
+
+                    if(term.selected == true && term.enabled == true) {
+                        foundSelectedTerm = true;
+                        addedFilterGroup = true;
+                        hash += term.field_slug[0].value;
+                        hash += ',';
+                    }
+
+                });
+                //remove the last comma
+                if(hash.lastIndexOf(',') == hash.length -1) {
+                    hash = hash.slice(0, -1);
+                }
+
+                // if no terms selected in group, return all
+                if(foundSelectedTerm == false) {
+                    hash += '-';
+                }
+
+                // add a slash to separate groups
+                hash += '/';
+            });
+
+            //remove the last slash
+            if(hash.lastIndexOf('/') == hash.length -1) {
+                hash = hash.slice(0, -1);
+            }
+
+            // set the path of the window
+            $location.path(hash);
+
+            // only keep one back state
+            console.log('594');
+            $location.replace(hash);
+
+        }
+
+
+        function setPromoTile() {
+
+            console.log('set promo tile');
+            if(!vm.promos) return;
+
+            var highestWeight = 0;
+            var promoId = null;
+            angular.forEach(vm.facets, function(facet, group) {
+
+                // Check each term id
+                angular.forEach(facet.facet_terms, function(term) {
+
+                    // if selected true, check the weight
+                    if(term.selected == true) {
+                        if(typeof vm.promos[term.id] != 'undefined') {
+                            if(vm.promos[term.id].weight > highestWeight) {
+                                promoId = term.id;
+                                highestWeight = vm.promos[term.id].weight;
+                            }
+                        }
+                    }
+                });
+            });
+
+            if(promoId) {
+                vm.activePromo = vm.promos[promoId];
+            }
+            else {
+                // Set this to a default promo - just find the highest weight
+                var promoIndex = 0;
+                angular.forEach(vm.promos, function(promo, index) {
+
+                    if(promo && promo.weight && promo.weight > highestWeight) {
+                        highestWeight = promo.weight;
+                        promoIndex = index;
+                    }
+                });
+                vm.activePromo = vm.promos[promoIndex];
+            }
+            console.log('ACTIVE PROMO:: ', vm.activePromo);
+        }
+
+        function closeAccordion() {
+            FF.accordion.closeAll('.program-listing');
+        }
+
+        function openTakeover(open) {
+            vm.navTakeover = open;
+
+            if(open == true) {
+                angular.element('body').addClass('takeover-open');
+            }
+            else {
+                angular.element('body').removeClass('takeover-open');
+            }
+        }
+
+        function randomFloat() {
+            // Generate a random ID
+            return Math.random();
+        }
+
+        function initFrame(uid, url) {
+
+            // Don't allow the iFrame to get added again on digest cycles
+            if(angular.element('.promo-block-form iFrame').length) return;
+
+            // Add the iFrame
+            vm.promoFrame = new pym.Parent('frame-' + uid, url, {});
+        }
+
+		document.addEventListener('keydown', function() {
+			vm.keyPress = true;
+		});
+
+		document.addEventListener('keyup', function() {
+			vm.keyPress = false;
+		});
+    }
+
+})();

@@ -1,0 +1,74 @@
+/**
+ * Created by Jason on 4/12/16.
+ */
+
+
+/**
+ * @section components
+ * @subsection accordion
+ * @description - 
+ */
+
+var FF = FF || {};
+
+/**
+ * FF -search.js 
+ *
+ */
+
+FF.search = (function ($) {
+
+    var els = {};
+
+    var pub = {};
+
+    pub.init = init;
+
+    pub.goSearch = goSearch;
+
+    function searching() {
+
+	var searched 	= $('#search-text-input').val(),
+	    icon     	= $('.icon-nav-search');
+
+	if(searched.length > 1){
+	    icon.addClass('searching');
+
+	}else{
+	    icon.removeClass('searching');
+	}
+	console.log(searched);
+    }
+
+    function goSearch() {
+
+	var searched 	= $('#search-text-input').val(),
+	    cleaned 	= encodeURIComponent(searched);
+	
+	if(searched.length > 1){
+	    window.location = 'https://www.northeastern.edu/graduate' + "/?s=" + cleaned;
+	}
+    }
+
+    function init() {
+        $('.icon-nav-search').click(function(){
+	    goSearch();
+	});
+
+	$(document).keypress(function(e) {
+    	     if(e.which == 13) {
+		goSearch();		
+    	     }
+	});
+
+	$('#search-text-input').keyup(function(){
+	    searching();
+	});
+    }
+
+    return pub;
+
+})(jQuery);
+
+jQuery(document).ready(FF.search.init);
+

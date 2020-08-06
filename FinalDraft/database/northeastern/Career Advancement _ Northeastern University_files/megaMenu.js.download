@@ -1,0 +1,194 @@
+/**
+ * Created by Rob 5/20/16
+ */
+
+var FF = FF || {};
+
+/**
+ * FF - megaMenu.js
+ *
+ */
+FF.megaMenu = (function ($) {
+
+    var els = {};
+
+    var pub = {};
+
+    pub.init = init;
+
+    var delay = 25;
+
+    var currentSection = '';
+
+    var sections = [
+        'program',
+        'campus',
+        'about',
+        'admissions',
+        'news'
+    ]
+
+    function matchInArray (value, arr) {
+        var i;
+        for (i=0; i < arr.length; i++) {
+            if (value.substring(0, arr[i].length) == arr[i]) {
+                return i;
+            }
+        }
+        return -1;
+    };
+
+    function setActivePath() {
+
+        var currentPathName = window.location.pathname;
+
+        currentSection = currentPathName.split("\/")[1];
+
+        var section = matchInArray(currentSection, sections);
+
+        if (section > -1) {
+            $(els.section.get(section)).addClass('active-path');
+        }
+    }
+
+    function init() {
+
+        // Add polyfill in noCsscolumn support
+        if (!Modernizr.csscolumns) {
+            $('.group.span-2 .group-content, .group.span-3 .group-content, .group-span-4 .group-content').multicolumn();
+        }
+
+		// If mega menu link contains a program link, close the mega menu
+		// to avoid user confusion when the page doesn't reload for an angular route
+		$('.mega-menu-wrapper .nav-link-wrapper .nav-link').click(function(e){
+			var linkUrl = $(this).attr('href');
+
+			if(linkUrl.indexOf('/programs/') !== -1){
+				els.labels.removeClass('open');
+                els.content.removeClass('open');
+                els.section.removeClass('active');
+
+			}
+		});
+
+
+        // Closes menu on click outside
+        $('body').click(function(e) {
+
+            // Check if we are clicking outside the menu wrapper itself
+            if($(e.target).parents('.mega-menu-wrapper').length == 0) {
+                els.labels.removeClass('open');
+                els.content.removeClass('open');
+                els.section.removeClass('active');
+            }
+        });
+
+        // Primary Navigation items
+        els.labels = $('.section-label');
+
+        // The part the shows and hides
+        els.content = $('.section-content');
+
+        // Wraps both items above
+        els.section = $('.menu-section');
+
+        // What happens when a label is clicked
+        els.labels.click(function(e) {
+
+            // Sections labels that are also accordion labels except the one that was clicked
+            // This removes the open from others
+            $('.section-label.accordion-label').not(e.target).removeClass('open');
+
+
+            var currentSection = $(e.target).closest('.menu-section');
+            currentSection.toggleClass('active');
+
+            setTimeout(function() {
+                currentSection.siblings().removeClass('active');
+            }, 100);
+        });
+
+        // Mobile menu (hamburger) toggle
+        els.menuButton = $('.menu-button').off().click( function(e) {
+            e.stopPropagation();
+            $(e.currentTarget).toggleClass('active');
+            $('.mega-menu').toggleClass('active');
+            $('body').toggleClass('takeover-open');
+
+            // Close accordion if menu is closing
+            if(!$('.mega-menu').hasClass('active')) {
+                setTimeout(function() {
+                    FF.accordion.closeAll('.mega-menu');
+                }), 10
+            }
+        });
+
+        setActivePath();
+
+        // Close the menu when resizing or rotating device
+
+
+        var width = $(window).width();
+        console.log(width);
+               
+            $(window).resize(function(e) {
+                if ($(window).width() != width) { 
+                    $('body').removeClass('takeover-open');
+                    $('.mega-menu').removeClass('active');
+                    $('.menu-button').removeClass('active');
+                    $('.accordion-label, .accordion-item').removeClass('open');
+                    width = $(window).width();
+                }
+         });
+        
+
+        // Move the article, event into the menu
+        var menuArticle = $("#menu-article-featured").html();
+        var menuArticleLink = $("#menu-article-featured").find(".article-teaser").data("url");
+        console.log(menuArticleLink);
+        var menuArticleContainer = $('.nav-link-wrapper a[href="#main-menu-article"]');
+        menuArticleContainer.html(menuArticle);
+        menuArticleContainer.attr('href', menuArticleLink);
+
+        var latestMenuArticlesContainer = $('.main-menu-latest-articles .group-content');
+        var latestArts = $('#menu-articles-latest').find('.article-teaser');
+        var latestArtsOutput = "<div class='group-content'>";
+
+        $.each(latestArts, function(){
+          var link = $(this).data('url');
+          var title = $(this).find('.article-title h4').text();
+          latestArtsOutput += "<div class='nav-link-wrapper'><a class='nav-link' href='" + link + "'>" + title + "</a></div>";
+        });
+
+        latestArtsOutput += "<div class='nav-link-wrapper'><a class='nav-link' href='/blog'><strong>View All Articles</strong></a></div></div>";
+        latestMenuArticlesContainer.html(latestArtsOutput);
+
+        var featuredArticleContainer = $('.main-menu-featured-article .group-content');
+        var featuredArt = $('#menu-article-featured').html();
+        var featuredArtOutput = featuredArt;
+        featuredArticleContainer.html(featuredArtOutput);
+
+        var menuEvent = $("#menu-event-content").html();
+        var menuEventLink = $("#menu-event-content").find(".event-teaser").data("url");
+        var menuEventContainer = $('.nav-link-wrapper a[href="#main-menu-event"]');
+        menuEventContainer.html(menuEvent);
+        menuEventContainer.attr('href', menuEventLink);
+
+        // Latest articles
+        var recentArticles = $("#menu-articles-recent .article-teaser .article-title a");
+        var recentArticlesHtml = "";
+        $.each(recentArticles, function(key,val){
+          $(this).addClass("nav-link");
+          var linkHtml = $(this)[0].outerHTML;
+          recentArticlesHtml += "<div class='nav-link-wrapper'>" + linkHtml + "</div>";
+        });
+        var recentArticlesSelector = $('.nav-link[href="/graduate/blog/"]');
+        recentArticlesSelector.closest(".group-content").prepend(recentArticlesHtml);
+
+    }
+
+    return pub;
+
+})(jQuery);
+
+jQuery(document).ready(FF.megaMenu.init);

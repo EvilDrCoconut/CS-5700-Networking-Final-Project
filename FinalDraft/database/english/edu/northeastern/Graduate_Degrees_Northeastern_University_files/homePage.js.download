@@ -1,0 +1,116 @@
+/**
+ * Created by Jason on 8/16/16.
+ */
+
+var FF = FF || {};
+
+/**
+ * FF - homePage.js
+ *
+ *
+ */
+FF.homePage = (function ($) {
+
+    var els = {};
+
+    var pub = {};
+
+    var bleed = 0;
+
+    pub.init = init;
+    pub.resize = resize;
+
+    function resize() {
+
+        els.sections.each(function(i) {
+
+            var section = $(this);
+
+            var sectionIndex = section.data('section');
+
+            section.css('height', '');
+            // if (parallaxSlider.length > 0) {
+            //     parallaxSlider.css('height', '');
+            // }
+
+            if ($(window).innerWidth() >= 720) {
+
+
+                var children = section.children('.block');
+
+                var top,
+                    bottom,
+                    height = {
+                        left: 0,
+                        right: 0,
+                        container: 0
+                    };
+
+                children.each(function (index) {
+                    var child = $(this);
+                    if (index == 0 || child.offset().top < top) {
+                        top = child.offset().top;
+                    }
+
+                    if (index == 0 || child.offset().top + child.height() > bottom) {
+                        bottom = child.offset().top + child.height();
+                    }
+
+                    height[child.attr('position')] += child.height();
+                });
+
+                // Set height
+                height.container = bottom - top;
+
+                // Main sections padded by 150
+                var padding = {top: 140, bottom: 160};
+                // First section padded by 200
+                if (i == 0) {
+                    padding.top = 180;
+                }
+
+                section.css('height', height.container + padding.top + padding.bottom);
+
+                // if (parallaxSlider.length > 0 ) {
+                //     parallaxSlider.css('height', height.container + ( 2 * (padding.top + padding.bottom + bleed) ) );
+                // }
+                // If the sum of the heights of the components with attribute "right"
+                // is less then the height of the components on the left
+                // then move them down
+
+                if (height.left > height.right) {
+                    var t = (height.left - height.right) / 2;
+                    children.each(function () {
+                        var child = $(this);
+                        if (child.attr('position') == 'right') {
+                            child.css('transform', 'translateY(' + t + 'px)')
+                        }
+                    })
+                }
+            }
+        })
+
+    }
+    function init() {
+
+        els.sections = $('.homepage-article-container .section-cms .section-wrapper');
+        //resize();
+        $(window).on('resize', resize);
+
+        /* Remove for now due to choppy page scroll
+
+        if (navigator.userAgent.match(/(iPod|iPhone|iPad|Android)/)) {
+            $('[data-parallax="slider"] .parallax-slider').css('display', 'none');
+        } else {
+            $('[data-parallax="slider"]').parallax({
+                speed: 0.8,
+                bleed: bleed
+            });
+        }*/
+    }
+
+    return pub;
+
+})(jQuery);
+
+jQuery(document).ready(FF.homePage.init);

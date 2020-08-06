@@ -1,0 +1,24 @@
+/**
+ * Created by acheson on 3/28/16.
+ */
+(function() {
+    'use strict';
+
+    angular
+        .module('nu')
+        .directive('comparePageDirective', comparePageDirective);
+
+    comparePageDirective.$inject = ['constants'];
+
+    function comparePageDirective(constants) {
+
+        return {
+            templateUrl: constants.PLUGIN_URL + '/src/compare-page/compare-page.html',
+            controller: 'ComparePageController',
+            controllerAs: 'vm',
+            replace: true,
+            scope: {}
+        }
+    }
+
+})();

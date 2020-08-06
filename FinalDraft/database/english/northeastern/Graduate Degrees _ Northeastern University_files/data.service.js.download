@@ -1,0 +1,78 @@
+/**
+ * Created by acheson on 3/15/16.
+ */
+(function () {
+    'use strict';
+
+    angular
+        .module('nu')
+        .factory('dataService', dataService);
+
+
+    dataService.$inject = ['$http', '$q', 'constants'];
+
+    function dataService($http, $q, constants) {
+
+        var service = {
+            getFacets: getFacets,
+            getPrograms: getPrograms,
+            getProgramCompare: getProgramCompare
+        };
+        return service;
+        ///////////////////
+
+
+        function getFacets() {
+
+            var deferred = $q.defer();
+
+            $http.get(constants.FACETS_SERVICE_URL).then(function successCallback(response) {
+                deferred.resolve(angular.fromJson(response.data));
+            }, function errorCallback(response) {
+                console.log('failed facets');
+                console.log(response);
+            });
+
+            return deferred.promise;
+        }
+
+        /**
+         * Gets all programs.  Calls the /api/programs endpoint
+         * @returns {*}
+         */
+        function getPrograms(pageNumber) {
+
+            var deferred = $q.defer();
+
+            $http.get(constants.PROGRAMLIST_SERVICE_URL + '/' + pageNumber)
+                .then(function success(response) {
+                    deferred.resolve(angular.fromJson(response.data));
+                    console.log('GET PROGRAMS:: ', response.data);
+                }, function error(response) {
+                    console.log('failed programs ');
+                    console.log(response);
+                });
+
+            return deferred.promise;
+        }
+
+        /**
+         * Get a program or a set of programs using an array of ids.
+         * @param ids -- comma delimited list of ids
+         */
+        function getProgramCompare(ids) {
+
+            var deferred = $q.defer();
+
+            $http.get(constants.COMPARE_SERVICE_URL + '/' + ids).then(function successCallback(response) {
+                deferred.resolve(angular.fromJson(response.data.data));
+            }, function errorCallback(response) {
+                console.log('failed programs ');
+                console.log(response);
+            });
+
+            return deferred.promise;
+
+        }
+    }
+})();

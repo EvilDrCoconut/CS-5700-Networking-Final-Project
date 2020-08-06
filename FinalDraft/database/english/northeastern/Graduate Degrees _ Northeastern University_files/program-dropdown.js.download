@@ -1,0 +1,71 @@
+/**
+ * Created by valerieFF on 4/26/2016.
+ */
+
+var FF = FF || {};
+
+/**
+ * FF - dropdown.js
+ *
+ *
+ * dropdown and dropdown-item are used for collapsible dropdown menus.
+ *
+ * an "open" class is added on clicking the first item to display the items in the dropdown list if any exist.
+ */
+FF.programDropdown = (function ($) {
+
+
+    var itemSelector = '.collapsible-program-dropdown-item';
+
+    var arrowSelector = '.icon-nav-arrow-down';
+
+    var dropdownSelector = '.program-dropdown--has-children';
+
+    var firstItemSelector = '.program-dropdown-item.active';
+
+    var els = {};
+
+    var pub = {};
+
+    pub.init = init;
+
+    function toggle(e) {
+        e.preventDefault();
+
+        var collapsibleProgramItem = $(itemSelector);
+        // var downArrow = $(this).find(arrowSelector);
+
+        if (typeof collapsibleProgramItem !== typeof undefined && collapsibleProgramItem !== false) {
+            console.log('children exist');
+            $(this).parents(dropdownSelector).toggleClass('open');
+
+            // collapsibleProgramItem.toggleClass('open');
+        }
+
+        // downArrow.toggleClass('up');
+    }
+
+    function init() {
+
+        els.dropdown = $(dropdownSelector);
+
+        els.dropdownFirstItem = $(firstItemSelector);
+
+        els.dropdownFirstItem.off().on('click', toggle);
+
+        $('body').click(function(e) {
+            // Check if we are clicking outside the wrapper itself
+            if($(e.target).parents(dropdownSelector).length == 0) {
+                // Remove the
+                els.dropdown.removeClass('open');
+                // $(arrowSelector).removeClass('up');
+            }
+        });
+
+    }
+
+    return pub;
+
+})(jQuery);
+
+jQuery(document).ready(FF.programDropdown.init);

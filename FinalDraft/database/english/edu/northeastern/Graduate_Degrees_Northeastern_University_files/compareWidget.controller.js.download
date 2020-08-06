@@ -1,0 +1,209 @@
+/**
+ * Created by acheson on 3/28/16.
+ */
+(function() {
+    'use strict';
+
+    // Add any module dependencies here
+    angular
+
+        .module('nu')
+        .controller('CompareWidgetController', CompareWidgetController);
+
+    CompareWidgetController.$inject = ['$httpParamSerializer', '$rootScope', '$scope', '$timeout', 'constants', 'queryService','storageService'];
+
+    function CompareWidgetController($httpParamSerializer, $rootScope, $scope, $timeout, constants, queryService, storageService) {
+
+        var vm = this;
+
+        vm.favorites;
+        vm.maxFavorites = 4;
+        vm.favoriteLinkClicked = favoriteLinkClicked;
+        vm.favoriteRemoveClicked = favoriteRemoveClicked;
+        vm.compareClicked = compareClicked;
+        vm.open = false;
+        vm.setOpen = setOpen;
+        vm.closeOnScroll = true;
+        var errorDuration = 2000;
+
+        activate();
+
+        ///////////////////
+
+        function activate() {
+
+            console.log('Activate Compare');
+            // Update the element queries
+            FF.responsive.update();
+
+            // Get the current location
+            var currentLocation = window.location.pathname.split('/')[1];
+
+            // Get all favorite buttons from the page and add click event
+            angular.element('.button-favorite').off().click(favoriteClicked);
+
+            // Get the active favorites from local storage
+            vm.favorites = storageService.getFavorites() || [];
+
+            console.log('favorites:: ', vm.favorites);
+
+            // find matches and decorate
+            angular.forEach(vm.favorites, function(favorite) {
+                angular.element('.button-favorite[data-program-id="' + favorite.id + '"]').addClass('active');
+                angular.element('.button-favorite[data-program-id="' + favorite.id + '"]').attr('data-gtm-event',"unfavorited-program");
+            });
+
+            vm.setOpen(storageService.getFavoritesStartOpen());
+
+            $rootScope.$on(constants.BROADCAST_KEY_PROGRAM_LIST_CHANGE, programListChanged);
+
+            // set behaviors based on current location
+            if(currentLocation == constants.COMPARE_PAGE_URL || currentLocation == constants.PROGRAMS_PAGE_URL) {
+                vm.closeOnScroll = false;
+            }
+            if(currentLocation == constants.COMPARE_PAGE_URL) {
+                angular.element('.compare-button.compare').addClass('active');
+            }
+
+            // Add a scroll listener to close the favorites bar
+            window.addEventListener('scroll', function() {
+                if(vm.closeOnScroll && vm.open == true) {
+                    vm.setOpen(false);
+                    $scope.$apply();
+                }
+            });
+        }
+
+        function programListChanged() {
+
+            // Wrapping this in a timeout forces it to wait until end of digest cycle, after elements have been added or removed from DOM
+            $timeout(function() {
+                angular.element('.button-favorite').off().click(favoriteClicked);
+                angular.forEach(vm.favorites, function(favorite) {
+                    angular.element('.button-favorite[data-program-id="' + favorite.id + '"]').addClass('active');
+                    angular.element('.button-favorite[data-program-id="' + favorite.id + '"]').attr('data-gtm-event',"unfavorited-program");
+                });
+            });
+        }
+
+        function favoriteClicked(eventObject) {
+
+            var el = angular.element(eventObject.currentTarget);
+            var id = el.data()['programId'];
+            var title = el.data()['programTitle'];
+            var name = el.data()['programName'];
+            var permalink = el.data()['programPermalink'];
+
+            var index = getFavoriteIndex(id);
+            // if not found add the item
+            if(index < 0) {
+
+                vm.setOpen(true);
+
+                // make sure we are under the limit of total favorites
+                if(vm.favorites.length < vm.maxFavorites) {
+                    var favorite = {
+                        'id': id,
+                        'title': title,
+                        'name': name,
+                        'permalink' : permalink
+                    };
+                    vm.favorites.push(favorite);
+                    angular.element('.button-favorite[data-program-id="' + id + '"]').addClass('active');
+                    angular.element('.button-favorite[data-program-id="' + id + '"]').attr('data-gtm-event',"unfavorited-program");
+                }
+                // limit reached, present an error
+                else {
+                    vm.error = true;
+                    $timeout(function() {vm.error = false}, errorDuration);
+                }
+            }
+            // else add it
+            else {
+                vm.favorites.splice(index, 1);
+                angular.element('.button-favorite[data-program-id="' + id + '"]').removeClass('active');
+                angular.element('.button-favorite[data-program-id="' + id + '"]').attr('data-gtm-event',"favorited-program");
+            }
+
+            // persist
+            storageService.setFavorites(vm.favorites);
+
+            // apply
+            $scope.$apply();
+        }
+
+        function getFavoriteIndex(id) {
+            var foundIndex = -1;
+            angular.forEach(vm.favorites, function(favorite, index) {
+                if(favorite.id == id) {
+                    foundIndex = index;
+                }
+            });
+            return foundIndex;
+        }
+
+        function favoriteLinkClicked(index) {
+
+            var path = vm.favorites[index].permalink;
+            var currentLocation = window.location.pathname.split('/')[1];
+            if(currentLocation == constants.PROGRAMS_PAGE_URL) {
+                path += queryService.getReturnURLQueryString();
+            }
+            console.log(path);
+            window.location = path;
+        }
+
+        function favoriteRemoveClicked(index) {
+
+            // remove active class from element
+            angular.element('.button-favorite[data-program-id="' + vm.favorites[index].id + '"]').removeClass('active');
+            angular.element('.button-favorite[data-program-id="' + vm.favorites[index].id + '"]').attr('data-gtm-event',"favorited-program");
+
+            // remove from array
+            vm.favorites.splice(index, 1);
+
+            // persist
+            storageService.setFavorites(vm.favorites);
+
+            // if no favorites left go back to programs page
+            if(vm.favorites.length == 0) {
+                var currentLocation = window.location.pathname.split('/')[1];
+                if(currentLocation == constants.COMPARE_PAGE_URL) {
+                    var path = '/' + constants.PROGRAMS_PAGE_URL;
+                    window.location = path;
+                }
+            }
+        }
+
+        function compareClicked() {
+            // Goto the compare page, passing the current hash as a query parameter
+            var currentLocation = window.location.pathname.split('/')[1];
+            if(currentLocation == constants.COMPARE_PAGE_URL) {
+                return;
+            }
+
+            var path = constants.COMPARE_PAGE_URL;
+            // If on the programs page - store the facets for return
+            if(currentLocation == constants.PROGRAMS_PAGE_URL) {
+                path += queryService.getReturnURLQueryString();
+            }
+            console.log(path);
+            window.location = path;
+        }
+
+        function setOpen(open, holdState) {
+
+            vm.open = -1;
+            storageService.setFavoritesStartOpen(open);
+
+            // if intentionally opened, leave open
+            if(open && holdState) {
+                vm.closeOnScroll = false;
+            }
+
+            $timeout(function() {
+                vm.open = open;
+            });
+        }
+    }
+})();

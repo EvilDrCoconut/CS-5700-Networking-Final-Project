@@ -1,0 +1,93 @@
+/*  
+JAVASCRIPT IMAGE GALLERY W/ mootools
+Description: STYLE SHEET FOR IMAGE GALLERY
+Version: 1.0
+Author: Devin Ross
+Author URI: http://tutorialdog.com
+*/
+
+#img_gallery{ 
+width:988px;
+margin-top:-111px;
+
+ }
+#img_gallery a{ outline:none; border:none; }
+#img_gallery a img{border:none;}
+
+/* --- IMAGE STAGE */
+#fullimg{
+	width:988px;
+	overflow:hidden;
+	height:110px;
+}
+#fullimg img{ width:988px; }
+#fullimg p, #fullimg span{
+	position:absolute;
+	background:black;
+	opacity:.5;
+	color:white;
+	margin:0px;
+	width:500px;
+	font-size:11px;
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+}
+
+/* --- SLIDER --- */
+#img_gallery #wrapper{
+	overflow:hidden;
+	width: 824px;
+	float:left;
+	height:110px;
+	position: relative;
+
+}
+
+#items{
+	margin:0px 0px;
+	padding:0px;
+	list-style:none;
+	width:50000px;
+	position: relative;
+	letter-spacing:0em;
+}
+#items li{
+	float:left;
+	list-style:none;
+}
+#items .thumb{
+	width:206px;
+	height:110px;
+	cursor:pointer;
+	margin:0px;
+	padding:0px;
+}
+#items .large{
+	display:none;
+	position:absolute;
+}
+#fullimg .loading{
+	width: 24px;
+	height: 24px;
+}
+#fullimg .thumb{display:none;}
+
+#items .item  p, #items .item  span{
+	display:none;
+	text-indent: -2000em;
+}
+#moveleft, #moveright{
+	margin:0px;
+	height:110px;
+	color: white;
+	width: 82px;
+	text-indent: -2000em;
+	text-decoration: none;
+	z-index: 1000; 
+	display:block;
+	cursor: pointer;
+	float:left;
+}
+#moveleft{background: url('../menuprod/img/izquierda01.jpg');}
+#moveright{background: url('../menuprod/img/derecha01.jpg');}
+#moveleft:hover{background: url('../menuprod/img/izquierda02.jpg');}
+#moveright:hover{background: url('../menuprod/img/derecha02.jpg');}

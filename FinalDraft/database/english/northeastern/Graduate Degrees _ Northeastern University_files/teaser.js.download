@@ -1,0 +1,66 @@
+/**
+ * Created by Jason on 4/13/16.
+ */
+
+var FF = FF || {};
+
+/**
+ * FF - teaser.js
+ *
+ *
+ * This adds a click event to a div.  And it allows any nested links inside it to be clickable
+ * without propogating to the parent div.
+ *
+ * Add the following to your div to make it clickable.
+ *
+ * <div class="teaser" data-url="www.example.com"></div>
+ */
+FF.teaser = (function ($) {
+
+    var els = {};
+
+    var pub = {};
+
+    pub.init = init;
+
+    function bindEvents() {
+
+        els.teasers.each(function() {
+            var teaser = $(this);
+
+            var href = teaser.attr('data-url');
+
+            // If it has a data-url attribute
+            if (href.length > 0) {
+
+                // on the child a tag - stopPropogation.
+                var aTags = teaser.find('a');
+
+                aTags.on('click', function() {
+                    var href = $(this).attr('href');
+                    event.stopPropagation();
+                    event.preventDefault();
+                    window.location = href;
+                });
+
+                // Bind a click a event to the element itself
+                teaser.on('click', function() {
+                    window.location = href;
+                });
+            }
+        });
+    };
+
+    function init() {
+
+        els.teasers = jQuery('.teaser, .compare-program-link');
+
+        bindEvents();
+
+    }
+
+    return pub;
+
+})(jQuery);
+
+jQuery(document).ready(FF.teaser.init);

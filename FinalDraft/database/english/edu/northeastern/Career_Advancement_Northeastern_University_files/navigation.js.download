@@ -1,0 +1,11 @@
+$(document).ready(function(){
+  $("#searchProgramsNav").submit(function(e){
+    e.preventDefault();
+    var searched = $(this).find("input[type='text']").val();
+    if(searched.length > 1){
+      var searchLoc = "http://www.northeastern.edu/graduate/programs/#/search/" + searched;
+      window.location.assign(searchLoc);
+    }
+  });
+
+})
