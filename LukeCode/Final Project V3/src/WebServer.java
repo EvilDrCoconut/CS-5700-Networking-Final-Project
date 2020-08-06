@@ -7,22 +7,20 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.net.Socket;
 
-
+/**
+ * class for the web server that handles the listens for clients and handles their requests
+ */
 public class WebServer extends Thread implements WebServerInterface {
 
-  // variables for actual server to handle requests, priority queue to hold data and sequence numbers,
-  //        and a thread pool executor to help handle multiple threads for a program.
-  //private ServerSocket server;
   private Socket clientSock;
   private int serverAllowanceCheck;
 
   /**
-   * Constructor of the WebServer Class, takes no variables and sets up on localhost, through port
-   * 2000
+   * Constructor of the WebServer Class, takes no variables and sets up
+   *        on localhost, through port 2000
    */
-
   public WebServer(String ip, Socket inSocket)  {
-    //try {
+
       // can change backlog to queue requests from incoming clients. Shouldn't need to with multithreading,
       //      could be used to help prevent overflow errors.
       //  server = new ServerSocket(port, 0);
@@ -30,55 +28,43 @@ public class WebServer extends Thread implements WebServerInterface {
 
       String[] ipNums = ip.split("\\.");
       serverAllowanceCheck = Integer.parseInt(ipNums[2]);
-//    } catch (IOException e) {
-//      System.out.println("Error creating Http Server: Error Code: Served");
-//    }
+
   }
 
-//  public static void main(String[] argv) throws IOException {
-//
-//    // requires us to give an ip in the argv, suggest using -ip 0.0.0.0
-//    String ip = "192.0.0.0";
-//    int i = 0;
-//    for(String each: argv){
-//      if(each.equalsIgnoreCase("-ip")){
-//        ip = argv[i+1];
-//      }
-//      i++;
-//    }
-//    WebServer httpServer = new WebServer(ip);
-//    System.out.println("Server created successfully on localhost, now listening for requests.");
-//
-//    while (true) {
-//      try {
-//        httpServer.listenAndAccept();
-//      } catch(IOException e){
-//      }
-//    }
-//  }
 
-
+  /**
+   * method to listen and accept client connections
+   * @throws IOException if data stream can't be created due to socket not be found
+   */
   @Override
   public void listenAndAccept() throws IOException {
 
-
- //   while (true) {
-
-      //clientSock = server.accept();
-
+    // if socket from multithreaded server is bound, then creates an input to read request
       if (clientSock.isBound()) {
         DataInputStream received = new DataInputStream(new BufferedInputStream(clientSock.getInputStream()));
         String request = received.readUTF();
+        // creates web server handler and parses request header
         WebServerHandler helper = new WebServerHandler(request);
         helper.handle();
 
+        // creates echo get header and parses requested url
         EchoGetHeader path = new EchoGetHeader(helper.retPath());
         path.handle();
+
+        // receives requested file and
         packageAndSend(helper.retLang(), helper.retSize(), path.retEndCap(), path.retFolder(), path.retFile());
- //     }
     }
   }
 
+  /**
+   * Method to find the requested url file, package it, and send it back to the client
+   * @param lang the requested language, if not given, assumed English
+   * @param size the requested size of the file returned, or segmented into smaller sections
+   * @param endCap the type of site requested, verifies web server can reach it
+   * @param folder the folder path to the file
+   * @param file the file specifically requested
+   * @throws IOException exception if unable to send byte array back to client
+   */
   @Override
   public void packageAndSend(String lang, String size, String endCap, String folder, String file) throws IOException {
 
@@ -86,6 +72,7 @@ public class WebServer extends Thread implements WebServerInterface {
     int error404Check = 1;
     String endCapGiven = "";
 
+    // checks if current web server can reach requested files
     if(endCap.equals("com") && serverAllowanceCheck == 110){
       error404Check = 0;
       endCapGiven = endCap;
@@ -97,9 +84,9 @@ public class WebServer extends Thread implements WebServerInterface {
       endCapGiven = endCap;
     } else{
       System.out.println("Internal database error.");
-      //clientSock.close();
     }
 
+    // creates final path based on language requested
     String path = "";
     switch(lang) {
       case "":
@@ -115,10 +102,10 @@ public class WebServer extends Thread implements WebServerInterface {
 
     System.out.println(path);
 
-    // initiate a fileinputstream to help retrieve all of file
+    // initiate a fileinputstream to help retrieve all of file, if file not found,
+    //      404 error to client.
     FileInputStream buf = null;
     File dummyFile = new File(path);
-    System.out.println(dummyFile);
     long sizeCheck = dummyFile.length();
     String error404 = "File given is not found, check spelling and try again.";
     try{
@@ -128,7 +115,8 @@ public class WebServer extends Thread implements WebServerInterface {
       error404Check = 1;
     }
 
-    // creates a payload byte array of standard size of 4000 bytes, unless specified by GET request
+    // if file requested can be reached, then a payload byte array is created and the file
+    //      is read into it.  then sent back to the client.
     if(error404Check == 0) {
       byte[] payload;
       if (size.equals("")) {
@@ -143,26 +131,21 @@ public class WebServer extends Thread implements WebServerInterface {
         OutputStream out = clientSock.getOutputStream();
         out.write(payload);
         out.close();
-        //clientSock.close();
       } catch (IOException e) {
         System.out.println("Error Code 01");
       }
     } else{
+      // if file was not found, then send back a 404 error message to client
       try {
         System.out.println("Sending 404 message");
         OutputStream out = clientSock.getOutputStream();
         byte[] error = error404.getBytes();
         out.write(error);
         out.close();
-        //clientSock.close();
       } catch (IOException e) {
         System.out.println("Error Code 01");
       }
     }
   }
-
-//  public ServerSocket retServer(){
-//    return this.server;
-//  }
 
 }
