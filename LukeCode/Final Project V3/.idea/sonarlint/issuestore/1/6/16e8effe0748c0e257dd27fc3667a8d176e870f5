@@ -1,0 +1,16 @@
+
+c
+java:S2095"JUse try-with-resources or close this "ServerSocket" in a "finally" clause.(ŒÎñŠüÿÿÿÿ
+m	java:S109"UAssign this magic number 2000 to a well-named constant, and use the constant instead.(ŒÎñŠüÿÿÿÿ
+=
+java:S2189)""Add an end condition to this loop.(˜ïˆÿÿÿÿÿ
+0
+java:S1220""Move this file to a named package.
+T
+java:S2134"@Don't extend "Thread", since the "run" method is not overridden.(ÿöİ–
+3
+java:S2096"Remove this throws clause.(œ Éüÿÿÿÿ
+]
+java:S1132"IMove the "-ip" string literal on the left side of this string comparison.(±ŠÌ°
+L	java:S106"9Replace this use of System.out or System.err by a logger.(”“é
+S	java:S106+"9Replace this use of System.out or System.err by a logger.(Ê”Ñãşÿÿÿÿ

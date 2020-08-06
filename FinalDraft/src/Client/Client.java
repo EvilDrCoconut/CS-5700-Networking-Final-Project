@@ -144,7 +144,7 @@ public class Client {
           DataOutputStream dataOutputStream = new DataOutputStream(socketOutputStream)) {
         System.out.println(url + optionalParameters);
         // TODO: Test optional parameters.
-        dataOutputStream.writeUTF("path:-" + url + "-" + optionalParameters);
+        dataOutputStream.writeUTF("path:" + url + ":" + optionalParameters);
         DataOutputStream fileOut = new DataOutputStream(new FileOutputStream(new File(writePath)));
         writeFile(dataInputStream, fileOut);
       }
@@ -207,6 +207,7 @@ public class Client {
    * @return
    */
   private boolean validCacheFolder(String arg) {
+    System.out.println(arg);
     return arg.toLowerCase().startsWith("save=") && Files
         .isDirectory(Paths.get(arg.toLowerCase().replace("save=", "")));
   }
@@ -222,7 +223,7 @@ public class Client {
       this.optionalParameters = validHeader(arg1) ? arg1.toLowerCase().replace("header=", "") :
           arg2.toLowerCase().replace("header=", "");
     } else {
-      throw new IllegalArgumentException("Must provide one valid path");
+      throw new IllegalArgumentException("Must provide valid header");
     }
 
   }
@@ -235,8 +236,8 @@ public class Client {
    * @return
    */
   private boolean validHeader(String arg) {
-    return arg.toLowerCase().startsWith("header=") && (arg.toLowerCase().contains("size:-") || arg
-        .toLowerCase().contains("language:-"));
+    return arg.toLowerCase().startsWith("header=") && (arg.toLowerCase().contains("size:") || arg
+        .toLowerCase().contains("language:"));
   }
 
 }

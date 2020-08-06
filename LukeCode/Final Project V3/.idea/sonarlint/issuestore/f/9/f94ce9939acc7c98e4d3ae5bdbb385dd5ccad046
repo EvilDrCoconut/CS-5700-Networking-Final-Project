@@ -3,83 +3,70 @@
 0
 java:S1220""Move this file to a named package.
 j
-java:S2095|"MUse try-with-resources or close this "FileInputStream" in a "finally" clause.(âî—ˆ8³¹Êáº.
+java:S2095p"MUse try-with-resources or close this "FileInputStream" in a "finally" clause.(âî—ˆ8Æ™Š¼.
 k
-java:S1192k"IDefine a constant instead of duplicating this literal "database" 3 times.(ÜèÄşÿÿÿÿ8³¹Êáº.
-s	java:S109 "RAssign this magic number 2 to a well-named constant, and use the constant instead.(‹Õ“Àúÿÿÿÿ8³¹Êáº.
-p	java:S109Y"TAssign this magic number 110 to a well-named constant, and use the constant instead.(ÔÜêê8³¹Êáº.
-u	java:S109\"TAssign this magic number 120 to a well-named constant, and use the constant instead.(ãŒíµùÿÿÿÿ8³¹Êáº.
-u	java:S109_"TAssign this magic number 130 to a well-named constant, and use the constant instead.(îÅ”öıÿÿÿÿ8³¹Êáº.
+java:S1192^"IDefine a constant instead of duplicating this literal "database" 3 times.(ÜèÄşÿÿÿÿ8Æ™Š¼.
+s	java:S109"RAssign this magic number 2 to a well-named constant, and use the constant instead.(‹Õ“Àúÿÿÿÿ8Æ™Š¼.
+p	java:S109L"TAssign this magic number 110 to a well-named constant, and use the constant instead.(ÔÜêê8Æ™Š¼.
+u	java:S109O"TAssign this magic number 120 to a well-named constant, and use the constant instead.(ãŒíµùÿÿÿÿ8Æ™Š¼.
+u	java:S109R"TAssign this magic number 130 to a well-named constant, and use the constant instead.(îÅ”öıÿÿÿÿ8Æ™Š¼.
 B
-java:S1166}"%Either log or rethrow this exception.(‹±ÃÆ8³¹Êáº.
+java:S1166q"%Either log or rethrow this exception.(‹±ÃÆ8Æ™Š¼.
 C
-java:S1166’"%Either log or rethrow this exception.(ï­£Ä8³¹Êáº.
+java:S1166†"%Either log or rethrow this exception.(ï­£Ä8Æ™Š¼.
 C
-java:S1166"%Either log or rethrow this exception.(ï­£Ä8³¹Êáº.
+java:S1166‘"%Either log or rethrow this exception.(ï­£Ä8Æ™Š¼.
 f
-java:S1120"DMake this line start after 4 spaces to indent the code consistently.(Éãö²ûÿÿÿÿ8³¹Êáº.
+java:S1120"DMake this line start after 4 spaces to indent the code consistently.(Éãö²ûÿÿÿÿ8Æ™Š¼.
 a
-java:S1120E"DMake this line start after 4 spaces to indent the code consistently.(Û·ÿÉ8³¹Êáº.
+java:S1120+"DMake this line start after 4 spaces to indent the code consistently.(Û·ÿÉ8Æ™Š¼.
 a
-java:S1120F"DMake this line start after 6 spaces to indent the code consistently.(¼‡»ø8³¹Êáº.
+java:S1120,"DMake this line start after 6 spaces to indent the code consistently.(¼‡»ø8Æ™Š¼.
 ]
-java:S2134"@Don't extend "Thread", since the "run" method is not overridden.(¸å¡8³¹Êáº.
+java:S2134"@Don't extend "Thread", since the "run" method is not overridden.(¸å¡8Æ™Š¼.
 †
-java:S1541S"dThe Cyclomatic Complexity of this method "packageAndSend" is 13 which is greater than 10 authorized.(¹£ûËûÿÿÿÿ8³¹Êáº.
+java:S1541E"dThe Cyclomatic Complexity of this method "packageAndSend" is 13 which is greater than 10 authorized.(¹£ûËûÿÿÿÿ8Æ™Š¼.
 t
-java:S3776S"RRefactor this method to reduce its Cognitive Complexity from 18 to the 15 allowed.(¹£ûËûÿÿÿÿ8³¹Êáº.
+java:S3776E"RRefactor this method to reduce its Cognitive Complexity from 18 to the 15 allowed.(¹£ûËûÿÿÿÿ8Æ™Š¼.
 n
-java:S1871_"LThis branch's code block is the same as the block for the branch on line 89.(îÅ”öıÿÿÿÿ8³¹Êáº.
+java:S1871O"LThis branch's code block is the same as the block for the branch on line 76.(ãŒíµùÿÿÿÿ8Æ™Š¼.
 n
-java:S1871\"LThis branch's code block is the same as the block for the branch on line 89.(ãŒíµùÿÿÿÿ8³¹Êáº.
+java:S1871R"LThis branch's code block is the same as the block for the branch on line 76.(îÅ”öıÿÿÿÿ8Æ™Š¼.
 f
-java:S1132Y"IMove the "com" string literal on the left side of this string comparison.(ÔÜêê8³¹Êáº.
+java:S1132L"IMove the "com" string literal on the left side of this string comparison.(ÔÜêê8Æ™Š¼.
 k
-java:S1132\"IMove the "org" string literal on the left side of this string comparison.(ãŒíµùÿÿÿÿ8³¹Êáº.
+java:S1132O"IMove the "org" string literal on the left side of this string comparison.(ãŒíµùÿÿÿÿ8Æ™Š¼.
 k
-java:S1132_"IMove the "edu" string literal on the left side of this string comparison.(îÅ”öıÿÿÿÿ8³¹Êáº.
-Z	java:S106c"9Replace this use of System.out or System.err by a logger.(¶•ÈĞùÿÿÿÿ8³¹Êáº.
-C	java:S131h""Add a default case to this switch.(¿ªËÚûÿÿÿÿ8³¹Êáº.
+java:S1132R"IMove the "edu" string literal on the left side of this string comparison.(îÅ”öıÿÿÿÿ8Æ™Š¼.
+Z	java:S106V"9Replace this use of System.out or System.err by a logger.(¶•ÈĞùÿÿÿÿ8Æ™Š¼.
+C	java:S131[""Add a default case to this switch.(¿ªËÚûÿÿÿÿ8Æ™Š¼.
 H
-java:S1075k"&Remove this hard-coded path-delimiter.(ÜèÄşÿÿÿÿ8³¹Êáº.
+java:S1075^"&Remove this hard-coded path-delimiter.(ÜèÄşÿÿÿÿ8Æ™Š¼.
 H
-java:S1075k"&Remove this hard-coded path-delimiter.(ÜèÄşÿÿÿÿ8³¹Êáº.
+java:S1075^"&Remove this hard-coded path-delimiter.(ÜèÄşÿÿÿÿ8Æ™Š¼.
 H
-java:S1075k"&Remove this hard-coded path-delimiter.(ÜèÄşÿÿÿÿ8³¹Êáº.
+java:S1075^"&Remove this hard-coded path-delimiter.(ÜèÄşÿÿÿÿ8Æ™Š¼.
 H
-java:S1075n"&Remove this hard-coded path-delimiter.(Êªµ†ıÿÿÿÿ8³¹Êáº.
+java:S1075a"&Remove this hard-coded path-delimiter.(Êªµ†ıÿÿÿÿ8Æ™Š¼.
 H
-java:S1075n"&Remove this hard-coded path-delimiter.(Êªµ†ıÿÿÿÿ8³¹Êáº.
+java:S1075a"&Remove this hard-coded path-delimiter.(Êªµ†ıÿÿÿÿ8Æ™Š¼.
 H
-java:S1075n"&Remove this hard-coded path-delimiter.(Êªµ†ıÿÿÿÿ8³¹Êáº.
+java:S1075a"&Remove this hard-coded path-delimiter.(Êªµ†ıÿÿÿÿ8Æ™Š¼.
 C
-java:S1075q"&Remove this hard-coded path-delimiter.(ÔĞØ8³¹Êáº.
+java:S1075d"&Remove this hard-coded path-delimiter.(ÔĞØ8Æ™Š¼.
 C
-java:S1075q"&Remove this hard-coded path-delimiter.(ÔĞØ8³¹Êáº.
+java:S1075d"&Remove this hard-coded path-delimiter.(ÔĞØ8Æ™Š¼.
 C
-java:S1075q"&Remove this hard-coded path-delimiter.(ÔĞØ8³¹Êáº.
-U	java:S106t"9Replace this use of System.out or System.err by a logger.(ÍÎÉ 8³¹Êáº.
-T	java:S106~"9Replace this use of System.out or System.err by a logger.(ãÑâA8³¹Êáº.
-i
-java:S1132…"FMove the "" string literal on the left side of this string comparison.(ˆë¤ÿÿÿÿÿ8³¹Êáº.
+java:S1075d"&Remove this hard-coded path-delimiter.(ÔĞØ8Æ™Š¼.
+U	java:S106g"9Replace this use of System.out or System.err by a logger.(ÍÎÉ 8Æ™Š¼.
+T	java:S106r"9Replace this use of System.out or System.err by a logger.(ãÑâA8Æ™Š¼.
+h
+java:S1132z"FMove the "" string literal on the left side of this string comparison.(ˆë¤ÿÿÿÿÿ8Æ™Š¼.
 m
-java:S2674‹"JCheck the return value of the "read" call to see how many bytes were read.(íÅĞùşÿÿÿÿ8³¹Êáº.
-[	java:S106“"9Replace this use of System.out or System.err by a logger.(—±×¹şÿÿÿÿ8³¹Êáº.
-V	java:S106—"9Replace this use of System.out or System.err by a logger.(´¥ìã8³¹Êáº.
+java:S2674€"JCheck the return value of the "read" call to see how many bytes were read.(íÅĞùşÿÿÿÿ8Æ™Š¼.
+[	java:S106‡"9Replace this use of System.out or System.err by a logger.(—±×¹şÿÿÿÿ8Æ™Š¼.
+V	java:S106Œ"9Replace this use of System.out or System.err by a logger.(´¥ìã8Æ™Š¼.
 :
-java:S1943™"Remove this use of "getBytes"(¥¾8³¹Êáº.
-[	java:S106"9Replace this use of System.out or System.err by a logger.(—±×¹şÿÿÿÿ8³¹Êáº.
-X	java:S125"<This block of commented-out lines of code should be removed.(ÿÉ™ˆ8³¹Êáº.
-]	java:S125"<This block of commented-out lines of code should be removed.(ñ¥ùšøÿÿÿÿ8³¹Êáº.
-X	java:S125"<This block of commented-out lines of code should be removed.(¯ÌÏÖ8³¹Êáº.
-X	java:S125!"<This block of commented-out lines of code should be removed.(ö®˜ï8³¹Êáº.
-X	java:S125&"<This block of commented-out lines of code should be removed.(Ã—Ê‚8³¹Êáº.
-]	java:S125)"<This block of commented-out lines of code should be removed.(ß®æ‰ùÿÿÿÿ8³¹Êáº.
-X	java:S1254"<This block of commented-out lines of code should be removed.(î¯ÔÉ8³¹Êáº.
-X	java:S125A"<This block of commented-out lines of code should be removed.(î¯ÔÉ8³¹Êáº.
-X	java:S125C"<This block of commented-out lines of code should be removed.(ô­Á˜8³¹Êáº.
-]	java:S125N"<This block of commented-out lines of code should be removed.(éØ»Úûÿÿÿÿ8³¹Êáº.
-]	java:S125d"<This block of commented-out lines of code should be removed.(×¼Æüÿÿÿÿ8³¹Êáº.
-^	java:S125‘"<This block of commented-out lines of code should be removed.(×¼Æüÿÿÿÿ8³¹Êáº.
-^	java:S125œ"<This block of commented-out lines of code should be removed.(×¼Æüÿÿÿÿ8³¹Êáº.
-Y	java:S125£"<This block of commented-out lines of code should be removed.(İ¼¯¡8³¹Êáº.
+java:S1943"Remove this use of "getBytes"(¥¾8Æ™Š¼.
+[	java:S106’"9Replace this use of System.out or System.err by a logger.(—±×¹şÿÿÿÿ8Æ™Š¼.
+X	java:S125"<This block of commented-out lines of code should be removed.(¯ÌÏÖ8Æ™Š¼.

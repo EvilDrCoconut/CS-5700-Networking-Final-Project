@@ -1,13 +1,13 @@
 
 0
 java:S1220""Move this file to a named package.
-h	java:S109"SAssign this magic number 15 to a well-named constant, and use the constant instead.(Ğ’¸ä
 a
-java:S1120#"DMake this line start after 2 spaces to indent the code consistently.(áµÕë8ŒºÊáº.
+java:S11205"DMake this line start after 4 spaces to indent the code consistently.(¸Çß8ŒºÊáº.
 f
-java:S1120$"DMake this line start after 4 spaces to indent the code consistently.(”ëµşùÿÿÿÿ8ŒºÊáº.
+java:S1120-"DMake this line start after 4 spaces to indent the code consistently.(”ëµşùÿÿÿÿ8ŒºÊáº.
 a
-java:S1120("DMake this line start after 4 spaces to indent the code consistently.(¿Ûèì8ŒºÊáº.
+java:S11201"DMake this line start after 4 spaces to indent the code consistently.(¿Ûèì8ŒºÊáº.
 a
-java:S1120,"DMake this line start after 4 spaces to indent the code consistently.(¸Çß8ŒºÊáº.
-C	java:S131""Add a default case to this switch.(§ÿıøıÿÿÿÿ8ŒºÊáº.
+java:S1120,"DMake this line start after 2 spaces to indent the code consistently.(áµÕë8ŒºÊáº.
+o	java:S109"SAssign this magic number 15 to a well-named constant, and use the constant instead.(Ğ’¸ä8’šŠ¼.
+C	java:S131""Add a default case to this switch.(§ÿıøıÿÿÿÿ8’šŠ¼.

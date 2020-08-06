@@ -75,13 +75,13 @@ public class WebServer extends Thread implements WebServerInterface {
     String endCapGiven = "";
 
     // checks if current web server can reach requested files
-    if(endCap.equals("com") && serverAllowanceCheck == 110){
+    if(endCap.equals("com")/* && serverAllowanceCheck == 110*/){
       error404Check = 0;
       endCapGiven = endCap;
-    } else if(endCap.equals("org") && serverAllowanceCheck == 120){
+    } else if(endCap.equals("org")/* && serverAllowanceCheck == 120*/){
       error404Check = 0;
       endCapGiven = endCap;
-    } else if(endCap.equals("edu") && serverAllowanceCheck == 130){
+    } else if(endCap.equals("edu")/* && serverAllowanceCheck == 130*/){
       error404Check = 0;
       endCapGiven = endCap;
     } else{

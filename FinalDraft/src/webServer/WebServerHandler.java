@@ -21,20 +21,20 @@ public class WebServerHandler implements HandlerInterface{
   // method to parse the request
   public void handle() {
 
-    // splits on "-" to tokenize the request
-    segmentedData = dataToParse.split("-");
+    // splits on ":" to tokenize the request
+    segmentedData = dataToParse.split(":");
 
     // if a token equals the case, sets the needed variable to the value following the token
     int n = 0;
     for (String each : segmentedData) {
       switch (each) {
-        case ("path:"):
+        case ("path"):
           path = segmentedData[n + 1];
           break;
-        case ("language:"):
+        case ("language"):
           language = segmentedData[n + 1];
           break;
-        case ("size:"):
+        case ("size"):
           size = segmentedData[n + 1];
       }
       n++;

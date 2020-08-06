@@ -1,0 +1,21 @@
+
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(•İÈ‚ıÿÿÿÿ
+s	java:S109B"RAssign this magic number 2 to a well-named constant, and use the constant instead.(¿ƒœñıÿÿÿÿ8¶ñÖ«¼.
+J
+java:S2039"-Explicitly declare the visibility for "link".(ïºéÈ8¶ñÖ«¼.
+Q
+java:S2039"/Explicitly declare the visibility for "script".(­„æ¨ûÿÿÿÿ8¶ñÖ«¼.
+N
+java:S2039",Explicitly declare the visibility for "img".(Óœà·øÿÿÿÿ8¶ñÖ«¼.
+R
+java:S2039"0Explicitly declare the visibility for "matcher".( ãÅÄşÿÿÿÿ8¶ñÖ«¼.
+R
+java:S2039"0Explicitly declare the visibility for "content".(–•ÙÅùÿÿÿÿ8¶ñÖ«¼.
+P
+java:S2039".Explicitly declare the visibility for "links".(‰Æ¯¿şÿÿÿÿ8¶ñÖ«¼.
+P
+java:S4248"3Refactor this code to use a "static final" Pattern.(ïºéÈ8¶ñÖ«¼.
+U
+java:S4248"3Refactor this code to use a "static final" Pattern.(­„æ¨ûÿÿÿÿ8¶ñÖ«¼.
+U
+java:S4248"3Refactor this code to use a "static final" Pattern.(Óœà·øÿÿÿÿ8¶ñÖ«¼.
