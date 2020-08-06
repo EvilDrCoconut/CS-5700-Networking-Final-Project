@@ -3,8 +3,8 @@ All sites are accesible through these URL's, if another langauge is
 	by "e" for english, "f" for french, or "s" for spanish.
 
 Com Sites:
-www.lowes.com/lowes/Lowes_Home_Improvement.html
-www.walmart.com/walmart/Walmart.html
+www.lowes.com/lowes/Lowes_Home_Improvement.html E/S
+www.walmart.com/walmart/Walmart.html E/S/F
 
 Edu Sites:
 www.northeastern.edu/northeastern/Career_Advancement_Northeastern_University.html
@@ -14,14 +14,10 @@ www.northeastern.edu/northeastern/Northeastern_University_Home.html
 Org Sites:
 www.geeksforgeeks.org/geeksforgeeks/GeeksforGeeks_Home.html
 www.geeksforgeeks.org/geeksforgeeks/GFG_Courses_Practice_GeeksforGeeks.html
-www.geeksforgeeks.org/geeksforgeeks/How_to_write_an_Interview_Experience_GeeksforGeeks.html
 
 www.pbs.org/pbs/NHPBS_TV_Schedule.html
 www.pbs.org/pbs/PBS_Public_Broadcasting_Service.html
 
-www.wikipedia.org/wikipedia/Client_browser_Wikipedia.html
-www.wikipedia.org/wikipedia/Name_server_Wikipedia.html
 www.wikipedia.org/wikipedia/Network_Wikipedia.html
-www.wikipedia.org/wikipedia/UTF-8_Wikipedia.html
-www.wikipedia.org/wikipedia/Web_server_Wikipedia.html
-www.wikipedia.org/wikipedia/Wikipedia.html
+www.wikipedia.org/wikipedia/Web_server_Wikipedia.html E/S/F
+www.wikipedia.org/wikipedia/Wikipedia.html E/S/F but same structure for all languages, universal home page

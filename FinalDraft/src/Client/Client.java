@@ -95,6 +95,7 @@ public class Client {
 
       try {
         Client client = new Client(args[0]);
+        client.addDefaultCacheFolder();
         if (args.length == 2) {
           if (client.validCacheFolder(args[1])) {
             client.setCacheFolder(args[1], "");
@@ -142,8 +143,6 @@ public class Client {
 
       try (DataInputStream dataInputStream = new DataInputStream(socketInputStream);
           DataOutputStream dataOutputStream = new DataOutputStream(socketOutputStream)) {
-        System.out.println(url + optionalParameters);
-        // TODO: Test optional parameters.
         dataOutputStream.writeUTF("path:" + url + ":" + optionalParameters);
         DataOutputStream fileOut = new DataOutputStream(new FileOutputStream(new File(writePath)));
         writeFile(dataInputStream, fileOut);
@@ -172,18 +171,16 @@ public class Client {
     this.writePath = pathSoFar;
   }
 
-  //TODO, make sure this isn't needed.
-//  /**
-//   * Creates ~/web-cache
-//   * @throws IOException
-//   */
-//  private void addDefaultCacheFolder() throws IOException {
-//    if (!Files
-//        .isDirectory(Paths.get(cacheFolder))) {
-//      Files.createDirectory(
-//          Paths.get(cacheFolder));
-//    }
-//  }
+  /**
+   * Creates ~/web-cache as a directory to save into.
+   *
+   * @throws IOException
+   */
+  private void addDefaultCacheFolder() throws IOException {
+    if (!Files.isDirectory(Paths.get(cacheFolder))) {
+      Files.createDirectory(Paths.get(cacheFolder));
+    }
+  }
 
   /**
    * Sets a valid string to the cache folder, or throws exception.
@@ -207,7 +204,6 @@ public class Client {
    * @return
    */
   private boolean validCacheFolder(String arg) {
-    System.out.println(arg);
     return arg.toLowerCase().startsWith("save=") && Files
         .isDirectory(Paths.get(arg.toLowerCase().replace("save=", "")));
   }
