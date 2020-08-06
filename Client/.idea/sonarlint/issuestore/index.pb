@@ -7,3 +7,7 @@ K
 test/Client/ClientTest.java,7\f\7f6ac107bb68e77704ec20e34985f48be96bc631
 F
 src/Client/Client.java,7\a\7abe22d64543205426e0ef1b36158ede3632b727
+W
+'src/Client/HTMLDependencyExtractor.java,6\3\6303f8b682fe451e20bd86dc1d0811a81c57caa6
+\
+,test/Client/HTMLDependencyExtractorTest.java,7\0\707f4d7b99707971246274cff971526e4556ebf3

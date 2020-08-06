@@ -1,0 +1,21 @@
+
+C
+java:S2039"-Explicitly declare the visibility for "link".(ïºéÈ
+G
+java:S2039",Explicitly declare the visibility for "img".(Óœà·øÿÿÿÿ
+K
+java:S2039"0Explicitly declare the visibility for "content".(–•ÙÅùÿÿÿÿ
+I
+java:S4248"3Refactor this code to use a "static final" Pattern.(ïºéÈ
+K
+java:S2039"0Explicitly declare the visibility for "matcher".( ãÅÄþÿÿÿÿ
+N
+java:S4248"3Refactor this code to use a "static final" Pattern.(­„æ¨ûÿÿÿÿ
+J
+java:S2039"/Explicitly declare the visibility for "script".(­„æ¨ûÿÿÿÿ
+I
+java:S2039".Explicitly declare the visibility for "links".(‰Æ¯¿þÿÿÿÿ
+N
+java:S4248"3Refactor this code to use a "static final" Pattern.(Óœà·øÿÿÿÿ
+l	java:S109B"RAssign this magic number 2 to a well-named constant, and use the constant instead.(¿ƒœñýÿÿÿÿ
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(•ÝÈ‚ýÿÿÿÿ

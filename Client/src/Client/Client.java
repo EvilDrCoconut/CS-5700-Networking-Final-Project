@@ -1,7 +1,6 @@
 package Client;
 
 import java.awt.Desktop;
-import java.awt.SystemTray;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.File;
@@ -17,8 +16,8 @@ import java.nio.file.Paths;
 import java.util.List;
 
 /**
- * Top level class for internet system client, sends get request to download files, parses first html to get
- * dependent assets and gets those as well.
+ * Top level class for internet system client, sends get request to download files, parses first
+ * html to get dependent assets and gets those as well.
  */
 public class Client {
 
@@ -229,7 +228,8 @@ public class Client {
   }
 
   /**
-   * Checks for optional paramet/header validity. Needs to contain size, language, or both arguments.
+   * Checks for optional paramet/header validity. Needs to contain size, language, or both
+   * arguments.
    *
    * @param arg
    * @return

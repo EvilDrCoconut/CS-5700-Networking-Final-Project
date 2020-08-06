@@ -1,85 +1,60 @@
 
-S
-java:S1449"6Define the locale to be used in this String operation.(À‘ĞĞ8¯ÒôÒ³.
-R
-java:S1444"0Make this "public static packetSize" field final(Ğëò¶úÿÿÿÿ8İ—ÂÑ³.
+Y	java:S125´"<This block of commented-out lines of code should be removed.(ŠÇ8›ŸÜŒ¼.
+?
+java:S1643¤"Use a StringBuilder instead.(¯îìŞúÿÿÿÿ8¿î”º.
+Z	java:S106z"9Replace this use of System.out or System.err by a logger.(Ü¨¥êıÿÿÿÿ8åıòŒ¼.
+U
+java:S1135’"2Complete the task associated to this TODO comment.(–àÌÒÿÿÿÿÿ8¸ÅÖŒ¼.
 T
-java:S1449"6Define the locale to be used in this String operation.(‰ï±Ú8¿î”º.
-x
-java:S1104"VMake packetSize a static final constant or non-public and provide accessors if needed.(Ğëò¶úÿÿÿÿ8İ—ÂÑ³.
-[	java:S864"9Add parentheses to make the operator precedence explicit.(ù§ŒÛøÿÿÿÿ8¯ÒôÒ³.
-w
-java:S1541h"ZThe Cyclomatic Complexity of this method "main" is 16 which is greater than 10 authorized.(Çµí‘8Ë˜îÒ³.
+java:S1449ß"6Define the locale to be used in this String operation.(´¤§»8¡ƒÑ½».
+H
+java:S2325Ñ"*Make "validCacheFolder" a "static" method.(Ñßİ™8¡ƒÑ½».
+U
+java:S1135¯"2Complete the task associated to this TODO comment.(îç‘åşÿÿÿÿ8İíİŒ¼.
+Y
+java:S1449ï"6Define the locale to be used in this String operation.(³Ùºúÿÿÿÿ8ãâçŒ¼.
+T
+java:S1449Ó"6Define the locale to be used in this String operation.(²³çÖ8¡ƒÑ½».
+Y
+java:S1449î"6Define the locale to be used in this String operation.(êÄÔ¥øÿÿÿÿ8¡ƒÑ½».
+C
+java:S2325í"%Make "validHeader" a "static" method.(ÅÕöœ8¡ƒÑ½».
+o	java:S134c"NRefactor this code to not nest more than 3 if/for/while/switch/try statements.(Û¤Ãúÿÿÿÿ8¡ƒÑ½».
 d
-java:S1162 "BRemove the usage of the checked exception 'FileNotFoundException'.(ø‚“ºúÿÿÿÿ8¿î”º.
-Y
-java:S1449Œ"6Define the locale to be used in this String operation.(Éû¦Äÿÿÿÿÿ8¯ÒôÒ³.
-X
-java:S1449w"6Define the locale to be used in this String operation.(ß´†Ïúÿÿÿÿ8¯ÒôÒ³.
-Y
-java:S1449"6Define the locale to be used in this String operation.(ñ²•ºùÿÿÿÿ8¿î”º.
-Y
-java:S1449‘"6Define the locale to be used in this String operation.(°›óïÿÿÿÿÿ8¿î”º.
-q	java:S109"UAssign this magic number 2000 to a well-named constant, and use the constant instead.(Ÿ¦÷ê8¿î”º.
+java:S1192Ä"FDefine a constant instead of duplicating this literal "save=" 4 times.(…üÅš8¡ƒÑ½».
 g
-java:S1124"EReorder the modifiers to comply with the Java Language Specification.(Ğëò¶úÿÿÿÿ8Â¸‡šµ.
-s	java:S109j"RAssign this magic number 3 to a well-named constant, and use the constant instead.(ä§şµüÿÿÿÿ8¯ÒôÒ³.
-\	java:S126~";"if ... else if" constructs should end with "else" clauses.(äÌ•ûüÿÿÿÿ8¯ÒôÒ³.
-Z	java:S106k"9Replace this use of System.out or System.err by a logger.(†³Õ”ıÿÿÿÿ8öİ¥Ñ³.
+java:S3027*"JPut single-quotes around '/' to use the faster "lastIndexOf(char)" method.(ÒÿÉ8¡ƒÑ½».
+\	java:S126h";"if ... else if" constructs should end with "else" clauses.(äÌ•ûüÿÿÿÿ8¯ÒôÒ³.
 Y
-java:S1449ˆ"6Define the locale to be used in this String operation.(¶Â—ÿøÿÿÿÿ8Â¸‡šµ.
-o
-java:S3776h"RRefactor this method to reduce its Cognitive Complexity from 37 to the 15 allowed.(Çµí‘8Ë˜îÒ³.
-P
-java:S1481p"3Remove this unused "serverFilePath" local variable.(äÅ¢8¿î”º.
-Z	java:S106$"9Replace this use of System.out or System.err by a logger.(™ŞÑœıÿÿÿÿ8ÌÃ¾”º.
+java:S1449Ş"6Define the locale to be used in this String operation.(¶İ¾šşÿÿÿÿ8¡ƒÑ½».
+T
+java:S1449Ä"6Define the locale to be used in this String operation.(…üÅš8¡ƒÑ½».
 t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(•İÈ‚ıÿÿÿÿ
+U	java:S106|"9Replace this use of System.out or System.err by a logger.(‡É»á8ï÷Œ¼.
+n	java:S109b"RAssign this magic number 2 to a well-named constant, and use the constant instead.(Ğøª³8¡ƒÑ½».
+G
+java:S1166{"%Either log or rethrow this exception.(¥¨›ıÿÿÿÿ8Ú²öŒ¼.
+n	java:S109i"RAssign this magic number 2 to a well-named constant, and use the constant instead.(±½Œ‘8¡ƒÑ½».
+
+java:S1130("{Remove the declaration of thrown exception 'java.net.UnknownHostException', as it cannot be thrown from constructor's body.(ó™—şÿÿÿÿ8¡ƒÑ½».
 Y
-java:S1449"6Define the locale to be used in this String operation.(ù§ŒÛøÿÿÿÿ8¯ÒôÒ³.
-s	java:S109~"RAssign this magic number 3 to a well-named constant, and use the constant instead.(äÌ•ûüÿÿÿÿ8¿î”º.
-g
-java:S1192"JDefine a constant instead of duplicating this literal "user.home" 3 times.(ë¡Ïã8ªù€Ò³.
-[	java:S106½"9Replace this use of System.out or System.err by a logger.(äõÒ¢ûÿÿÿÿ8öİ¥Ñ³.
-[	java:S106“"9Replace this use of System.out or System.err by a logger.(™ô˜§ıÿÿÿÿ8¯ÒôÒ³.
-J
-java:S1444"-Make this "public static webPort" field final(Ÿ¦÷ê8ò”ãĞ³.
-v	java:S109"UAssign this magic number 1500 to a well-named constant, and use the constant instead.(Ğëò¶úÿÿÿÿ8İ—ÂÑ³.
-p	java:S134©"NRefactor this code to not nest more than 3 if/for/while/switch/try statements.(¶Çâúÿÿÿÿ8öİ¥Ñ³.
-P
-java:S1135"2Complete the task associated to this TODO comment.(ªØëœ8¿î”º.
-b
-java:S1124"EReorder the modifiers to comply with the Java Language Specification.(Ÿ¦÷ê8İ—ÂÑ³.
-g
-java:S1192"JDefine a constant instead of duplicating this literal "web-cache" 3 times.(ë¡Ïã8ªù€Ò³.
-s	java:S109v"RAssign this magic number 2 to a well-named constant, and use the constant instead.(ØÆ´ùÿÿÿÿ8¯ÒôÒ³.
+java:S1449Å"6Define the locale to be used in this String operation.(’×æ×şÿÿÿÿ8¡ƒÑ½».
+Y
+java:S1449î"6Define the locale to be used in this String operation.(êÄÔ¥øÿÿÿÿ8ãâçŒ¼.
+o
+java:S3776Z"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(Çµí‘8Ú²öŒ¼.
 S
-java:S1449y"6Define the locale to be used in this String operation.(üÅğ‹8Â¸‡šµ.
-c
-java:S1192y"FDefine a constant instead of duplicating this literal "save=" 8 times.(üÅğ‹8¯ÒôÒ³.
-U	java:S864"9Add parentheses to make the operator precedence explicit.(À‘ĞĞ8¯ÒôÒ³.
-p
-java:S1104"SMake webPort a static final constant or non-public and provide accessors if needed.(Ÿ¦÷ê8ò”ãĞ³.
-V	java:S106ƒ"9Replace this use of System.out or System.err by a logger.(ÆÀûı8¯ÒôÒ³.
-n	java:S109"RAssign this magic number 2 to a well-named constant, and use the constant instead.(À‘ĞĞ8¯ÒôÒ³.
-o	java:S109"RAssign this magic number 2 to a well-named constant, and use the constant instead.(‰ï±Ú8¯ÒôÒ³.
-t	java:S109ˆ"RAssign this magic number 2 to a well-named constant, and use the constant instead.(¶Â—ÿøÿÿÿÿ8¯ÒôÒ³.
+java:S1449Ò"6Define the locale to be used in this String operation.(òØş8¡ƒÑ½».
+]	java:S125,"<This block of commented-out lines of code should be removed.(ñ’ğüÿÿÿÿ8»ÉÍŒ¼.
 k
-java:S1192w"IDefine a constant instead of duplicating this literal "headers=" 5 times.(ß´†Ïúÿÿÿÿ8¯ÒôÒ³.
-t	java:S109‘"RAssign this magic number 2 to a well-named constant, and use the constant instead.(°›óïÿÿÿÿÿ8¿î”º.
-j	java:S134"NRefactor this code to not nest more than 3 if/for/while/switch/try statements.(À‘ĞĞ8¯ÒôÒ³.
-J	java:S108w")Either remove or fill this block of code.(ß´†Ïúÿÿÿÿ8¯ÒôÒ³.
-E	java:S108y")Either remove or fill this block of code.(üÅğ‹8¯ÒôÒ³.
-Y
-java:S1449"6Define the locale to be used in this String operation.(ù§ŒÛøÿÿÿÿ8¯ÒôÒ³.
-^	java:S125›"<This block of commented-out lines of code should be removed.(ñ’ğüÿÿÿÿ8¿î”º.
-[	java:S106»"9Replace this use of System.out or System.err by a logger.(¨¶ÑÍşÿÿÿÿ8¿î”º.
-Z	java:S106r"9Replace this use of System.out or System.err by a logger.(×”îØùÿÿÿÿ8¿î”º.
-S
-java:S1449"6Define the locale to be used in this String operation.(À‘ĞĞ8¯ÒôÒ³.
-t	java:S109"RAssign this magic number 2 to a well-named constant, and use the constant instead.(ù§ŒÛøÿÿÿÿ8¯ÒôÒ³.
-o	java:S134w"NRefactor this code to not nest more than 3 if/for/while/switch/try statements.(ß´†Ïúÿÿÿÿ8¯ÒôÒ³.
-Y
-java:S1449‡"6Define the locale to be used in this String operation.(¥®‹Àşÿÿÿÿ8¯ÒôÒ³.
-Z	java:S106|"9Replace this use of System.out or System.err by a logger.(úèòÿÿÿÿÿ8¯ÒôÒ³.
->
-java:S1643&"Use a StringBuilder instead.(¯îìŞúÿÿÿÿ8¿î”º.
+java:S1192Ş"HDefine a constant instead of duplicating this literal "header=" 3 times.(¶İ¾šşÿÿÿÿ8¡ƒÑ½».
+O
+java:S1135+"2Complete the task associated to this TODO comment.(¨¸¡Õ8Ö…ÌŒ¼.
+Z	java:S106]"9Replace this use of System.out or System.err by a logger.(¹š™Âÿÿÿÿÿ8¡ƒÑ½».
+B
+java:S1166y"%Either log or rethrow this exception.(ï­£Ä8µ×ñŒ¼.
+[	java:S106‘"9Replace this use of System.out or System.err by a logger.(’üäåıÿÿÿÿ8¡ƒÑ½».
+s	java:S109h"RAssign this magic number 3 to a well-named constant, and use the constant instead.(äÌ•ûüÿÿÿÿ8¿î”º.
+^	java:S125¸"<This block of commented-out lines of code should be removed.(Œ„ˆÜûÿÿÿÿ8›ŸÜŒ¼.
+s	java:S109\"RAssign this magic number 3 to a well-named constant, and use the constant instead.(ä§şµüÿÿÿÿ8¯ÒôÒ³.
+s	java:S109j"RAssign this magic number 2 to a well-named constant, and use the constant instead.(éÓùÇşÿÿÿÿ8¡ƒÑ½».
