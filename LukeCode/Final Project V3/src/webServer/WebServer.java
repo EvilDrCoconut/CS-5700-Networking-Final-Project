@@ -23,11 +23,7 @@ public class WebServer extends Thread implements WebServerInterface {
    */
   public WebServer(String ip, Socket inSocket)  {
 
-      // can change backlog to queue requests from incoming clients. Shouldn't need to with multithreading,
-      //      could be used to help prevent overflow errors.
-      //  server = new ServerSocket(port, 0);
       clientSock = inSocket;
-
       String[] ipNums = ip.split("\\.");
       serverAllowanceCheck = Integer.parseInt(ipNums[2]);
 
@@ -78,10 +74,10 @@ public class WebServer extends Thread implements WebServerInterface {
     if(endCap.equals("com") && serverAllowanceCheck == 110){
       error404Check = 0;
       endCapGiven = endCap;
-    } else if(endCap.equals("org") && serverAllowanceCheck == 120){
+    } else if(endCap.equals("org") && serverAllowanceCheck == 130){
       error404Check = 0;
       endCapGiven = endCap;
-    } else if(endCap.equals("edu") && serverAllowanceCheck == 130){
+    } else if(endCap.equals("edu") && serverAllowanceCheck == 120){
       error404Check = 0;
       endCapGiven = endCap;
     } else{
