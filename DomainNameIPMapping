@@ -2,11 +2,11 @@
 
 Domain name             IP addresses
 
-walmart.com            83.255.110.100 
-geeksforgeeks.com      83.255.110.101
+walmart.com            83.255.110.100   port: 2000
+geeksforgeeks.com      83.255.110.101   port: 2001
 
-northeastern.edu       83.255.120.100
-tufts.edu              83.255.120.101
+northeastern.edu       83.255.120.100   port: 2002
+tufts.edu              83.255.120.101   port: 2003
 
-pbs.org                83.255.130.100 
-wikipedia.org          83.255.130.101           
+pbs.org                83.255.130.100   port: 2004
+wikipedia.org          83.255.130.101   port: 2005
