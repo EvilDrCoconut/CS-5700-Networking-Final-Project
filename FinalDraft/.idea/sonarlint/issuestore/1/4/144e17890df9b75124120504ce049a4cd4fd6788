@@ -1,16 +1,16 @@
 
-e
-java:S2095"JUse try-with-resources or close this "ServerSocket" in a "finally" clause.(ŒÎñŠüÿÿÿÿ
-o	java:S109"UAssign this magic number 2000 to a well-named constant, and use the constant instead.(ŒÎñŠüÿÿÿÿ
+_
+java:S1132"IMove the "-ip" string literal on the left side of this string comparison.(±ŠÌ°
+5
+java:S2096"Remove this throws clause.(œ Éüÿÿÿÿ
 =
 java:S2189#""Add an end condition to this loop.(˜ïˆÿÿÿÿÿ
+o	java:S109"UAssign this magic number 2000 to a well-named constant, and use the constant instead.(ŒÎñŠüÿÿÿÿ
+S	java:S106-"9Replace this use of System.out or System.err by a logger.(Ê”Ñãşÿÿÿÿ
+e
+java:S2095"JUse try-with-resources or close this "ServerSocket" in a "finally" clause.(ŒÎñŠüÿÿÿÿ
+N	java:S106%"9Replace this use of System.out or System.err by a logger.(”“é
 t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Áä“¶üÿÿÿÿ
 V
 java:S2134
 "@Don't extend "Thread", since the "run" method is not overridden.(ÿöİ–
-5
-java:S2096"Remove this throws clause.(œ Éüÿÿÿÿ
-_
-java:S1132"IMove the "-ip" string literal on the left side of this string comparison.(±ŠÌ°
-N	java:S106%"9Replace this use of System.out or System.err by a logger.(”“é
-S	java:S106-"9Replace this use of System.out or System.err by a logger.(Ê”Ñãşÿÿÿÿ

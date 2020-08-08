@@ -1,24 +1,19 @@
 package Client;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.lang.ref.Cleaner;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import org.junit.jupiter.api.Test;
 import webServer.MultithreadedServer;
-import webServer.WebServer;
 
 class ClientTest {
+
   String sampleURL = "somecharacters.someothercharacters.com";
   String sampleURLWithFile = "somecharacters.someothercharacters.com/folder/file.html";
-  String sampleRealURL = "www.geeksforgeeks.org/geeksforgeeks/GFG_Courses_Practice_GeeksforGeeks.html";
+  String sampleRealURL = "www.geeksforgeeks.org/geeksforgeeks/GFG_Courses_Practice_GeeksforGeeks"
+      + ".html";
 
   @Test
   void test() throws UnknownHostException {
@@ -27,6 +22,7 @@ class ClientTest {
 
   @Test
   void testFormatFile() {
+    assertEquals("www.dsaf.com/folder/file.html".substring(0, "www.dsaf.com/folder/file.html".indexOf("/")), "www.dsaf.com");
 //    assertEquals(File.separator, "\\");
 //    assertEquals(File.separator, "\\");
 //    assertEquals(Client.buildFileName(), "c");
@@ -53,10 +49,9 @@ class ClientTest {
   }
 
   @Test
-  void testMain()
-  {
+  void testMain() {
     Client.main(new String[]{
-       sampleRealURL
+        sampleRealURL
     });
   }
 }

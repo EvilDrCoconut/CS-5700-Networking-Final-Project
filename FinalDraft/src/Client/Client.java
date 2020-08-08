@@ -1,5 +1,6 @@
 package Client;
 
+import DNS.DNSClient;
 import java.awt.Desktop;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -21,10 +22,10 @@ import java.util.List;
  */
 public class Client {
 
-  public static final int WEB_PORT = 2000;
+  public int webPort = 2000;
   public static final int PACKET_SIZE = 1500;
   private final String baseUrl;
-  private InetAddress host = InetAddress.getByName("127.0.0.1");
+  private InetAddress host = InetAddress.getByName("127.0.0.1"); // Default to localhost.
   private String cacheFolder = System.getProperty("user.home") + File.separator + "web-cache";
   private String optionalParameters = "";
   private String writePath;
@@ -40,9 +41,16 @@ public class Client {
   Client(String requestedFileString) throws UnknownHostException {
     this.requestedFileString = requestedFileString;
     baseUrl = requestedFileString.substring(0, requestedFileString.lastIndexOf("/") + 1);
-    // TODO: get host from DNS.
-//        InetAddress host = InetAddress.getByName(getURL(args[0]));
-//    host =
+
+//    try {
+////       TODO: get host from DNS.
+//      String dnsResponse = new DNSClient()
+//          .browserQueryIPString(requestedFileString.substring(0, requestedFileString.indexOf("/")));
+//      webPort = Integer.parseInt(dnsResponse);
+//    } catch (IOException e) {
+//      System.out.println("Trouble resolving DNS, defaulting to localhost.");
+//    }
+
 
   }
 
@@ -135,7 +143,7 @@ public class Client {
    */
   private void downloadFile(String url) throws IOException {
 
-    try (Socket socket = new Socket(host, WEB_PORT)) {
+    try (Socket socket = new Socket(host, webPort)) {
       // Instantiate input and output to send and receive from server.
       // These do not need to be closed (closed does nothing according to documentation)
       OutputStream socketOutputStream = socket.getOutputStream();
@@ -221,7 +229,6 @@ public class Client {
     } else {
       throw new IllegalArgumentException("Must provide valid header");
     }
-
   }
 
   /**
@@ -235,5 +242,4 @@ public class Client {
     return arg.toLowerCase().startsWith("header=") && (arg.toLowerCase().contains("size:") || arg
         .toLowerCase().contains("language:"));
   }
-
 }

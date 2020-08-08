@@ -41,12 +41,14 @@ public class WebServer extends Thread implements WebServerInterface {
       if (clientSock.isBound()) {
         DataInputStream received = new DataInputStream(new BufferedInputStream(clientSock.getInputStream()));
         String request = received.readUTF();
+        System.out.println(request);
         // creates web server handler and parses request header
         WebServerHandler helper = new WebServerHandler(request);
         helper.handle();
 
         // creates echo get header and parses requested url
         EchoGetHeader path = new EchoGetHeader(helper.retPath());
+        System.out.println(helper.retPath());
         path.handle();
 
         // receives requested file and

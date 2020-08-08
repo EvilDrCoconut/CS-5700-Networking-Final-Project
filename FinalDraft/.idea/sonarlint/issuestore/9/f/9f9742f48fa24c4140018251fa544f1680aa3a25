@@ -1,70 +1,70 @@
 
-n	java:S109T"TAssign this magic number 130 to a well-named constant, and use the constant instead.(îÅ”öýÿÿÿÿ
-
-java:S1541G"dThe Cyclomatic Complexity of this method "packageAndSend" is 12 which is greater than 10 authorized.(¹£ûËûÿÿÿÿ
-t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Áä“¶üÿÿÿÿ
-Q	java:S125"<This block of commented-out lines of code should be removed.(¯ÌÏÖ
-<
-java:S1166ˆ"%Either log or rethrow this exception.(ï­£Ä
-<
-java:S1075f"&Remove this hard-coded path-delimiter.(ŽÔÐØ
 A
-java:S1075c"&Remove this hard-coded path-delimiter.(Êªµ†ýÿÿÿÿ
-d
-java:S1132T"IMove the "edu" string literal on the left side of this string comparison.(îÅ”öýÿÿÿÿ
-c
-java:S2095r"MUse try-with-resources or close this "FileInputStream" in a "finally" clause.(âî—ˆ
-b
-java:S1871Q"LThis branch's code block is the same as the block for the branch on line 78.(ä†ú§
+java:S1075a"&Remove this hard-coded path-delimiter.(ÜèÄþÿÿÿÿ
 <
-java:S1075f"&Remove this hard-coded path-delimiter.(ŽÔÐØ
+java:S1166”"%Either log or rethrow this exception.(ï­£Ä
+T	java:S106Š"9Replace this use of System.out or System.err by a logger.(—±×¹þÿÿÿÿ
 A
-java:S1075c"&Remove this hard-coded path-delimiter.(Êªµ†ýÿÿÿÿ
-N	java:S106i"9Replace this use of System.out or System.err by a logger.(ÍÎÉ 
-f
-java:S2674‚"JCheck the return value of the "read" call to see how many bytes were read.(íÅÐùþÿÿÿÿ
-i	java:S109N"TAssign this magic number 110 to a well-named constant, and use the constant instead.(ÔÜêê
-4	java:S113"'Add a new line at the end of this file.
-S	java:S106X"9Replace this use of System.out or System.err by a logger.(¶•ÈÐùÿÿÿÿ
-T	java:S106‰"9Replace this use of System.out or System.err by a logger.(—±×¹þÿÿÿÿ
-A
-java:S1075`"&Remove this hard-coded path-delimiter.(ÜèÄþÿÿÿÿ
-a
-java:S1132|"FMove the "" string literal on the left side of this string comparison.(ˆë¤ÿÿÿÿÿ
+java:S1075d"&Remove this hard-coded path-delimiter.(Êªµ†ýÿÿÿÿ
 _
-java:S1120"DMake this line start after 4 spaces to indent the code consistently.(Éãö²ûÿÿÿÿ
-M	java:S106t"9Replace this use of System.out or System.err by a logger.(ãÑâA
-g
-java:S1871T"LThis branch's code block is the same as the block for the branch on line 78.(îÅ”öýÿÿÿÿ
+java:S1132R"IMove the "org" string literal on the left side of this string comparison.(ä†ú§
+T	java:S106•"9Replace this use of System.out or System.err by a logger.(—±×¹þÿÿÿÿ
 <
-java:S1166“"%Either log or rethrow this exception.(ï­£Ä
-<	java:S131]""Add a default case to this switch.(¿ªËÚûÿÿÿÿ
-A
-java:S1075`"&Remove this hard-coded path-delimiter.(ÜèÄþÿÿÿÿ
-l	java:S109 "RAssign this magic number 2 to a well-named constant, and use the constant instead.(‹Õ“Àúÿÿÿÿ
-m
-java:S3776G"RRefactor this method to reduce its Cognitive Complexity from 17 to the 15 allowed.(¹£ûËûÿÿÿÿ
-<
-java:S1075f"&Remove this hard-coded path-delimiter.(ŽÔÐØ
-O	java:S106Ž"9Replace this use of System.out or System.err by a logger.(´¥ìã
-T	java:S106”"9Replace this use of System.out or System.err by a logger.(—±×¹þÿÿÿÿ
-;
-java:S1166s"%Either log or rethrow this exception.(‹±ÃÆ
+java:S1075g"&Remove this hard-coded path-delimiter.(ŽÔÐØ
 d
-java:S1192`"IDefine a constant instead of duplicating this literal "database" 3 times.(ÜèÄþÿÿÿÿ
-V
-java:S2134"@Don't extend "Thread", since the "run" method is not overridden.(¸åž¡
+java:S1132U"IMove the "edu" string literal on the left side of this string comparison.(Ò…Š¶ûÿÿÿÿ
+f
+java:S2674ƒ"JCheck the return value of the "read" call to see how many bytes were read.(íÅÐùþÿÿÿÿ
+d
+java:S1132O"IMove the "com" string literal on the left side of this string comparison.(ˆ‰ùãúÿÿÿÿ
+A
+java:S1075d"&Remove this hard-coded path-delimiter.(Êªµ†ýÿÿÿÿ
+O
+java:S1135N"2Complete the task associated to this TODO comment.(§ÀØ‚8“ìé®¼.
 Z
-java:S1120."DMake this line start after 6 spaces to indent the code consistently.(¼‡»ø
+java:S1068"8Remove this unused "serverAllowanceCheck" private field.(ÚµÒýÿÿÿÿ8Ë²á­¼.
+4	java:S113"'Add a new line at the end of this file.
+d
+java:S1192a"IDefine a constant instead of duplicating this literal "database" 3 times.(ÜèÄþÿÿÿÿ
+M	java:S106u"9Replace this use of System.out or System.err by a logger.(ãÑâA
 Z
 java:S1120-"DMake this line start after 4 spaces to indent the code consistently.(Û·ÿÉ
-_
-java:S1132N"IMove the "com" string literal on the left side of this string comparison.(ÔÜêê
-_
-java:S1132Q"IMove the "org" string literal on the left side of this string comparison.(ä†ú§
-A
-java:S1075`"&Remove this hard-coded path-delimiter.(ÜèÄþÿÿÿÿ
+O	java:S106"9Replace this use of System.out or System.err by a logger.(´¥ìã
 3
-java:S1943"Remove this use of "getBytes"(Ž¥¾
+java:S1943‘"Remove this use of "getBytes"(Ž¥¾
+N	java:S106j"9Replace this use of System.out or System.err by a logger.(ÍÎÉ 
+V
+java:S2134"@Don't extend "Thread", since the "run" method is not overridden.(¸åž¡
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Áä“¶üÿÿÿÿ
+Z
+java:S1120."DMake this line start after 6 spaces to indent the code consistently.(¼‡»ø
 A
-java:S1075c"&Remove this hard-coded path-delimiter.(Êªµ†ýÿÿÿÿ
+java:S1075d"&Remove this hard-coded path-delimiter.(Êªµ†ýÿÿÿÿ
+S	java:S106Y"9Replace this use of System.out or System.err by a logger.(¶•ÈÐùÿÿÿÿ
+<
+java:S1075g"&Remove this hard-coded path-delimiter.(ŽÔÐØ
+_
+java:S1120"DMake this line start after 4 spaces to indent the code consistently.(Éãö²ûÿÿÿÿ
+<	java:S131^""Add a default case to this switch.(¿ªËÚûÿÿÿÿ
+a
+java:S1132}"FMove the "" string literal on the left side of this string comparison.(ˆë¤ÿÿÿÿÿ
+g
+java:S1871U"LThis branch's code block is the same as the block for the branch on line 79.(Ò…Š¶ûÿÿÿÿ
+c
+java:S2095s"MUse try-with-resources or close this "FileInputStream" in a "finally" clause.(âî—ˆ
+l	java:S109 "RAssign this magic number 2 to a well-named constant, and use the constant instead.(‹Õ“Àúÿÿÿÿ
+;
+java:S1166t"%Either log or rethrow this exception.(‹±ÃÆ
+V
+java:S2196O"4Convert this "if/else if" structure into a "switch".(ˆ‰ùãúÿÿÿÿ8Ë²á­¼.
+A
+java:S1075a"&Remove this hard-coded path-delimiter.(ÜèÄþÿÿÿÿ
+<
+java:S1075g"&Remove this hard-coded path-delimiter.(ŽÔÐØ
+b
+java:S1871R"LThis branch's code block is the same as the block for the branch on line 79.(ä†ú§
+<
+java:S1166‰"%Either log or rethrow this exception.(ï­£Ä
+A
+java:S1075a"&Remove this hard-coded path-delimiter.(ÜèÄþÿÿÿÿ
+Q	java:S125"<This block of commented-out lines of code should be removed.(¯ÌÏÖ

@@ -1,3 +1,4 @@
+package DNS;
 import java.io.*;
 import java.util.*;
 import java.util.concurrent.*;
@@ -8,7 +9,7 @@ public class DNSReceiver {
         int ROOT_SERVER_PORT = 31111;
         int LOCAL_DNS_SERVER_PORT = 11166;
         Registrar registrar = new Registrar();
-        DNSServerConfig config = new DNSServerConfig(registrar);
+//        DNSServerConfig config = new DNSServerConfig(registrar);
         DNSClient client = new DNSClient();
         DNSServer rootServer = registrar.createRootServer(ROOT_SERVER_PORT);
 

@@ -1,61 +1,53 @@
 
-V	java:S106Ò"9Replace this use of System.out or System.err by a logger.(‹°Õ¦8Æü³¬¼.
-H
-java:S2325Ñ"*Make "validCacheFolder" a "static" method.(Ñßİ™8‘–Ö«¼.
-G
-java:S1166{"%Either log or rethrow this exception.(¥¨›ıÿÿÿÿ8‘–Ö«¼.
-O
-java:S1135+"2Complete the task associated to this TODO comment.(¨¸¡Õ8‘–Ö«¼.
-o
-java:S3776Z"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(Çµí‘8‘–Ö«¼.
-Z	java:S106z"9Replace this use of System.out or System.err by a logger.(Ü¨¥êıÿÿÿÿ8‘–Ö«¼.
-d
-java:S1192Ä"FDefine a constant instead of duplicating this literal "save=" 4 times.(…üÅš8‘–Ö«¼.
-[	java:S106‘"9Replace this use of System.out or System.err by a logger.(’üäåıÿÿÿÿ8‘–Ö«¼.
-n	java:S109b"RAssign this magic number 2 to a well-named constant, and use the constant instead.(Ğøª³8‘–Ö«¼.
-T
-java:S1449Ä"6Define the locale to be used in this String operation.(…üÅš8‘–Ö«¼.
-T
-java:S1449Ô"6Define the locale to be used in this String operation.(²³çÖ8‘–Ö«¼.
-Y
-java:S1449ß"6Define the locale to be used in this String operation.(¶İ¾šşÿÿÿÿ8‘–Ö«¼.
-Y
-java:S1449ï"6Define the locale to be used in this String operation.(êÄÔ¥øÿÿÿÿ8‘–Ö«¼.
-Z	java:S106]"9Replace this use of System.out or System.err by a logger.(¹š™Âÿÿÿÿÿ8‘–Ö«¼.
-o	java:S134c"NRefactor this code to not nest more than 3 if/for/while/switch/try statements.(Û¤Ãúÿÿÿÿ8‘–Ö«¼.
-k
-java:S1192ß"HDefine a constant instead of duplicating this literal "header=" 3 times.(¶İ¾šşÿÿÿÿ8‘–Ö«¼.
-C
-java:S2325î"%Make "validHeader" a "static" method.(ÅÕöœ8‘–Ö«¼.
-U
-java:S1135¯"2Complete the task associated to this TODO comment.(îç‘åşÿÿÿÿ8‘–Ö«¼.
-T
-java:S1449à"6Define the locale to be used in this String operation.(´¤§»8‘–Ö«¼.
-n	java:S109i"RAssign this magic number 2 to a well-named constant, and use the constant instead.(±½Œ‘8‘–Ö«¼.
-]	java:S125,"<This block of commented-out lines of code should be removed.(ñ’ğüÿÿÿÿ8‘–Ö«¼.
 {	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(•İÈ‚ıÿÿÿÿ8‘–Ö«¼.
-
-java:S1130("{Remove the declaration of thrown exception 'java.net.UnknownHostException', as it cannot be thrown from constructor's body.(ó™—şÿÿÿÿ8‘–Ö«¼.
-S
-java:S1449Ó"6Define the locale to be used in this String operation.(òØş8‘–Ö«¼.
-^	java:S125¸"<This block of commented-out lines of code should be removed.(Œ„ˆÜûÿÿÿÿ8‘–Ö«¼.
+Y
+java:S1449Â"6Define the locale to be used in this String operation.(’×æ×şÿÿÿÿ8‘–Ö«¼.
+\	java:S126i";"if ... else if" constructs should end with "else" clauses.(äÌ•ûüÿÿÿÿ8‘–Ö«¼.
+T
+java:S1449Ğ"6Define the locale to be used in this String operation.(²³çÖ8‘–Ö«¼.
+C
+java:S2325ê"%Make "validHeader" a "static" method.(ÅÕöœ8‘–Ö«¼.
+Z	java:S106{"9Replace this use of System.out or System.err by a logger.(Ü¨¥êıÿÿÿÿ8‘–Ö«¼.
+o	java:S134d"NRefactor this code to not nest more than 3 if/for/while/switch/try statements.(Û¤Ãúÿÿÿÿ8‘–Ö«¼.
+n	java:S109j"RAssign this magic number 2 to a well-named constant, and use the constant instead.(±½Œ‘8‘–Ö«¼.
+n	java:S109c"RAssign this magic number 2 to a well-named constant, and use the constant instead.(Ğøª³8‘–Ö«¼.
+s	java:S109k"RAssign this magic number 2 to a well-named constant, and use the constant instead.(éÓùÇşÿÿÿÿ8‘–Ö«¼.
+U	java:S106}"9Replace this use of System.out or System.err by a logger.(‡É»á8‘–Ö«¼.
+T
+java:S1449Á"6Define the locale to be used in this String operation.(…üÅš8‘–Ö«¼.
+]	java:S125,"<This block of commented-out lines of code should be removed.(ñ’ğüÿÿÿÿ8‘–Ö«¼.
+T
+java:S1449ë"6Define the locale to be used in this String operation.(êÇ‚½8‘–Ö«¼.
 g
 java:S3027*"JPut single-quotes around '/' to use the faster "lastIndexOf(char)" method.(ÒÿÉ8‘–Ö«¼.
-Y	java:S125´"<This block of commented-out lines of code should be removed.(ŠÇ8‘–Ö«¼.
-Y
-java:S1449Å"6Define the locale to be used in this String operation.(’×æ×şÿÿÿÿ8‘–Ö«¼.
-?
-java:S1643¤"Use a StringBuilder instead.(¯îìŞúÿÿÿÿ8‘–Ö«¼.
 s	java:S109\"RAssign this magic number 3 to a well-named constant, and use the constant instead.(ä§şµüÿÿÿÿ8‘–Ö«¼.
-U	java:S106|"9Replace this use of System.out or System.err by a logger.(‡É»á8‘–Ö«¼.
+O
+java:S1135+"2Complete the task associated to this TODO comment.(¨¸¡Õ8‘–Ö«¼.
 Y
-java:S1449ğ"6Define the locale to be used in this String operation.(³Ùºúÿÿÿÿ8‘–Ö«¼.
-s	java:S109h"RAssign this magic number 3 to a well-named constant, and use the constant instead.(äÌ•ûüÿÿÿÿ8‘–Ö«¼.
+java:S1449Û"6Define the locale to be used in this String operation.(¶İ¾šşÿÿÿÿ8‘–Ö«¼.
+T
+java:S1449ë"6Define the locale to be used in this String operation.(êÇ‚½8‘–Ö«¼.
+d
+java:S1192Á"FDefine a constant instead of duplicating this literal "save=" 4 times.(…üÅš8‘–Ö«¼.
 B
-java:S1166y"%Either log or rethrow this exception.(ï­£Ä8‘–Ö«¼.
-\	java:S126h";"if ... else if" constructs should end with "else" clauses.(äÌ•ûüÿÿÿÿ8‘–Ö«¼.
-Y
-java:S1449ï"6Define the locale to be used in this String operation.(êÄÔ¥øÿÿÿÿ8‘–Ö«¼.
-s	java:S109j"RAssign this magic number 2 to a well-named constant, and use the constant instead.(éÓùÇşÿÿÿÿ8‘–Ö«¼.
-U
-java:S1135’"2Complete the task associated to this TODO comment.(–àÌÒÿÿÿÿÿ8‘–Ö«¼.
+java:S1166z"%Either log or rethrow this exception.(ï­£Ä8‘–Ö«¼.
+o
+java:S3776Z"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(Çµí‘8‘–Ö«¼.
+S
+java:S1449Ï"6Define the locale to be used in this String operation.(òØş8‘–Ö«¼.
+G
+java:S1166|"%Either log or rethrow this exception.(¥¨›ıÿÿÿÿ8‘–Ö«¼.
+k
+java:S1192Û"HDefine a constant instead of duplicating this literal "header=" 3 times.(¶İ¾šşÿÿÿÿ8‘–Ö«¼.
+?
+java:S1643£"Use a StringBuilder instead.(¯îìŞúÿÿÿÿ8‘–Ö«¼.
+s	java:S109i"RAssign this magic number 3 to a well-named constant, and use the constant instead.(äÌ•ûüÿÿÿÿ8‘–Ö«¼.
+T
+java:S1449ì"6Define the locale to be used in this String operation.(¸Æşì8‘–Ö«¼.
+Z	java:S106]"9Replace this use of System.out or System.err by a logger.(¹š™Âÿÿÿÿÿ8‘–Ö«¼.
+T
+java:S1449Ü"6Define the locale to be used in this String operation.(´¤§»8‘–Ö«¼.
+H
+java:S2325Î"*Make "validCacheFolder" a "static" method.(Ñßİ™8‘–Ö«¼.
+
+java:S1130("{Remove the declaration of thrown exception 'java.net.UnknownHostException', as it cannot be thrown from constructor's body.(ó™—şÿÿÿÿ8‘–Ö«¼.

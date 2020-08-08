@@ -40,27 +40,31 @@ public class MultithreadedServer extends Thread {
       i++;
     }
 
-    int portNum = Integer.parseInt(port);
+    try {
+      int portNum = Integer.parseInt(port);
 
-    ServerSocket multiServe = new ServerSocket(portNum, 0);
+      ServerSocket multiServe = new ServerSocket(portNum, 0);
 
 
-    // counter to help make sure server is correctly handling multiple clients
-    int counter = 0;
-    while(true) {
-      counter ++;
-      System.out.println("Current requests made: " + counter);
+      // counter to help make sure server is correctly handling multiple clients
+      int counter = 0;
+      while(true) {
+        counter ++;
+        System.out.println("Current requests made: " + counter);
 
-      // socket created from the multi threaded server
-      Socket clientSocket = multiServe.accept();
+        // socket created from the multi threaded server
+        Socket clientSocket = multiServe.accept();
 
-      // web server is created by passing in its ip address and clientSocket, then starts
-      //      listening to clients request.
-      WebServer httpServer = new WebServer(ip, clientSocket);
-      System.out.println("Server created successfully on localhost, now listening for requests.");
-      httpServer.listenAndAccept();
-
+        // web server is created by passing in its ip address and clientSocket, then starts
+        //      listening to clients request.
+        WebServer httpServer = new WebServer(ip, clientSocket);
+        System.out.println("Server created successfully on localhost, now listening for requests.");
+        httpServer.listenAndAccept();
+      }
+    } catch (NumberFormatException e) {
+      System.out.println("Must provide valid port");
     }
+
   }
 
 }
