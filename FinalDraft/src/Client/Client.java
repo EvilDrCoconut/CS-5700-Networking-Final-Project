@@ -44,6 +44,7 @@ public class Client {
 
 //    try {
 ////       TODO: get host from DNS.
+//      Right now DNS is not fully operational, but this is the code that would map DNS into IP/Port.
 //      String dnsResponse = new DNSClient()
 //          .browserQueryIPString(requestedFileString.substring(0, requestedFileString.indexOf("/")));
 //      webPort = Integer.parseInt(dnsResponse);
